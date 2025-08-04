@@ -601,14 +601,14 @@ ci_benchmark.start_monitoring()
 ```bibtex
 @software{edge_tpu_v6_bench2025,
   title={Edge-TPU-v6-Preview-Bench: Comprehensive Benchmarking for Next-Gen Edge AI},
-  author={Your Name et al.},
+  author={Daniel Schmidt},
   year={2025},
-  url={https://github.com/yourusername/Edge-TPU-v6-Preview-Bench}
+  url={https://github.com/danieleschmidt/Edge-TPU-v6-Preview-Bench}
 }
 
 @article{edge_tpu_quantization2025,
   title={Optimal Quantization Strategies for Edge TPU v6},
-  author={Your Team},
+  author={Daniel Schmidt},
   journal={ACS Applied Materials & Interfaces},
   year={2025},
   doi={10.1021/acsami.xxxxx}
