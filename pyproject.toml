@@ -1,0 +1,191 @@
+[tool.poetry]
+name = "edge-tpu-v6-bench"
+version = "0.1.0"
+description = "Future-ready benchmark harness for Google Edge TPU v6"
+authors = ["Daniel Schmidt <daniel@terragonlabs.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/danieleschmidt/Edge-TPU-v6-Preview-Bench"
+repository = "https://github.com/danieleschmidt/Edge-TPU-v6-Preview-Bench"
+documentation = "https://edge-tpu-v6-bench.readthedocs.io"
+keywords = ["edge-tpu", "benchmark", "ai", "ml", "tensorflow", "quantization", "coral"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: System :: Benchmark",
+    "Topic :: System :: Hardware",
+]
+packages = [{include = "edge_tpu_v6_bench", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+tensorflow = "^2.14.0"
+numpy = "^1.21.0"
+tflite-runtime = "^2.14.0"
+pycoral = "^2.0.0"
+matplotlib = "^3.5.0"
+seaborn = "^0.11.0"
+pandas = "^1.3.0"
+scipy = "^1.7.0"
+psutil = "^5.8.0"
+click = "^8.0.0"
+tqdm = "^4.62.0"
+pyyaml = "^6.0"
+requests = "^2.28.0"
+pillow = "^9.0.0"
+opencv-python = "^4.5.0"
+
+# Optional dependencies
+transformers = {version = "^4.20.0", optional = true}
+torch = {version = "^1.12.0", optional = true} 
+torchvision = {version = "^0.13.0", optional = true}
+timm = {version = "^0.6.0", optional = true}
+ultralytics = {version = "^8.0.0", optional = true}
+plotly = {version = "^5.10.0", optional = true}
+dash = {version = "^2.6.0", optional = true}
+jupyter = {version = "^1.0.0", optional = true}
+ipywidgets = {version = "^7.7.0", optional = true}
+bokeh = {version = "^2.4.0", optional = true}
+pyserial = {version = "^3.5", optional = true}
+smbus2 = {version = "^0.4.0", optional = true}
+adafruit-circuitpython-ina260 = {version = "^1.2.0", optional = true}
+tensorflow-model-optimization = {version = "^0.7.0", optional = true}
+
+[tool.poetry.extras]
+models = ["transformers", "torch", "torchvision", "timm", "ultralytics"]
+analysis = ["plotly", "dash", "jupyter", "ipywidgets", "bokeh"]
+power = ["pyserial", "smbus2", "adafruit-circuitpython-ina260"]
+qat = ["tensorflow-model-optimization"]
+all = [
+    "transformers", "torch", "torchvision", "timm", "ultralytics",
+    "plotly", "dash", "jupyter", "ipywidgets", "bokeh",
+    "pyserial", "smbus2", "adafruit-circuitpython-ina260",
+    "tensorflow-model-optimization"
+]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0.0"
+pytest-cov = "^4.0.0"
+pytest-mock = "^3.10.0"
+pytest-asyncio = "^0.21.0"
+black = "^22.0.0"
+flake8 = "^5.0.0"
+mypy = "^0.991"
+pre-commit = "^2.20.0"
+bandit = "^1.7.0"
+safety = "^2.3.0"
+sphinx = "^5.0.0"
+sphinx-rtd-theme = "^1.0.0"
+sphinx-autodoc-typehints = "^1.19.0"
+myst-parser = "^0.18.0"
+
+[tool.poetry.scripts]
+edge-tpu-v6-bench = "edge_tpu_v6_bench.cli:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = [
+    "pycoral.*",
+    "tflite_runtime.*",
+    "cv2.*",
+    "serial.*",
+    "smbus2.*",
+    "adafruit_ina260.*",
+    "tensorflow_model_optimization.*"
+]
+ignore_missing_imports = true
+
+[tool.flake8]
+max-line-length = 100
+extend-ignore = [
+    "E203",  # whitespace before ':'
+    "E501",  # line too long (handled by black)
+    "W503",  # line break before binary operator
+]
+exclude = [
+    ".git",
+    "__pycache__",
+    "docs/source/conf.py",
+    "build",
+    "dist",
+    ".venv",
+    ".tox"
+]
+
+[tool.bandit]
+exclude_dirs = ["tests", "docs"]
+skips = ["B101", "B601"]  # Skip assert and shell injection in tests
+
+[tool.coverage.run]
+source = ["src/edge_tpu_v6_bench"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/site-packages/*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\(Protocol\):",
+    "@(abc\.)?abstractmethod",
+]
+show_missing = true
+precision = 2
+fail_under = 85
+
+[tool.coverage.html]
+directory = "htmlcov"

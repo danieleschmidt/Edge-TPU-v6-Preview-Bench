@@ -1,0 +1,183 @@
+version: '3.8'
+
+services:
+  # Main benchmark service
+  edge-tpu-bench:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: terragonlabs/edge-tpu-v6-bench:latest
+    container_name: edge-tpu-v6-bench
+    
+    # Privileged mode for hardware access
+    privileged: true
+    
+    # Device access for Edge TPU
+    devices:
+      - /dev/bus/usb:/dev/bus/usb  # USB devices
+      - /dev/apex_0:/dev/apex_0    # PCIe Edge TPU (if available)
+    
+    # Volume mounts
+    volumes:
+      - ./models:/home/edgetpu/models:ro
+      - ./results:/home/edgetpu/results:rw
+      - ./config:/home/edgetpu/config:ro
+      - /dev:/dev  # Device access
+    
+    # Environment variables
+    environment:
+      - EDGE_TPU_LANG=en
+      - PYTHONPATH=/home/edgetpu/.local/lib/python3.10/site-packages
+      - TF_CPP_MIN_LOG_LEVEL=1
+    
+    # Network settings
+    network_mode: host
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "edge-tpu-v6-bench", "devices"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Default command (override for specific benchmarks)
+    command: ["edge-tpu-v6-bench", "--help"]
+
+  # Development service with mounted source code
+  edge-tpu-bench-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    image: terragonlabs/edge-tpu-v6-bench:dev
+    container_name: edge-tpu-v6-bench-dev
+    
+    privileged: true
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+      - /dev/apex_0:/dev/apex_0
+    
+    volumes:
+      - .:/app:rw
+      - ./models:/app/models:ro
+      - ./results:/app/results:rw
+      - /dev:/dev
+    
+    environment:
+      - EDGE_TPU_LANG=en
+      - PYTHONPATH=/app/src
+      - TF_CPP_MIN_LOG_LEVEL=1
+    
+    working_dir: /app
+    network_mode: host
+    
+    # Keep container running for development
+    tty: true
+    stdin_open: true
+    
+    command: ["bash"]
+
+  # Monitoring service (optional)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: edge-tpu-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    profiles:
+      - monitoring
+
+  # Grafana for visualization (optional)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: edge-tpu-grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: unless-stopped
+    profiles:
+      - monitoring
+    depends_on:
+      - prometheus
+
+  # Redis for caching (optional)
+  redis:
+    image: redis:7-alpine
+    container_name: edge-tpu-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    profiles:
+      - caching
+
+  # Jupyter notebook for analysis (optional)
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: terragonlabs/edge-tpu-v6-bench:jupyter
+    container_name: edge-tpu-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/home/edgetpu/work:rw
+      - ./notebooks:/home/edgetpu/notebooks:rw
+      - ./results:/home/edgetpu/results:ro
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=edge-tpu-bench
+    command: >
+      bash -c "
+        pip install --user jupyter jupyterlab matplotlib seaborn plotly &&
+        jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=edge-tpu-bench
+      "
+    restart: unless-stopped
+    profiles:
+      - analysis
+
+volumes:
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  default:
+    name: edge-tpu-network
+    driver: bridge
