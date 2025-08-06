@@ -17,17 +17,20 @@ from .core.metrics import BenchmarkMetrics
 # Convenience imports for common workflows
 from .benchmarks.micro import MicroBenchmarkSuite
 from .benchmarks.standard import StandardBenchmark
-from .benchmarks.applications import ApplicationBenchmark
+# from .benchmarks.applications import ApplicationBenchmark
 
-# Analysis and visualization
-from .analysis.profiler import LatencyProfiler
-from .analysis.power import PowerAnalyzer
-from .analysis.thermal import ThermalAnalyzer
-from .analysis.visualizer import PerformanceVisualizer
+# Analysis and visualization (commented out until modules are created)
+# from .analysis.profiler import LatencyProfiler
+# from .analysis.power import PowerAnalyzer
+# from .analysis.thermal import ThermalAnalyzer
+# from .analysis.visualizer import PerformanceVisualizer
 
-# Migration and compatibility
-from .compatibility.migration import MigrationAssistant
-from .compatibility.features import FeatureDetector
+# Migration and compatibility (commented out until modules are created)
+# from .compatibility.migration import MigrationAssistant
+# from .compatibility.features import FeatureDetector
+
+# Quantum Planner
+from .quantum_planner import QuantumTaskEngine, QuantumScheduler, QuantumOptimizer, TaskGraph, QuantumTask, QuantumHeuristics, PerformanceOptimizer
 
 __all__ = [
     # Core API
@@ -39,17 +42,26 @@ __all__ = [
     # Benchmark suites
     'MicroBenchmarkSuite',
     'StandardBenchmark', 
-    'ApplicationBenchmark',
+    # 'ApplicationBenchmark',
     
-    # Analysis tools
-    'LatencyProfiler',
-    'PowerAnalyzer', 
-    'ThermalAnalyzer',
-    'PerformanceVisualizer',
+    # Quantum Planner
+    'QuantumTaskEngine',
+    'QuantumScheduler',
+    'QuantumOptimizer', 
+    'TaskGraph',
+    'QuantumTask',
+    'QuantumHeuristics',
+    'PerformanceOptimizer',
     
-    # Compatibility
-    'MigrationAssistant',
-    'FeatureDetector',
+    # Analysis tools (commented out until modules are created)
+    # 'LatencyProfiler',
+    # 'PowerAnalyzer', 
+    # 'ThermalAnalyzer',
+    # 'PerformanceVisualizer',
+    
+    # Compatibility (commented out until modules are created)
+    # 'MigrationAssistant',
+    # 'FeatureDetector',
 ]
 
 # Version info tuple
