@@ -20,7 +20,13 @@ from collections import defaultdict
 import weakref
 import gc
 import psutil
-import redis
+# import redis  # Optional dependency - will use fallback if not available
+try:
+    import redis
+    REDIS_AVAILABLE = True
+except ImportError:
+    redis = None
+    REDIS_AVAILABLE = False
 from contextlib import contextmanager
 
 from .quantum_task_engine import QuantumTask, Priority, TaskState
@@ -114,7 +120,7 @@ class QuantumCache:
         self._memory_lock = threading.RLock()
         
         # Redis cache
-        self._redis_client: Optional[redis.Redis] = None
+        self._redis_client: Optional[Any] = None  # redis.Redis when available
         self._redis_hit_count = 0
         self._redis_miss_count = 0
         
@@ -134,7 +140,8 @@ class QuantumCache:
     def _initialize_cache(self):
         """Initialize cache backends"""
         try:
-            if self.strategy in [CacheStrategy.REDIS_DISTRIBUTED, CacheStrategy.HYBRID_TIERED, CacheStrategy.ADAPTIVE]:
+            if (REDIS_AVAILABLE and 
+                self.strategy in [CacheStrategy.REDIS_DISTRIBUTED, CacheStrategy.HYBRID_TIERED, CacheStrategy.ADAPTIVE]):
                 self._redis_client = redis.Redis(
                     host=self.config.redis_host,
                     port=self.config.redis_port,
@@ -148,11 +155,15 @@ class QuantumCache:
                 try:
                     self._redis_client.ping()
                     logger.info("Redis cache backend connected successfully")
-                except redis.ConnectionError:
+                except Exception:
                     logger.warning("Redis connection failed, falling back to memory-only cache")
                     self._redis_client = None
                     if self.strategy == CacheStrategy.REDIS_DISTRIBUTED:
                         self.strategy = CacheStrategy.MEMORY_ONLY
+            else:
+                if not REDIS_AVAILABLE:
+                    logger.info("Redis not available, using memory-only cache")
+                    self.strategy = CacheStrategy.MEMORY_ONLY
                     
         except Exception as e:
             logger.error(f"Failed to initialize cache backends: {e}")
@@ -217,7 +228,7 @@ class QuantumCache:
                         self._redis_client.set(key, serialized_value)
                     success = True
                     
-                except (redis.ConnectionError, pickle.PickleError) as e:
+                except Exception as e:  # Catch all exceptions when redis might not be available
                     logger.warning(f"Redis cache set error: {e}")
             
             return success
@@ -275,7 +286,7 @@ class QuantumCache:
                 if self._redis_client:
                     try:
                         self._redis_client.flushdb()
-                    except redis.ConnectionError:
+                    except Exception:
                         pass
                         
             else:
@@ -299,7 +310,7 @@ class QuantumCache:
                         if keys:
                             self._redis_client.delete(*keys)
                             invalidated += len(keys)
-                    except redis.ConnectionError:
+                    except Exception:
                         pass
             
             return invalidated
