@@ -128,7 +128,7 @@ class StandardBenchmark:
         self.max_concurrent = max_concurrent
         
         # Initialize components
-        self.edge_tpu_benchmark = EdgeTPUBenchemark(device=self.device_info)
+        self.edge_tpu_benchmark = EdgeTPUBenchmark(device=self.device_info)
         self.quantizer = AutoQuantizer(target_device=self.device_info.device_type.value)
         
         # Execution pool

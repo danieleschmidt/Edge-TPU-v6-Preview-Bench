@@ -10,12 +10,20 @@ from typing import Dict, List, Optional, Any, Tuple, Callable, Union
 from dataclasses import dataclass
 from enum import Enum
 import numpy as np
-from scipy.optimize import minimize
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 
 from .quantum_task_engine import QuantumTask, Priority, TaskState
 
 logger = logging.getLogger(__name__)
+
+# Conditional scipy import for advanced optimization
+try:
+    from scipy.optimize import minimize
+    SCIPY_AVAILABLE = True
+except ImportError:
+    logger.warning("SciPy not available - some optimization methods will be disabled")
+    SCIPY_AVAILABLE = False
+    minimize = None
 
 class OptimizationObjective(Enum):
     MINIMIZE_MAKESPAN = "minimize_makespan"
@@ -262,12 +270,17 @@ class QuantumOptimizer:
         for iteration in range(self.config.max_iterations):
             try:
                 # Optimize parameters using classical optimizer
-                result = minimize(
-                    qaoa_objective,
-                    initial_params,
-                    method='COBYLA',
-                    options={'maxiter': 50, 'disp': False}
-                )
+                if not SCIPY_AVAILABLE:
+                    logger.warning("SciPy not available - using fallback optimization")
+                    # Simple gradient-free optimization fallback
+                    result = self._fallback_optimize(qaoa_objective, initial_params)
+                else:
+                    result = minimize(
+                        qaoa_objective,
+                        initial_params,
+                        method='COBYLA',
+                        options={'maxiter': 50, 'disp': False}
+                    )
                 
                 current_value = result.fun
                 convergence_history.append(current_value)
@@ -353,12 +366,17 @@ class QuantumOptimizer:
         for iteration in range(self.config.max_iterations):
             try:
                 # Minimize energy expectation value
-                result = minimize(
-                    vqe_energy_function,
-                    initial_params,
-                    method='BFGS',
-                    options={'maxiter': 50}
-                )
+                if not SCIPY_AVAILABLE:
+                    logger.warning("SciPy not available - using fallback optimization")
+                    # Simple gradient-free optimization fallback
+                    result = self._fallback_optimize(vqe_energy_function, initial_params)
+                else:
+                    result = minimize(
+                        vqe_energy_function,
+                        initial_params,
+                        method='BFGS',
+                        options={'maxiter': 50}
+                    )
                 
                 current_energy = result.fun
                 convergence_history.append(current_energy)
@@ -1024,6 +1042,41 @@ class QuantumOptimizer:
                 }
         
         return interpolated
+    
+    def _fallback_optimize(self, objective_fn: Callable, initial_params: List[float]) -> Any:
+        """
+        Simple fallback optimization when SciPy is not available
+        
+        Uses a basic random search with simulated annealing-like behavior
+        """
+        class MockResult:
+            def __init__(self, fun, x):
+                self.fun = fun
+                self.x = x
+                self.success = True
+        
+        best_params = initial_params.copy()
+        best_value = objective_fn(best_params)
+        
+        # Simple random search with decreasing step size
+        for iteration in range(50):  # Limited iterations for fallback
+            # Generate random perturbation
+            step_size = 1.0 / (1.0 + iteration * 0.1)  # Decreasing step size
+            perturbed_params = [
+                param + np.random.normal(0, step_size * 0.1) 
+                for param in best_params
+            ]
+            
+            try:
+                value = objective_fn(perturbed_params)
+                if value < best_value:
+                    best_value = value
+                    best_params = perturbed_params.copy()
+            except Exception:
+                # Skip invalid parameter combinations
+                continue
+        
+        return MockResult(best_value, best_params)
     
     def get_optimization_report(self) -> Dict[str, Any]:
         """Get comprehensive optimization report"""

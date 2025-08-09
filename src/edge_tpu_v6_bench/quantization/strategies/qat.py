@@ -124,13 +124,20 @@ class QATOptimizer:
         # In practice, this would map layer types to specific quantization parameters
         return self._get_default_quantize_config()
     
-    def get_callbacks(self) -> List[tf.keras.callbacks.Callback]:
+    def get_callbacks(self) -> List[Any]:
         """
         Get recommended callbacks for QAT training
         
         Returns:
             List of Keras callbacks for QAT monitoring
         """
+        try:
+            # Import tensorflow.keras.callbacks when actually needed
+            import tensorflow.keras.callbacks as callbacks_module
+        except ImportError:
+            logger.warning("TensorFlow not available - returning empty callbacks list")
+            return []
+            
         callbacks = []
         
         # Learning rate scheduling for QAT
@@ -143,10 +150,10 @@ class QATOptimizer:
             else:
                 return lr * 0.1  # Fine-tuning phase
         
-        callbacks.append(tf.keras.callbacks.LearningRateScheduler(qat_lr_schedule))
+        callbacks.append(callbacks_module.LearningRateScheduler(qat_lr_schedule))
         
         # Early stopping to prevent overfitting
-        callbacks.append(tf.keras.callbacks.EarlyStopping(
+        callbacks.append(callbacks_module.EarlyStopping(
             monitor='val_loss',
             patience=5,
             restore_best_weights=True,
@@ -154,7 +161,7 @@ class QATOptimizer:
         ))
         
         # Model checkpointing
-        callbacks.append(tf.keras.callbacks.ModelCheckpoint(
+        callbacks.append(callbacks_module.ModelCheckpoint(
             filepath='qat_checkpoint_{epoch:02d}_{val_accuracy:.2f}.h5',
             save_best_only=True,
             monitor='val_accuracy',
@@ -166,10 +173,22 @@ class QATOptimizer:
         
         return callbacks
     
-    def _create_qat_logging_callback(self) -> tf.keras.callbacks.Callback:
+    def _create_qat_logging_callback(self) -> Any:
         """Create callback for QAT-specific logging"""
         
-        class QATLoggingCallback(tf.keras.callbacks.Callback):
+        try:
+            # Import tensorflow.keras.callbacks when actually needed
+            import tensorflow.keras.callbacks as callbacks_module
+            base_class = callbacks_module.Callback
+        except ImportError:
+            logger.warning("TensorFlow not available - returning mock callback")
+            # Return a mock callback that does nothing
+            class MockCallback:
+                def on_epoch_end(self, epoch, logs=None):
+                    pass
+            return MockCallback()
+        
+        class QATLoggingCallback(base_class):
             def __init__(self):
                 super().__init__()
                 self.qat_metrics = []

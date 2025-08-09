@@ -19,7 +19,15 @@ from functools import lru_cache, wraps
 from collections import defaultdict
 import weakref
 import gc
-import psutil
+
+# Optional dependency - psutil for system monitoring
+try:
+    import psutil
+    PSUTIL_AVAILABLE = True
+except ImportError:
+    psutil = None
+    PSUTIL_AVAILABLE = False
+
 # import redis  # Optional dependency - will use fallback if not available
 try:
     import redis
@@ -339,15 +347,24 @@ def performance_monitor(func: Callable) -> Callable:
     @wraps(func)
     def wrapper(*args, **kwargs):
         start_time = time.time()
-        start_memory = psutil.Process().memory_info().rss / 1024 / 1024
-        start_cpu = psutil.cpu_percent()
+        
+        if PSUTIL_AVAILABLE:
+            start_memory = psutil.Process().memory_info().rss / 1024 / 1024
+            start_cpu = psutil.cpu_percent()
+        else:
+            start_memory = 0.0
+            start_cpu = 0.0
         
         try:
             result = func(*args, **kwargs)
             
             end_time = time.time()
-            end_memory = psutil.Process().memory_info().rss / 1024 / 1024
-            end_cpu = psutil.cpu_percent()
+            if PSUTIL_AVAILABLE:
+                end_memory = psutil.Process().memory_info().rss / 1024 / 1024
+                end_cpu = psutil.cpu_percent()
+            else:
+                end_memory = 0.0
+                end_cpu = 0.0
             
             metrics = PerformanceMetrics(
                 execution_time=end_time - start_time,
@@ -660,8 +677,13 @@ class ParallelExecutor:
         
         try:
             # Get system metrics
-            cpu_percent = psutil.cpu_percent(interval=1)
-            memory_percent = psutil.virtual_memory().percent
+            if PSUTIL_AVAILABLE:
+                cpu_percent = psutil.cpu_percent(interval=1)
+                memory_percent = psutil.virtual_memory().percent
+            else:
+                # Fallback - assume moderate resource usage
+                cpu_percent = 50.0
+                memory_percent = 50.0
             
             # Determine if scaling is needed
             scale_up = (cpu_percent > 80 or memory_percent > 80) and self._active_workers < self.config.max_workers
@@ -878,9 +900,9 @@ class PerformanceOptimizer:
                 'cache_performance': self.cache.get_stats(),
                 'executor_performance': self.executor.get_performance_report(),
                 'system_resources': {
-                    'cpu_percent': psutil.cpu_percent(),
-                    'memory_percent': psutil.virtual_memory().percent,
-                    'disk_usage_percent': psutil.disk_usage('/').percent
+                    'cpu_percent': psutil.cpu_percent() if PSUTIL_AVAILABLE else 0.0,
+                    'memory_percent': psutil.virtual_memory().percent if PSUTIL_AVAILABLE else 0.0,
+                    'disk_usage_percent': psutil.disk_usage('/').percent if PSUTIL_AVAILABLE else 0.0
                 }
             }
             
