@@ -1,0 +1,162 @@
+version: '3.8'
+
+services:
+  edge-tpu-bench:
+    build:
+      context: ..
+      dockerfile: deploy/docker/Dockerfile
+    container_name: edge-tpu-v6-benchmark
+    restart: unless-stopped
+    
+    ports:
+      - "8080:8080"   # Main API port
+      - "9090:9090"   # Monitoring/metrics port
+    
+    volumes:
+      # Data persistence
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+      - ./models:/app/models
+      - ./results:/app/results
+      
+      # Configuration
+      - ./config:/app/config:ro
+      
+      # Host device access (for Edge TPU devices)
+      - /dev/bus/usb:/dev/bus/usb
+    
+    environment:
+      # Application configuration
+      - EDGE_TPU_LOG_LEVEL=INFO
+      - EDGE_TPU_CONFIG_PATH=/app/config
+      - EDGE_TPU_DATA_PATH=/app/data
+      - EDGE_TPU_CACHE_SIZE=1GB
+      
+      # Performance tuning
+      - WORKERS=4
+      - MAX_CONNECTIONS=1000
+      - TIMEOUT=300
+      
+      # Security settings
+      - SECURITY_ENABLED=true
+      - RATE_LIMIT_ENABLED=true
+      - AUDIT_LOGGING=true
+      
+      # Monitoring
+      - MONITORING_ENABLED=true
+      - METRICS_PORT=9090
+      - HEALTH_CHECK_INTERVAL=30
+      
+    devices:
+      # Grant access to Edge TPU devices
+      - /dev/bus/usb:/dev/bus/usb
+    
+    privileged: false  # Run unprivileged for security
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 8G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "healthcheck.py"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    
+    # Logging configuration
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "5"
+        labels: "service=edge-tpu-v6-benchmark"
+    
+    # Security options
+    security_opt:
+      - no-new-privileges:true
+    
+    # Network configuration
+    networks:
+      - edge-tpu-network
+
+  # Optional: Monitoring stack
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - "9091:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - edge-tpu-network
+    profiles:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_USERS_ALLOW_SIGN_UP=false
+    networks:
+      - edge-tpu-network
+    profiles:
+      - monitoring
+    depends_on:
+      - prometheus
+
+  # Optional: Log aggregation
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+    volumes:
+      - loki_data:/loki
+      - ./monitoring/loki/loki-config.yml:/etc/loki/loki-config.yml:ro
+    command: -config.file=/etc/loki/loki-config.yml
+    networks:
+      - edge-tpu-network
+    profiles:
+      - monitoring
+
+volumes:
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  loki_data:
+    driver: local
+
+networks:
+  edge-tpu-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
