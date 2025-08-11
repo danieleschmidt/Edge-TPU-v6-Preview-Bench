@@ -18,6 +18,12 @@ import tensorflow as tf
 from .device_manager import DeviceManager, DeviceInfo, DeviceType
 from .metrics import BenchmarkMetrics, MetricType
 from .power import PowerMonitor
+from .validation import SecurityValidator, ConfigValidator, validate_and_sanitize
+from .security import SecurityManager, global_security_manager
+from .error_handling import ErrorRecoverySystem, handle_errors, global_recovery_system, EdgeTPUError, ValidationError
+from .performance_cache import PerformanceCache, global_performance_cache
+from .concurrent_execution import ConcurrentExecutor, TaskSpec, ExecutionStrategy, global_concurrent_executor
+from .auto_scaler import AutoScaler, ScalingTrigger, global_auto_scaler
 
 logger = logging.getLogger(__name__)
 
@@ -58,6 +64,8 @@ class EdgeTPUBenchmark:
     - Performance measurement (latency, throughput, accuracy)
     - Power and thermal monitoring
     - Multi-batch and concurrent execution
+    - Comprehensive security validation
+    - Robust error handling and recovery
     """
     
     def __init__(self, 
@@ -72,12 +80,31 @@ class EdgeTPUBenchmark:
             power_monitoring: Enable power measurement
             thermal_monitoring: Enable thermal monitoring
         """
+        # Validate device specification
+        device_validation = validate_and_sanitize(device, 'device_spec')
+        if not device_validation.is_valid:
+            raise ValidationError(f"Invalid device specification: {device_validation.error_message}")
+        device = device_validation.sanitized_value or device
+        
         self.device_manager = DeviceManager()
         self.metrics = BenchmarkMetrics()
         self.power_monitor = PowerMonitor() if power_monitoring else None
+        self.security_manager = global_security_manager
+        self.recovery_system = global_recovery_system
+        self.performance_cache = global_performance_cache
+        self.concurrent_executor = global_concurrent_executor
+        self.auto_scaler = global_auto_scaler
         
-        # Device selection
-        self.device_info = self.device_manager.select_device(device)
+        # Device selection with error recovery
+        try:
+            self.device_info = self.device_manager.select_device(device)
+        except Exception as e:
+            recovery_result = self.recovery_system.handle_error(e, {'device': device})
+            if recovery_result and isinstance(recovery_result, dict) and 'device' in recovery_result:
+                self.device_info = self.device_manager.select_device(recovery_result['device'])
+            else:
+                raise EdgeTPUError(f"Failed to select device after recovery: {e}")
+        
         self.interpreter: Optional[tf.lite.Interpreter] = None
         self.model_info: Dict[str, Any] = {}
         
@@ -85,11 +112,16 @@ class EdgeTPUBenchmark:
         self.power_monitoring = power_monitoring
         self.thermal_monitoring = thermal_monitoring
         
-        logger.info(f"Initialized EdgeTPUBenchmark with {self.device_info.device_type.value}")
+        # Start auto-scaling for dynamic performance optimization
+        self.auto_scaler.start()
         
+        logger.info(f"Initialized EdgeTPUBenchmark with {self.device_info.device_type.value}, "
+                   f"security, caching, concurrent execution, and auto-scaling enabled")
+        
+    @handle_errors(global_recovery_system, reraise=True)
     def load_model(self, model_path: Union[str, Path]) -> Dict[str, Any]:
         """
-        Load and prepare model for benchmarking
+        Load and prepare model for benchmarking with security validation
         
         Args:
             model_path: Path to TensorFlow Lite model file
@@ -98,14 +130,30 @@ class EdgeTPUBenchmark:
             Model information dictionary
             
         Raises:
-            FileNotFoundError: If model file doesn't exist
-            RuntimeError: If model loading fails
+            ValidationError: If file validation fails
+            EdgeTPUError: If model loading fails
         """
-        model_path = Path(model_path)
-        if not model_path.exists():
-            raise FileNotFoundError(f"Model file not found: {model_path}")
+        # Security validation of file path
+        path_validation = validate_and_sanitize(model_path, 'file_path')
+        if not path_validation.is_valid:
+            raise ValidationError(f"Model path validation failed: {path_validation.error_message}")
         
-        logger.info(f"Loading model: {model_path}")
+        model_path = path_validation.sanitized_value or Path(model_path)
+        
+        # Additional security checks
+        if not self.security_manager.validate_access(str(model_path)):
+            raise ValidationError("Access to model file denied by security policy")
+        
+        # Verify file integrity
+        if not self.security_manager.verify_file_integrity(model_path):
+            raise ValidationError("Model file integrity verification failed")
+        
+        # Scan for threats
+        threats = self.security_manager.scan_for_threats(str(model_path), "path")
+        if threats:
+            raise ValidationError(f"Security threats detected in model path: {threats}")
+        
+        logger.info(f"Loading model: {model_path} (security validation passed)")
         
         try:
             # Create interpreter for the selected device
@@ -142,15 +190,16 @@ class EdgeTPUBenchmark:
             return self.model_info
             
         except Exception as e:
-            raise RuntimeError(f"Failed to load model {model_path}: {e}")
+            raise EdgeTPUError(f"Failed to load model {model_path}: {e}")
     
+    @handle_errors(global_recovery_system, reraise=False, default_return=None)
     def benchmark(self, 
                   model_path: Optional[Union[str, Path]] = None,
                   test_data: Optional[np.ndarray] = None,
                   config: Optional[BenchmarkConfig] = None,
                   metrics: Optional[List[str]] = None) -> BenchmarkResult:
         """
-        Run comprehensive benchmark on the loaded model
+        Run comprehensive benchmark on the loaded model with validation and security
         
         Args:
             model_path: Path to model (if not already loaded)
@@ -159,10 +208,22 @@ class EdgeTPUBenchmark:
             metrics: List of metrics to measure ['latency', 'throughput', 'accuracy', 'power']
             
         Returns:
-            Comprehensive benchmark results
+            Comprehensive benchmark results or None if critical error
         """
+        # Validate configuration
         if config is None:
             config = BenchmarkConfig()
+        else:
+            config_dict = {
+                'warmup_runs': config.warmup_runs,
+                'measurement_runs': config.measurement_runs,
+                'timeout_seconds': config.timeout_seconds,
+                'batch_sizes': config.batch_sizes,
+                'concurrent_streams': config.concurrent_streams
+            }
+            config_validation = validate_and_sanitize(config_dict, 'benchmark_config')
+            if not config_validation.is_valid:
+                raise ValidationError(f"Configuration validation failed: {config_validation.error_message}")
             
         if metrics is None:
             metrics = ['latency', 'throughput']
@@ -180,9 +241,15 @@ class EdgeTPUBenchmark:
                    f"runs={config.measurement_runs}, metrics={metrics}")
         
         try:
-            # Prepare test data
+            # Prepare test data with validation
             if test_data is None:
                 test_data = self._generate_dummy_data()
+            else:
+                # Validate input data
+                data_validation = validate_and_sanitize(test_data, 'model_input')
+                if not data_validation.is_valid:
+                    raise ValidationError(f"Input data validation failed: {data_validation.error_message}")
+                test_data = data_validation.sanitized_value or test_data
             
             # Initialize result structure
             result = BenchmarkResult(
@@ -202,15 +269,60 @@ class EdgeTPUBenchmark:
             logger.info(f"Running {config.warmup_runs} warmup iterations...")
             self._run_warmup(test_data, config.warmup_runs)
             
-            # Run measurements for each batch size
-            for batch_size in config.batch_sizes:
+            # Create concurrent benchmark tasks for each batch size
+            benchmark_tasks = []
+            for i, batch_size in enumerate(config.batch_sizes):
                 batch_data = self._prepare_batch_data(test_data, batch_size)
-                batch_results = self._benchmark_batch(batch_data, batch_size, config)
                 
-                # Store batch-specific results
-                for metric_name, values in batch_results.items():
-                    key = f"{metric_name}_batch_{batch_size}"
-                    result.raw_measurements[key] = values
+                task = TaskSpec(
+                    task_id=f"benchmark_batch_{batch_size}_{i}",
+                    function=self._benchmark_batch,
+                    args=(batch_data, batch_size, config),
+                    priority=10 - i,  # Higher priority for smaller batch sizes
+                    estimated_duration=config.measurement_runs * 0.01,  # Rough estimate
+                    resource_requirements={ResourceType.TPU: 1.0, ResourceType.CPU: 0.5}
+                )
+                benchmark_tasks.append(task)
+            
+            # Execute batch benchmarks concurrently with caching
+            cache_key = self._generate_cache_key(config, metrics)
+            cached_results = self.performance_cache.get(cache_key)
+            
+            if cached_results:
+                logger.info("Using cached benchmark results")
+                batch_execution_results = cached_results
+            else:
+                batch_execution_results = self.concurrent_executor.execute_batch(
+                    benchmark_tasks,
+                    strategy_override=ExecutionStrategy.THREADED
+                )
+                
+                # Cache successful results
+                successful_results = {k: v.result for k, v in batch_execution_results.items() if v.success}
+                if successful_results:
+                    self.performance_cache.set(
+                        cache_key, 
+                        successful_results, 
+                        ttl=3600.0,  # 1 hour cache
+                        tags=['benchmark', 'performance']
+                    )
+            
+            # Process execution results into raw measurements
+            for task_id, execution_result in batch_execution_results.items():
+                if execution_result.success and execution_result.result:
+                    batch_results = execution_result.result
+                    batch_size = int(task_id.split('_')[2])  # Extract batch size from task_id
+                    
+                    # Store batch-specific results  
+                    for metric_name, values in batch_results.items():
+                        key = f"{metric_name}_batch_{batch_size}"
+                        result.raw_measurements[key] = values
+                    
+                    # Update auto-scaler metrics
+                    if values:
+                        avg_latency = sum(values) / len(values)
+                        self.auto_scaler.add_metric(ScalingTrigger.RESPONSE_TIME, avg_latency)
+                        self.auto_scaler.add_metric(ScalingTrigger.THROUGHPUT, 1000.0 / avg_latency if avg_latency > 0 else 0)
             
             # Calculate aggregate metrics
             result.metrics = self._calculate_metrics(result.raw_measurements, metrics)
@@ -407,6 +519,77 @@ class EdgeTPUBenchmark:
     def get_device_info(self) -> DeviceInfo:
         """Get information about the active device"""
         return self.device_info
+    
+    def _generate_cache_key(self, config: BenchmarkConfig, metrics: List[str]) -> str:
+        """Generate cache key for benchmark results"""
+        import hashlib
+        
+        key_data = {
+            'device': self.device_info.device_type.value,
+            'model_path': self.model_info.get('path', ''),
+            'model_size': self.model_info.get('size_bytes', 0),
+            'config': {
+                'warmup_runs': config.warmup_runs,
+                'measurement_runs': config.measurement_runs,
+                'batch_sizes': config.batch_sizes,
+            },
+            'metrics': sorted(metrics)
+        }
+        
+        key_str = str(key_data)
+        return hashlib.sha256(key_str.encode()).hexdigest()[:16]
+    
+    def get_performance_statistics(self) -> Dict[str, Any]:
+        """Get comprehensive performance statistics from all optimization components"""
+        return {
+            'cache_stats': self.performance_cache.get_statistics(),
+            'concurrent_execution_stats': self.concurrent_executor.get_performance_stats(),
+            'auto_scaler_stats': self.auto_scaler.get_statistics(),
+            'security_stats': self.security_manager.get_security_report(),
+            'error_recovery_stats': self.recovery_system.get_error_statistics()
+        }
+    
+    def optimize_performance(self):
+        """Trigger performance optimization across all components"""
+        logger.info("Starting comprehensive performance optimization...")
+        
+        # Optimize cache performance
+        self.performance_cache.optimize()
+        
+        # Clear old cache entries to free memory
+        self.performance_cache.clear()
+        
+        # Get current metrics for auto-scaler
+        cache_stats = self.performance_cache.get_statistics()
+        concurrent_stats = self.concurrent_executor.get_performance_stats()
+        
+        # Update auto-scaler with current performance metrics
+        if concurrent_stats.get('average_execution_time'):
+            self.auto_scaler.add_metric(
+                ScalingTrigger.RESPONSE_TIME, 
+                concurrent_stats['average_execution_time'] * 1000  # Convert to ms
+            )
+        
+        if cache_stats.get('overall', {}).get('overall_hit_rate'):
+            cache_hit_rate = cache_stats['overall']['overall_hit_rate'] * 100
+            self.auto_scaler.add_metric(ScalingTrigger.THROUGHPUT, cache_hit_rate)
+        
+        logger.info("Performance optimization completed")
+    
+    def shutdown(self):
+        """Graceful shutdown of all benchmark components"""
+        logger.info("Shutting down EdgeTPUBenchmark...")
+        
+        # Stop auto-scaler
+        self.auto_scaler.stop()
+        
+        # Shutdown concurrent executor
+        self.concurrent_executor.shutdown(wait=True)
+        
+        # Clear caches
+        self.performance_cache.clear()
+        
+        logger.info("EdgeTPUBenchmark shutdown completed")
     
     def get_model_info(self) -> Dict[str, Any]:
         """Get information about the loaded model"""
