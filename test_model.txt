@@ -1,0 +1,8 @@
+This is a test model file for demonstrating the Edge TPU v6 benchmark functionality.
+The actual model would be a TensorFlow Lite (.tflite) file, but for this demo we use a simple text file.
+
+Model Info:
+- Architecture: MobileNetV3-Small
+- Input shape: 224x224x3
+- Output classes: 1000
+- Quantization: FP32 (to be quantized)

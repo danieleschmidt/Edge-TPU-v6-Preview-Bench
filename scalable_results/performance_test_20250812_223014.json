@@ -1,0 +1,73 @@
+{
+  "test_configuration": {
+    "duration_s": 10,
+    "stress_test": true,
+    "ramp_up_s": 10,
+    "model_path": "test_model.txt",
+    "device": "edge_tpu_v6"
+  },
+  "benchmark_result": {
+    "latency_mean_ms": 1.577345151364236,
+    "throughput_fps": 911.8825291709514,
+    "parallel_efficiency": 1.7658018832031412,
+    "task_success_rate": 1.0,
+    "total_duration_s": 0.12837719917297363
+  },
+  "performance_report": {
+    "benchmark_id": "738c93a3",
+    "device_type": "edge_tpu_v6",
+    "configuration": {
+      "execution_mode": "hybrid",
+      "scaling_strategy": "aggressive",
+      "max_workers": 2,
+      "caching_enabled": true,
+      "jit_optimization": true
+    },
+    "execution_statistics": {
+      "hybrid_count": 3,
+      "hybrid_total_time": 0.14074110984802246,
+      "hybrid_task_count": 120,
+      "threaded_count": 1,
+      "threaded_total_time": 0.09200310707092285,
+      "threaded_task_count": 50,
+      "threaded_avg_time": 0.09200310707092285,
+      "threaded_avg_tasks": 50.0,
+      "threaded_throughput": 543.4599068644092,
+      "hybrid_avg_time": 0.046913703282674156,
+      "hybrid_avg_tasks": 40.0,
+      "hybrid_throughput": 852.6293428379278,
+      "auto_scaler": {
+        "current_workers": 1,
+        "target_latency_ms": 5.0,
+        "target_throughput_fps": 200.0
+      },
+      "cache": {
+        "size": 1,
+        "max_size": 1000,
+        "hits": 1,
+        "misses": 1,
+        "hit_rate": 0.5,
+        "total_requests": 2
+      }
+    },
+    "auto_scaling": {
+      "current_workers": 1,
+      "target_latency_ms": 5.0,
+      "target_throughput_fps": 200.0,
+      "scaling_cooldown_s": 5.0
+    },
+    "cache_performance": {
+      "size": 1,
+      "max_size": 1000,
+      "hits": 1,
+      "misses": 1,
+      "hit_rate": 0.5,
+      "total_requests": 2
+    },
+    "memory_management": {
+      "max_memory_mb": 2048,
+      "memory_pooling_enabled": true,
+      "gc_threshold": 1000
+    }
+  }
+}

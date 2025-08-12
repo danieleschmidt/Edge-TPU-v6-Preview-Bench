@@ -1,0 +1,4 @@
+This is test model 2 for multi-benchmark testing.
+Architecture: EfficientNet-B0
+Input: 224x224x3
+Classes: 1000

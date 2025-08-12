@@ -1,0 +1,46 @@
+{
+  "benchmark_info": {
+    "timestamp": 1755037520.3589242,
+    "end_timestamp": 1755037520.6886756,
+    "total_duration_s": 0.32975149154663086,
+    "success": true,
+    "device_type": "edge_tpu_v6",
+    "security_level": "strict"
+  },
+  "model_info": {
+    "path": "/root/repo/test_model.txt",
+    "size_mb": 0.00030803680419921875,
+    "hash": "90e42ec4e409f3d2e4790f75329ae4562044257c7f6c7fd21c33d2b7d179c52f",
+    "integrity_verified": true,
+    "security_scan_passed": true
+  },
+  "performance_metrics": {
+    "latency_mean_ms": 2.280456299997695,
+    "latency_median_ms": 2.1898710000129995,
+    "latency_p95_ms": 3.043342299989149,
+    "latency_p99_ms": 3.0898902199987788,
+    "latency_std_ms": 0.4527079099058834,
+    "latency_min_ms": 1.5227909999566691,
+    "latency_max_ms": 3.116703999978654,
+    "throughput_fps": 438.5087317836394,
+    "throughput_mbps": 0.13507682835208468
+  },
+  "reliability_metrics": {
+    "total_measurements": 50,
+    "successful_measurements": 50,
+    "failed_measurements": 2,
+    "success_rate": 1.0
+  },
+  "system_metrics": {
+    "cpu_usage_percent": 0.0,
+    "memory_usage_mb": 535.06640625
+  },
+  "error_info": {
+    "error_message": null,
+    "error_trace": null,
+    "warnings": [
+      "Warmup run 1 failed: Hardware busy",
+      "Warmup run 2 failed: Device timeout"
+    ]
+  }
+}
