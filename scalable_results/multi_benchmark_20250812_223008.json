@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "total_models": 2,
+    "successful": 2,
+    "failed": 0,
+    "concurrent_execution": true,
+    "total_duration_s": 0.10919857025146484
+  },
+  "individual_results": [
+    {
+      "model_path": "test_model2.txt",
+      "success": true,
+      "latency_mean_ms": 1.6187369684597337,
+      "throughput_fps": 1094.372764252037,
+      "parallel_efficiency": 0.8218942183003227,
+      "error_message": null
+    },
+    {
+      "model_path": "test_model2.txt",
+      "success": true,
+      "latency_mean_ms": 1.6023014038179961,
+      "throughput_fps": 1078.3714018326357,
+      "parallel_efficiency": 1.0298291802503163,
+      "error_message": null
+    }
+  ]
+}

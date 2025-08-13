@@ -1,0 +1,14 @@
+{
+  "timestamp": 1755037302.6256545,
+  "success": true,
+  "model_path": "quantized_test_model.tflite",
+  "device_type": "edge_tpu_v6",
+  "metrics": {
+    "latency_mean_ms": 2.1836153000009517,
+    "latency_p95_ms": 2.4628439499963406,
+    "latency_p99_ms": 2.550121590032859,
+    "throughput_fps": 457.95612441420616,
+    "total_measurements": 20
+  },
+  "error_message": null
+}
