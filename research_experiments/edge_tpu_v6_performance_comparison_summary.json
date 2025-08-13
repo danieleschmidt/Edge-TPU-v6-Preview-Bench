@@ -1,0 +1,13 @@
+{
+  "experiment_name": "edge_tpu_v6_performance_comparison",
+  "experiment_type": "performance_comparison",
+  "total_runs": 243,
+  "completed_runs": 243,
+  "failed_runs": 0,
+  "success_rate": 1.0,
+  "total_execution_time_s": 0.030605554580688477,
+  "average_run_time_s": 0.00012594878428266862,
+  "design_hash": "7856dd7d",
+  "execution_timestamp": "2025-08-13T04:56:39.037026+00:00",
+  "random_seed": 42
+}
