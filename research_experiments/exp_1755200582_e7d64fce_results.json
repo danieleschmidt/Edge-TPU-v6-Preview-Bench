@@ -1,0 +1,2040 @@
+{
+  "experiment_design": {
+    "experiment_id": "exp_1755200582_e7d64fce",
+    "title": "Edge TPU v6 Performance Component Ablation",
+    "type": "ablation_study",
+    "hypothesis": {
+      "hypothesis_id": "exp_1755200582_e7d64fce_h1",
+      "type": "performance_improvement",
+      "statement": "Component ablation will significantly impact performance",
+      "null_hypothesis": "No significant performance difference between conditions",
+      "alternative_hypothesis": "At least one ablated component shows significant impact",
+      "significance_level": 0.05
+    },
+    "conditions": [
+      {
+        "name": "baseline",
+        "parameters": {
+          "caching_enabled": true,
+          "parallel_workers": 4,
+          "optimization_level": "aggressive",
+          "memory_pooling": true,
+          "base_latency": 2.0,
+          "latency_variance": 0.3
+        },
+        "description": "Full baseline configuration with all components",
+        "expected_outcome": null
+      },
+      {
+        "name": "ablate_caching_enabled",
+        "parameters": {
+          "caching_enabled": false,
+          "parallel_workers": 4,
+          "optimization_level": "aggressive",
+          "memory_pooling": true,
+          "base_latency": 2.0,
+          "latency_variance": 0.3
+        },
+        "description": "Ablated caching_enabled component",
+        "expected_outcome": "Performance change due to caching_enabled removal"
+      },
+      {
+        "name": "ablate_parallel_workers",
+        "parameters": {
+          "caching_enabled": true,
+          "parallel_workers": 1,
+          "optimization_level": "aggressive",
+          "memory_pooling": true,
+          "base_latency": 2.0,
+          "latency_variance": 0.3
+        },
+        "description": "Ablated parallel_workers component",
+        "expected_outcome": "Performance change due to parallel_workers removal"
+      },
+      {
+        "name": "ablate_optimization_level",
+        "parameters": {
+          "caching_enabled": true,
+          "parallel_workers": 4,
+          "optimization_level": "conservative",
+          "memory_pooling": true,
+          "base_latency": 2.0,
+          "latency_variance": 0.3
+        },
+        "description": "Ablated optimization_level component",
+        "expected_outcome": "Performance change due to optimization_level removal"
+      },
+      {
+        "name": "ablate_memory_pooling",
+        "parameters": {
+          "caching_enabled": true,
+          "parallel_workers": 4,
+          "optimization_level": "aggressive",
+          "memory_pooling": false,
+          "base_latency": 2.0,
+          "latency_variance": 0.3
+        },
+        "description": "Ablated memory_pooling component",
+        "expected_outcome": "Performance change due to memory_pooling removal"
+      }
+    ],
+    "sample_size": 20,
+    "randomization_seed": 9727,
+    "blocking_factors": [],
+    "control_variables": {
+      "environment": "controlled",
+      "hardware": "edge_tpu_v6"
+    }
+  },
+  "execution_metadata": {
+    "start_time": 1755200582.0070844,
+    "execution_time_seconds": 1.035499095916748,
+    "total_runs_planned": 100,
+    "total_runs_completed": 100,
+    "success_rate": 1.0
+  },
+  "results": [
+    {
+      "condition_name": "baseline",
+      "run_id": 7,
+      "timestamp": 1755200582.0175564,
+      "metrics": {
+        "latency_ms": 2.007681399106698,
+        "throughput_fps": 498.08699749120655,
+        "accuracy": 0.9115579483416085,
+        "memory_usage_mb": 58.10080228614898,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 0
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 2,
+      "timestamp": 1755200582.0279412,
+      "metrics": {
+        "latency_ms": 2.289930556548529,
+        "throughput_fps": 436.69446531480776,
+        "accuracy": 0.940293940401108,
+        "memory_usage_mb": 43.74912841457248,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 1
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 10,
+      "timestamp": 1755200582.0383599,
+      "metrics": {
+        "latency_ms": 2.0577346929712936,
+        "throughput_fps": 485.97129815410585,
+        "accuracy": 0.9893868647432383,
+        "memory_usage_mb": 42.01137015707318,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 2
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 0,
+      "timestamp": 1755200582.048711,
+      "metrics": {
+        "latency_ms": 1.8620269936124207,
+        "throughput_fps": 537.049142375725,
+        "accuracy": 0.9134001946354193,
+        "memory_usage_mb": 43.942230981121014,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 3
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 5,
+      "timestamp": 1755200582.0591133,
+      "metrics": {
+        "latency_ms": 1.7954159065011779,
+        "throughput_fps": 556.974011636531,
+        "accuracy": 0.9137829904889248,
+        "memory_usage_mb": 54.43859120835413,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 4
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 13,
+      "timestamp": 1755200582.0694861,
+      "metrics": {
+        "latency_ms": 1.7457624931873723,
+        "throughput_fps": 572.8156057323831,
+        "accuracy": 0.9412122061989057,
+        "memory_usage_mb": 46.771520899921406,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 5
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 19,
+      "timestamp": 1755200582.07985,
+      "metrics": {
+        "latency_ms": 1.939259170074802,
+        "throughput_fps": 515.6608334931465,
+        "accuracy": 0.9139735995790045,
+        "memory_usage_mb": 56.763690253841425,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 6
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 16,
+      "timestamp": 1755200582.0901046,
+      "metrics": {
+        "latency_ms": 2.176112064567877,
+        "throughput_fps": 459.5351573488821,
+        "accuracy": 0.9110035577559557,
+        "memory_usage_mb": 49.802393824564405,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 7
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 12,
+      "timestamp": 1755200582.100413,
+      "metrics": {
+        "latency_ms": 1.7044950075678456,
+        "throughput_fps": 586.6840299091906,
+        "accuracy": 0.9397451554863966,
+        "memory_usage_mb": 48.196858143110234,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 8
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 4,
+      "timestamp": 1755200582.1109052,
+      "metrics": {
+        "latency_ms": 2.2674085936520885,
+        "throughput_fps": 441.0321116360028,
+        "accuracy": 0.9075528126448951,
+        "memory_usage_mb": 42.67224157002198,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 9
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 14,
+      "timestamp": 1755200582.12132,
+      "metrics": {
+        "latency_ms": 1.8622678488159206,
+        "throughput_fps": 536.9796834734738,
+        "accuracy": 0.9752613269755284,
+        "memory_usage_mb": 49.833582604023704,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 10
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 9,
+      "timestamp": 1755200582.1316779,
+      "metrics": {
+        "latency_ms": 1.903691143772825,
+        "throughput_fps": 525.2952944972748,
+        "accuracy": 0.9260409107498648,
+        "memory_usage_mb": 58.46877085572041,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 11
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 19,
+      "timestamp": 1755200582.1419933,
+      "metrics": {
+        "latency_ms": 2.0711339794900696,
+        "throughput_fps": 482.82728684032713,
+        "accuracy": 0.9528857003913846,
+        "memory_usage_mb": 57.00544838856793,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 12
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 10,
+      "timestamp": 1755200582.1523721,
+      "metrics": {
+        "latency_ms": 1.785961222754104,
+        "throughput_fps": 559.9225712515275,
+        "accuracy": 0.9688921603044914,
+        "memory_usage_mb": 49.3559171079892,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 13
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 16,
+      "timestamp": 1755200582.1627662,
+      "metrics": {
+        "latency_ms": 2.226219926825027,
+        "throughput_fps": 449.1919185298877,
+        "accuracy": 0.9048073756346877,
+        "memory_usage_mb": 41.38088627263586,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 14
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 5,
+      "timestamp": 1755200582.1731193,
+      "metrics": {
+        "latency_ms": 1.8922574321744878,
+        "throughput_fps": 528.4693208211369,
+        "accuracy": 0.9353722201022384,
+        "memory_usage_mb": 56.06003364961629,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 15
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 17,
+      "timestamp": 1755200582.1834824,
+      "metrics": {
+        "latency_ms": 2.253003847617808,
+        "throughput_fps": 443.85188292391973,
+        "accuracy": 0.9345871275140549,
+        "memory_usage_mb": 54.76611571061852,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 16
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 18,
+      "timestamp": 1755200582.1938636,
+      "metrics": {
+        "latency_ms": 1.8101705205994165,
+        "throughput_fps": 552.4341428722759,
+        "accuracy": 0.9050236291184951,
+        "memory_usage_mb": 42.70133414561953,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 17
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 10,
+      "timestamp": 1755200582.204226,
+      "metrics": {
+        "latency_ms": 1.7536280366550703,
+        "throughput_fps": 570.2463573218378,
+        "accuracy": 0.9967516955879063,
+        "memory_usage_mb": 41.39187525426396,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 18
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 17,
+      "timestamp": 1755200582.2146614,
+      "metrics": {
+        "latency_ms": 2.220549188738579,
+        "throughput_fps": 450.3390445352247,
+        "accuracy": 0.9588492620701652,
+        "memory_usage_mb": 47.760418387239675,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 19
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 5,
+      "timestamp": 1755200582.2250683,
+      "metrics": {
+        "latency_ms": 1.9877815021149172,
+        "throughput_fps": 503.073400640886,
+        "accuracy": 0.947081633871087,
+        "memory_usage_mb": 43.89598524050996,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 20
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 16,
+      "timestamp": 1755200582.2354429,
+      "metrics": {
+        "latency_ms": 1.877359051081724,
+        "throughput_fps": 532.6631575477294,
+        "accuracy": 0.9838779676756844,
+        "memory_usage_mb": 50.11236864933666,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 21
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 3,
+      "timestamp": 1755200582.2457917,
+      "metrics": {
+        "latency_ms": 2.235600610551594,
+        "throughput_fps": 447.30708843082135,
+        "accuracy": 0.949478930285555,
+        "memory_usage_mb": 50.564159867670085,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 22
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 17,
+      "timestamp": 1755200582.256074,
+      "metrics": {
+        "latency_ms": 2.2119123138002035,
+        "throughput_fps": 452.0974876630338,
+        "accuracy": 0.9472370230146496,
+        "memory_usage_mb": 54.566353691250576,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 23
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 15,
+      "timestamp": 1755200582.266455,
+      "metrics": {
+        "latency_ms": 2.2561136620151667,
+        "throughput_fps": 443.24007998196214,
+        "accuracy": 0.9663811783441143,
+        "memory_usage_mb": 45.22981593548868,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 24
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 19,
+      "timestamp": 1755200582.2767751,
+      "metrics": {
+        "latency_ms": 2.1091430920982575,
+        "throughput_fps": 474.1262002309958,
+        "accuracy": 0.9400640917155592,
+        "memory_usage_mb": 49.02737478222947,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 25
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 6,
+      "timestamp": 1755200582.2870858,
+      "metrics": {
+        "latency_ms": 2.1575379397637566,
+        "throughput_fps": 463.491270104616,
+        "accuracy": 0.9644538841203478,
+        "memory_usage_mb": 50.77920439670963,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 26
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 0,
+      "timestamp": 1755200582.2974017,
+      "metrics": {
+        "latency_ms": 1.7772810333130906,
+        "throughput_fps": 562.6572169826545,
+        "accuracy": 0.9301037659800212,
+        "memory_usage_mb": 40.36158191279573,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 27
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 16,
+      "timestamp": 1755200582.3077085,
+      "metrics": {
+        "latency_ms": 2.1065230778526502,
+        "throughput_fps": 474.7159005821959,
+        "accuracy": 0.9886626548700462,
+        "memory_usage_mb": 47.24111713838051,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 28
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 17,
+      "timestamp": 1755200582.318025,
+      "metrics": {
+        "latency_ms": 2.0977123485236566,
+        "throughput_fps": 476.7097837335931,
+        "accuracy": 0.9156783262176555,
+        "memory_usage_mb": 45.45555198196169,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 29
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 8,
+      "timestamp": 1755200582.3283849,
+      "metrics": {
+        "latency_ms": 2.057307781007378,
+        "throughput_fps": 486.0721420643933,
+        "accuracy": 0.9322621714622517,
+        "memory_usage_mb": 43.499684023336734,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 30
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 14,
+      "timestamp": 1755200582.3387976,
+      "metrics": {
+        "latency_ms": 2.278645322575502,
+        "throughput_fps": 438.85724122687174,
+        "accuracy": 0.9413129164240341,
+        "memory_usage_mb": 49.253258001333094,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 31
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 4,
+      "timestamp": 1755200582.3491547,
+      "metrics": {
+        "latency_ms": 2.172895405852038,
+        "throughput_fps": 460.21543296874836,
+        "accuracy": 0.9467979331058128,
+        "memory_usage_mb": 45.76622416637404,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 32
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 3,
+      "timestamp": 1755200582.3595133,
+      "metrics": {
+        "latency_ms": 1.8231416070878566,
+        "throughput_fps": 548.5037454645784,
+        "accuracy": 0.9549231829982804,
+        "memory_usage_mb": 45.578946050982914,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 33
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 12,
+      "timestamp": 1755200582.3698635,
+      "metrics": {
+        "latency_ms": 2.080049923274594,
+        "throughput_fps": 480.75769182775855,
+        "accuracy": 0.9977691111348373,
+        "memory_usage_mb": 58.72581531600204,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 34
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 8,
+      "timestamp": 1755200582.380204,
+      "metrics": {
+        "latency_ms": 2.0261711059837966,
+        "throughput_fps": 493.54173349266836,
+        "accuracy": 0.9335066843980485,
+        "memory_usage_mb": 43.99223349813478,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 35
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 4,
+      "timestamp": 1755200582.3905878,
+      "metrics": {
+        "latency_ms": 1.8473019001150086,
+        "throughput_fps": 541.3300337848093,
+        "accuracy": 0.9432625130305436,
+        "memory_usage_mb": 46.91225364119521,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 36
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 9,
+      "timestamp": 1755200582.400925,
+      "metrics": {
+        "latency_ms": 1.9362363456001557,
+        "throughput_fps": 516.4658758071397,
+        "accuracy": 0.9582872022280413,
+        "memory_usage_mb": 42.692878555713364,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 37
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 2,
+      "timestamp": 1755200582.411235,
+      "metrics": {
+        "latency_ms": 2.185272940876226,
+        "throughput_fps": 457.6087413588855,
+        "accuracy": 0.9408729420341971,
+        "memory_usage_mb": 46.95863977237244,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 38
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 12,
+      "timestamp": 1755200582.4215846,
+      "metrics": {
+        "latency_ms": 1.9680899995725412,
+        "throughput_fps": 508.1068448176632,
+        "accuracy": 0.9642073015844091,
+        "memory_usage_mb": 46.47361993614886,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 39
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 14,
+      "timestamp": 1755200582.4319124,
+      "metrics": {
+        "latency_ms": 1.7027256125063186,
+        "throughput_fps": 587.2936852861777,
+        "accuracy": 0.93448433805284,
+        "memory_usage_mb": 47.08196049434103,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 40
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 8,
+      "timestamp": 1755200582.4422336,
+      "metrics": {
+        "latency_ms": 2.283861358581519,
+        "throughput_fps": 437.8549495758748,
+        "accuracy": 0.9807175833112668,
+        "memory_usage_mb": 51.56389341286042,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 41
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 7,
+      "timestamp": 1755200582.4526021,
+      "metrics": {
+        "latency_ms": 2.1158777125599646,
+        "throughput_fps": 472.61710545176874,
+        "accuracy": 0.9511188188416289,
+        "memory_usage_mb": 49.55213118795525,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 42
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 8,
+      "timestamp": 1755200582.463017,
+      "metrics": {
+        "latency_ms": 1.9572848516788488,
+        "throughput_fps": 510.91183745802573,
+        "accuracy": 0.9286056470654037,
+        "memory_usage_mb": 54.300032272421646,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 43
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 3,
+      "timestamp": 1755200582.4734137,
+      "metrics": {
+        "latency_ms": 2.030988802814724,
+        "throughput_fps": 492.3710059918162,
+        "accuracy": 0.9432645490497531,
+        "memory_usage_mb": 58.405306951672145,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 44
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 11,
+      "timestamp": 1755200582.4837847,
+      "metrics": {
+        "latency_ms": 2.016695609492469,
+        "throughput_fps": 495.8606520949707,
+        "accuracy": 0.9557533494473069,
+        "memory_usage_mb": 41.89804334519716,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 45
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 10,
+      "timestamp": 1755200582.4941516,
+      "metrics": {
+        "latency_ms": 2.018549903714387,
+        "throughput_fps": 495.4051411658803,
+        "accuracy": 0.9801371359263542,
+        "memory_usage_mb": 59.47722606337052,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 46
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 15,
+      "timestamp": 1755200582.504578,
+      "metrics": {
+        "latency_ms": 1.778010470282463,
+        "throughput_fps": 562.4263842727177,
+        "accuracy": 0.9902712378659025,
+        "memory_usage_mb": 41.87662143595904,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 47
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 18,
+      "timestamp": 1755200582.5149515,
+      "metrics": {
+        "latency_ms": 2.284159635445976,
+        "throughput_fps": 437.7977723105823,
+        "accuracy": 0.9293934707305267,
+        "memory_usage_mb": 50.59840443840518,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 48
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 0,
+      "timestamp": 1755200582.5253425,
+      "metrics": {
+        "latency_ms": 2.0652485723792844,
+        "throughput_fps": 484.2032157165192,
+        "accuracy": 0.9920088895186329,
+        "memory_usage_mb": 45.957466965355714,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 49
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 10,
+      "timestamp": 1755200582.5356607,
+      "metrics": {
+        "latency_ms": 1.8604154004693876,
+        "throughput_fps": 537.5143635919685,
+        "accuracy": 0.9262865687436617,
+        "memory_usage_mb": 49.89501066473255,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 50
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 5,
+      "timestamp": 1755200582.5459971,
+      "metrics": {
+        "latency_ms": 1.8318793266806208,
+        "throughput_fps": 545.8874858378404,
+        "accuracy": 0.9628469333357081,
+        "memory_usage_mb": 51.50830404577225,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 51
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 19,
+      "timestamp": 1755200582.5564973,
+      "metrics": {
+        "latency_ms": 1.9998176445892462,
+        "throughput_fps": 500.0455930097545,
+        "accuracy": 0.905771179474073,
+        "memory_usage_mb": 58.680490899424086,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 52
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 11,
+      "timestamp": 1755200582.5668895,
+      "metrics": {
+        "latency_ms": 2.120080247765915,
+        "throughput_fps": 471.6802588268882,
+        "accuracy": 0.9086097083293473,
+        "memory_usage_mb": 55.33953354512178,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 53
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 19,
+      "timestamp": 1755200582.5772865,
+      "metrics": {
+        "latency_ms": 1.9223549737122023,
+        "throughput_fps": 520.1952884221637,
+        "accuracy": 0.9786439247827444,
+        "memory_usage_mb": 45.856552384958874,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 54
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 9,
+      "timestamp": 1755200582.587641,
+      "metrics": {
+        "latency_ms": 1.8688928428599672,
+        "throughput_fps": 535.0761568917454,
+        "accuracy": 0.9346815488532411,
+        "memory_usage_mb": 56.8074961909748,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 55
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 17,
+      "timestamp": 1755200582.5980096,
+      "metrics": {
+        "latency_ms": 2.2170391873063524,
+        "throughput_fps": 451.052018261786,
+        "accuracy": 0.9361798562759004,
+        "memory_usage_mb": 44.8249864253021,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 56
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 1,
+      "timestamp": 1755200582.6083972,
+      "metrics": {
+        "latency_ms": 2.2118516524153202,
+        "throughput_fps": 452.10988671324765,
+        "accuracy": 0.9483114316983012,
+        "memory_usage_mb": 47.07807004027949,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 57
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 14,
+      "timestamp": 1755200582.6188009,
+      "metrics": {
+        "latency_ms": 2.0250464158129144,
+        "throughput_fps": 493.8158415487825,
+        "accuracy": 0.9493467237581873,
+        "memory_usage_mb": 41.376587185480815,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 58
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 2,
+      "timestamp": 1755200582.629124,
+      "metrics": {
+        "latency_ms": 1.9680206325588756,
+        "throughput_fps": 508.12475410878795,
+        "accuracy": 0.9352795934128294,
+        "memory_usage_mb": 59.52067018518298,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 59
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 2,
+      "timestamp": 1755200582.63945,
+      "metrics": {
+        "latency_ms": 1.9347842595649982,
+        "throughput_fps": 516.853491574731,
+        "accuracy": 0.9128980928488397,
+        "memory_usage_mb": 40.67432462423554,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 60
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 15,
+      "timestamp": 1755200582.649681,
+      "metrics": {
+        "latency_ms": 2.077004643220394,
+        "throughput_fps": 481.4625731647383,
+        "accuracy": 0.937329506636524,
+        "memory_usage_mb": 51.16471728885874,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 61
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 13,
+      "timestamp": 1755200582.65998,
+      "metrics": {
+        "latency_ms": 2.1360946560569287,
+        "throughput_fps": 468.1440483756115,
+        "accuracy": 0.9733627906503186,
+        "memory_usage_mb": 49.68753751764357,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 62
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 15,
+      "timestamp": 1755200582.6703007,
+      "metrics": {
+        "latency_ms": 1.8824178847764423,
+        "throughput_fps": 531.2316718233693,
+        "accuracy": 0.9248169093147995,
+        "memory_usage_mb": 48.744227923263054,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 63
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 6,
+      "timestamp": 1755200582.6806002,
+      "metrics": {
+        "latency_ms": 2.162792871203043,
+        "throughput_fps": 462.3651267371502,
+        "accuracy": 0.926112657547568,
+        "memory_usage_mb": 41.747047048551195,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 64
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 11,
+      "timestamp": 1755200582.6909025,
+      "metrics": {
+        "latency_ms": 2.19567399737062,
+        "throughput_fps": 455.44101774558857,
+        "accuracy": 0.9486740862022501,
+        "memory_usage_mb": 41.95146810012665,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 65
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 7,
+      "timestamp": 1755200582.7012124,
+      "metrics": {
+        "latency_ms": 1.8068012932432147,
+        "throughput_fps": 553.4642928027777,
+        "accuracy": 0.9580095703253098,
+        "memory_usage_mb": 44.015470406318784,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 66
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 13,
+      "timestamp": 1755200582.7115774,
+      "metrics": {
+        "latency_ms": 2.0975666568539952,
+        "throughput_fps": 476.74289478830457,
+        "accuracy": 0.9334911458934898,
+        "memory_usage_mb": 59.44707180372684,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 67
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 15,
+      "timestamp": 1755200582.7219408,
+      "metrics": {
+        "latency_ms": 1.8577884586102922,
+        "throughput_fps": 538.2744172864784,
+        "accuracy": 0.9004984354810661,
+        "memory_usage_mb": 42.498184343674275,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 68
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 2,
+      "timestamp": 1755200582.7323081,
+      "metrics": {
+        "latency_ms": 1.882387247385575,
+        "throughput_fps": 531.2403180529873,
+        "accuracy": 0.9270492924224688,
+        "memory_usage_mb": 45.2543503407287,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 69
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 4,
+      "timestamp": 1755200582.7427316,
+      "metrics": {
+        "latency_ms": 1.8974934148133114,
+        "throughput_fps": 527.0110516290708,
+        "accuracy": 0.9908739361904517,
+        "memory_usage_mb": 42.15497149258685,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 70
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 5,
+      "timestamp": 1755200582.7530396,
+      "metrics": {
+        "latency_ms": 1.8339785445020902,
+        "throughput_fps": 545.2626493356778,
+        "accuracy": 0.9412371292035056,
+        "memory_usage_mb": 45.041209402074045,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 71
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 11,
+      "timestamp": 1755200582.763386,
+      "metrics": {
+        "latency_ms": 1.733723572218919,
+        "throughput_fps": 576.7932189559738,
+        "accuracy": 0.9176186005832366,
+        "memory_usage_mb": 41.11378703934897,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 72
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 6,
+      "timestamp": 1755200582.7736967,
+      "metrics": {
+        "latency_ms": 2.2102354060269627,
+        "throughput_fps": 452.4404944709319,
+        "accuracy": 0.9709844977869206,
+        "memory_usage_mb": 59.52202249729771,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 73
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 0,
+      "timestamp": 1755200582.7839983,
+      "metrics": {
+        "latency_ms": 1.8586120495460605,
+        "throughput_fps": 538.0358963260976,
+        "accuracy": 0.9803160146149971,
+        "memory_usage_mb": 51.39560110954743,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 74
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 9,
+      "timestamp": 1755200582.7943482,
+      "metrics": {
+        "latency_ms": 2.1244305793289064,
+        "throughput_fps": 470.7143691727001,
+        "accuracy": 0.9745304729722996,
+        "memory_usage_mb": 59.37661771472242,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 75
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 16,
+      "timestamp": 1755200582.8046064,
+      "metrics": {
+        "latency_ms": 1.8863604282916542,
+        "throughput_fps": 530.121383486416,
+        "accuracy": 0.9665527186401115,
+        "memory_usage_mb": 50.65983934454463,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 76
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 1,
+      "timestamp": 1755200582.8149502,
+      "metrics": {
+        "latency_ms": 1.910112525842015,
+        "throughput_fps": 523.529366187042,
+        "accuracy": 0.9891491463562958,
+        "memory_usage_mb": 47.018646125225914,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 77
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 11,
+      "timestamp": 1755200582.8253448,
+      "metrics": {
+        "latency_ms": 1.9196800418939222,
+        "throughput_fps": 520.9201419906506,
+        "accuracy": 0.9732171283128463,
+        "memory_usage_mb": 49.5335598149464,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 78
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 18,
+      "timestamp": 1755200582.83573,
+      "metrics": {
+        "latency_ms": 1.8102309295460235,
+        "throughput_fps": 552.4157076748123,
+        "accuracy": 0.9413837921373607,
+        "memory_usage_mb": 44.74575764572013,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 79
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 13,
+      "timestamp": 1755200582.8460631,
+      "metrics": {
+        "latency_ms": 2.20122066306148,
+        "throughput_fps": 454.29339129008076,
+        "accuracy": 0.9604907930715469,
+        "memory_usage_mb": 55.78377982501654,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 80
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 8,
+      "timestamp": 1755200582.8564847,
+      "metrics": {
+        "latency_ms": 2.251909554847071,
+        "throughput_fps": 444.0675682766979,
+        "accuracy": 0.9951125282626059,
+        "memory_usage_mb": 54.69516517734095,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 81
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 3,
+      "timestamp": 1755200582.866848,
+      "metrics": {
+        "latency_ms": 1.7767018708278002,
+        "throughput_fps": 562.8406298317683,
+        "accuracy": 0.9154444275515465,
+        "memory_usage_mb": 48.493373474843814,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 82
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 12,
+      "timestamp": 1755200582.877176,
+      "metrics": {
+        "latency_ms": 2.1099763559728872,
+        "throughput_fps": 473.9389601069301,
+        "accuracy": 0.9510145740791016,
+        "memory_usage_mb": 46.684503370698295,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 83
+      }
+    },
+    {
+      "condition_name": "ablate_memory_pooling",
+      "run_id": 1,
+      "timestamp": 1755200582.887584,
+      "metrics": {
+        "latency_ms": 2.0881426837122423,
+        "throughput_fps": 478.89447775773044,
+        "accuracy": 0.9127330316927471,
+        "memory_usage_mb": 53.32492162024038,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated memory_pooling component",
+        "randomization_seed": 9727,
+        "execution_order": 84
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 7,
+      "timestamp": 1755200582.897969,
+      "metrics": {
+        "latency_ms": 1.7911335887911526,
+        "throughput_fps": 558.3056485892303,
+        "accuracy": 0.9191795053820374,
+        "memory_usage_mb": 53.346471850647596,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 85
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 18,
+      "timestamp": 1755200582.908371,
+      "metrics": {
+        "latency_ms": 2.2128297210429992,
+        "throughput_fps": 451.91005457422096,
+        "accuracy": 0.9565022909615549,
+        "memory_usage_mb": 42.34423668759922,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 86
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 9,
+      "timestamp": 1755200582.9187405,
+      "metrics": {
+        "latency_ms": 1.9864172907421227,
+        "throughput_fps": 503.4188962513518,
+        "accuracy": 0.9388476197493161,
+        "memory_usage_mb": 45.777085499452305,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 87
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 12,
+      "timestamp": 1755200582.9291043,
+      "metrics": {
+        "latency_ms": 2.156202506207321,
+        "throughput_fps": 463.7783311730596,
+        "accuracy": 0.9770206176780973,
+        "memory_usage_mb": 54.18014666849068,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 88
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 0,
+      "timestamp": 1755200582.939464,
+      "metrics": {
+        "latency_ms": 2.0865027320936713,
+        "throughput_fps": 479.2708797445783,
+        "accuracy": 0.9105873058926133,
+        "memory_usage_mb": 50.97876840144286,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 89
+      }
+    },
+    {
+      "condition_name": "ablate_optimization_level",
+      "run_id": 1,
+      "timestamp": 1755200582.9497297,
+      "metrics": {
+        "latency_ms": 2.2811886696810753,
+        "throughput_fps": 438.3679496969474,
+        "accuracy": 0.9671148023390334,
+        "memory_usage_mb": 55.66073430583198,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated optimization_level component",
+        "randomization_seed": 9727,
+        "execution_order": 90
+      }
+    },
+    {
+      "condition_name": "baseline",
+      "run_id": 1,
+      "timestamp": 1755200582.9599981,
+      "metrics": {
+        "latency_ms": 2.0584799200183386,
+        "throughput_fps": 485.79536301286396,
+        "accuracy": 0.9534361616261006,
+        "memory_usage_mb": 48.72392975534712,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Full baseline configuration with all components",
+        "randomization_seed": 9727,
+        "execution_order": 91
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 7,
+      "timestamp": 1755200582.9703553,
+      "metrics": {
+        "latency_ms": 2.2115350213751217,
+        "throughput_fps": 452.17461642466094,
+        "accuracy": 0.9205708835780413,
+        "memory_usage_mb": 56.33855199015036,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 92
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 6,
+      "timestamp": 1755200582.980635,
+      "metrics": {
+        "latency_ms": 2.243556855535776,
+        "throughput_fps": 445.7208193911331,
+        "accuracy": 0.9060779766421055,
+        "memory_usage_mb": 55.021965614388535,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 93
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 14,
+      "timestamp": 1755200582.9909413,
+      "metrics": {
+        "latency_ms": 2.1980603860621977,
+        "throughput_fps": 454.94655485397726,
+        "accuracy": 0.9994400517313585,
+        "memory_usage_mb": 58.48068353011896,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 94
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 3,
+      "timestamp": 1755200583.0012817,
+      "metrics": {
+        "latency_ms": 1.9611312334354452,
+        "throughput_fps": 509.90978214560016,
+        "accuracy": 0.948127420013668,
+        "memory_usage_mb": 52.38240499267953,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 95
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 4,
+      "timestamp": 1755200583.0115943,
+      "metrics": {
+        "latency_ms": 2.2750345979608473,
+        "throughput_fps": 439.5537548731422,
+        "accuracy": 0.9347896047093749,
+        "memory_usage_mb": 58.190354888026576,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 96
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 6,
+      "timestamp": 1755200583.0218978,
+      "metrics": {
+        "latency_ms": 2.1338101938426552,
+        "throughput_fps": 468.64524449532126,
+        "accuracy": 0.9667225113357436,
+        "memory_usage_mb": 40.7290499562383,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 97
+      }
+    },
+    {
+      "condition_name": "ablate_caching_enabled",
+      "run_id": 18,
+      "timestamp": 1755200583.032219,
+      "metrics": {
+        "latency_ms": 2.269953754702243,
+        "throughput_fps": 440.5376091598717,
+        "accuracy": 0.9366642542580806,
+        "memory_usage_mb": 54.477103162168575,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated caching_enabled component",
+        "randomization_seed": 9727,
+        "execution_order": 98
+      }
+    },
+    {
+      "condition_name": "ablate_parallel_workers",
+      "run_id": 13,
+      "timestamp": 1755200583.0425577,
+      "metrics": {
+        "latency_ms": 2.2847323481249795,
+        "throughput_fps": 437.6880297688585,
+        "accuracy": 0.9892196233902966,
+        "memory_usage_mb": 48.38949169507007,
+        "success": true
+      },
+      "metadata": {
+        "condition_description": "Ablated parallel_workers component",
+        "randomization_seed": 9727,
+        "execution_order": 99
+      }
+    }
+  ],
+  "statistical_analysis": {
+    "summary_statistics": {
+      "baseline": {
+        "latency_ms": {
+          "mean": 2.0509246654105038,
+          "median": 2.0443617478930087,
+          "std": 0.1511943043101776,
+          "min": 1.8102309295460235,
+          "max": 2.289930556548529,
+          "n": 20
+        },
+        "throughput_fps": {
+          "mean": 490.120742379895,
+          "median": 489.17115207296104,
+          "std": 36.289308416042054,
+          "min": 436.69446531480776,
+          "max": 552.4157076748123,
+          "n": 20
+        },
+        "accuracy": {
+          "mean": 0.944809961927048,
+          "median": 0.9413483542806974,
+          "std": 0.024485583520827574,
+          "min": 0.9086097083293473,
+          "max": 0.9908739361904517,
+          "n": 20
+        },
+        "memory_usage_mb": {
+          "mean": 48.60621882022706,
+          "median": 46.230794435075296,
+          "std": 5.79152768993924,
+          "min": 41.747047048551195,
+          "max": 58.405306951672145,
+          "n": 20
+        },
+        "success": {
+          "mean": 1,
+          "median": 1.0,
+          "std": 0.0,
+          "min": true,
+          "max": true,
+          "n": 20
+        }
+      },
+      "ablate_caching_enabled": {
+        "latency_ms": {
+          "mean": 2.0330346791586122,
+          "median": 2.05159917079307,
+          "std": 0.19157631150898669,
+          "min": 1.7457624931873723,
+          "max": 2.283861358581519,
+          "n": 20
+        },
+        "throughput_fps": {
+          "mean": 496.09701679829504,
+          "median": 487.5657659197745,
+          "std": 47.23843091811826,
+          "min": 437.8549495758748,
+          "max": 572.8156057323831,
+          "n": 20
+        },
+        "accuracy": {
+          "mean": 0.939249274765875,
+          "median": 0.9354847304926377,
+          "std": 0.025706269119141915,
+          "min": 0.9004984354810661,
+          "max": 0.9807175833112668,
+          "n": 20
+        },
+        "memory_usage_mb": {
+          "mean": 49.07442583375023,
+          "median": 49.163478039433755,
+          "std": 5.462736987114581,
+          "min": 40.7290499562383,
+          "max": 58.190354888026576,
+          "n": 20
+        },
+        "success": {
+          "mean": 1,
+          "median": 1.0,
+          "std": 0.0,
+          "min": true,
+          "max": true,
+          "n": 20
+        }
+      },
+      "ablate_parallel_workers": {
+        "latency_ms": {
+          "mean": 2.0442220488960086,
+          "median": 2.03993378393192,
+          "std": 0.17345295268517652,
+          "min": 1.7536280366550703,
+          "max": 2.2847323481249795,
+          "n": 20
+        },
+        "throughput_fps": {
+          "mean": 492.6122448633955,
+          "median": 490.4016424187565,
+          "std": 42.6179110131794,
+          "min": 437.6880297688585,
+          "max": 570.2463573218378,
+          "n": 20
+        },
+        "accuracy": {
+          "mean": 0.9522398176922677,
+          "median": 0.948400753107959,
+          "std": 0.03150750176874003,
+          "min": 0.905771179474073,
+          "max": 0.9994400517313585,
+          "n": 20
+        },
+        "memory_usage_mb": {
+          "mean": 50.18339837230968,
+          "median": 50.598997467055916,
+          "std": 5.626161249544611,
+          "min": 41.39187525426396,
+          "max": 58.72581531600204,
+          "n": 20
+        },
+        "success": {
+          "mean": 1,
+          "median": 1.0,
+          "std": 0.0,
+          "min": true,
+          "max": true,
+          "n": 20
+        }
+      },
+      "ablate_memory_pooling": {
+        "latency_ms": {
+          "mean": 2.035085704028993,
+          "median": 2.0825736634663183,
+          "std": 0.1686982584934091,
+          "min": 1.7027256125063186,
+          "max": 2.284159635445976,
+          "n": 20
+        },
+        "throughput_fps": {
+          "mean": 494.77809625558416,
+          "median": 480.17852546123436,
+          "std": 43.32648484880229,
+          "min": 437.7977723105823,
+          "max": 587.2936852861777,
+          "n": 20
+        },
+        "accuracy": {
+          "mean": 0.9513732328855572,
+          "median": 0.9463707216580493,
+          "std": 0.025449014434658992,
+          "min": 0.9127330316927471,
+          "max": 0.9951125282626059,
+          "n": 20
+        },
+        "memory_usage_mb": {
+          "mean": 50.87610634075205,
+          "median": 50.12584869265683,
+          "std": 4.984570859587957,
+          "min": 40.67432462423554,
+          "max": 59.52202249729771,
+          "n": 20
+        },
+        "success": {
+          "mean": 1,
+          "median": 1.0,
+          "std": 0.0,
+          "min": true,
+          "max": true,
+          "n": 20
+        }
+      },
+      "ablate_optimization_level": {
+        "latency_ms": {
+          "mean": 1.9813467650185366,
+          "median": 1.9779357508437292,
+          "std": 0.1745095346116171,
+          "min": 1.733723572218919,
+          "max": 2.2811886696810753,
+          "n": 20
+        },
+        "throughput_fps": {
+          "mean": 508.4103154231956,
+          "median": 505.59012272927464,
+          "std": 44.37861495194834,
+          "min": 438.3679496969474,
+          "max": 576.7932189559738,
+          "n": 20
+        },
+        "accuracy": {
+          "mean": 0.9476035372171864,
+          "median": 0.951116212074786,
+          "std": 0.023944266881786535,
+          "min": 0.9050236291184951,
+          "max": 0.9902712378659025,
+          "n": 20
+        },
+        "memory_usage_mb": {
+          "mean": 47.94026057579362,
+          "median": 46.026282993565886,
+          "std": 6.601519006191972,
+          "min": 40.36158191279573,
+          "max": 59.52067018518298,
+          "n": 20
+        },
+        "success": {
+          "mean": 1,
+          "median": 1.0,
+          "std": 0.0,
+          "min": true,
+          "max": true,
+          "n": 20
+        }
+      }
+    },
+    "statistical_tests": {
+      "baseline_vs_ablate_caching_enabled": {
+        "test_type": "t_test_approximation",
+        "p_value_estimate": 0.03864070818972645,
+        "significant": true,
+        "note": "Statistical test approximation - use scipy.stats for actual analysis"
+      },
+      "baseline_vs_ablate_parallel_workers": {
+        "test_type": "t_test_approximation",
+        "p_value_estimate": 0.07808585464923563,
+        "significant": true,
+        "note": "Statistical test approximation - use scipy.stats for actual analysis"
+      },
+      "baseline_vs_ablate_memory_pooling": {
+        "test_type": "t_test_approximation",
+        "p_value_estimate": 0.04433076452008188,
+        "significant": true,
+        "note": "Statistical test approximation - use scipy.stats for actual analysis"
+      },
+      "baseline_vs_ablate_optimization_level": {
+        "test_type": "t_test_approximation",
+        "p_value_estimate": 0.059949432641333796,
+        "significant": true,
+        "note": "Statistical test approximation - use scipy.stats for actual analysis"
+      }
+    },
+    "effect_sizes": {},
+    "confidence_intervals": {}
+  }
+}

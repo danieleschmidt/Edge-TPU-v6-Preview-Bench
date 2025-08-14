@@ -1,0 +1,68 @@
+{
+  "benchmark_info": {
+    "success": true,
+    "model_path": "test_model.txt",
+    "device_type": "edge_tpu_v6",
+    "total_duration_s": 0.07738375663757324,
+    "execution_mode": "hybrid"
+  },
+  "performance_metrics": {
+    "latency_mean_ms": 1.5714258766084204,
+    "latency_median_ms": 1.508385641368844,
+    "latency_p95_ms": 1.954119746431406,
+    "latency_p99_ms": 1.9854138435531496,
+    "latency_std_ms": 0.21930422685001152,
+    "latency_min_ms": 1.2262272561030474,
+    "latency_max_ms": 1.9867479088895046
+  },
+  "throughput_metrics": {
+    "throughput_fps": 1580.8174879864318,
+    "throughput_peak_fps": 815.5095191555291,
+    "throughput_sustained_fps": 94.0505140674258
+  },
+  "scalability_metrics": {
+    "parallel_efficiency": 1.6182040893244134,
+    "scaling_factor": 3.236408178648827,
+    "parallel_speedup": 3.236408178648827,
+    "optimal_workers": 2
+  },
+  "concurrency_metrics": {
+    "total_tasks_executed": 100,
+    "concurrent_tasks_peak": 2,
+    "task_success_rate": 1.0
+  },
+  "cache_metrics": {
+    "cache_hit_rate": 0.0,
+    "cache_efficiency": 0.0
+  },
+  "resource_utilization": {
+    "cpu_utilization_percent": 25.0,
+    "memory_utilization_mb": 50.0,
+    "memory_pool_efficiency": 0.85
+  },
+  "execution_statistics": {
+    "hybrid_count": 2,
+    "hybrid_total_time": 0.07407641410827637,
+    "hybrid_task_count": 110,
+    "hybrid_avg_time": 0.037038207054138184,
+    "hybrid_avg_tasks": 55.0,
+    "hybrid_throughput": 1484.9530896462493,
+    "auto_scaler": {
+      "current_workers": 2,
+      "target_latency_ms": 5.0,
+      "target_throughput_fps": 200.0
+    },
+    "cache": {
+      "size": 0,
+      "max_size": 1000,
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": 0.0,
+      "total_requests": 0
+    }
+  },
+  "error_info": {
+    "error_message": null,
+    "warnings": []
+  }
+}

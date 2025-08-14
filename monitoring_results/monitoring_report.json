@@ -1,0 +1,86 @@
+{
+  "report_generated_at": "2025-08-14T19:41:14.107043",
+  "monitoring_status": {
+    "timestamp": 1755200474.10706,
+    "monitoring_active": true,
+    "metrics_collected": 4,
+    "active_alerts": 0,
+    "recent_performance": {
+      "latency": {
+        "metric_name": "benchmark_latency_ms",
+        "time_range_minutes": 10,
+        "data_points": 50,
+        "min": 1.4651944704558661,
+        "max": 14.286351246276443,
+        "mean": 7.7314610377534345,
+        "median": 6.735472824838784,
+        "p95": 14.092799791576073,
+        "p99": 14.286351246276443,
+        "stddev": 3.67480460004753
+      },
+      "throughput": {
+        "metric_name": "benchmark_throughput_fps",
+        "time_range_minutes": 10,
+        "data_points": 50,
+        "min": 51.31958763158849,
+        "max": 199.78553963873094,
+        "mean": 131.36692464796062,
+        "median": 137.4549101761408,
+        "p95": 198.08543718248663,
+        "p99": 199.78553963873094,
+        "stddev": 44.989412225064655
+      }
+    }
+  },
+  "metric_summaries": {
+    "benchmark_latency_ms": {
+      "metric_name": "benchmark_latency_ms",
+      "time_range_minutes": 60,
+      "data_points": 50,
+      "min": 1.4651944704558661,
+      "max": 14.286351246276443,
+      "mean": 7.7314610377534345,
+      "median": 6.735472824838784,
+      "p95": 14.092799791576073,
+      "p99": 14.286351246276443,
+      "stddev": 3.67480460004753
+    },
+    "benchmark_throughput_fps": {
+      "metric_name": "benchmark_throughput_fps",
+      "time_range_minutes": 60,
+      "data_points": 50,
+      "min": 51.31958763158849,
+      "max": 199.78553963873094,
+      "mean": 131.36692464796062,
+      "median": 137.4549101761408,
+      "p95": 198.08543718248663,
+      "p99": 199.78553963873094,
+      "stddev": 44.989412225064655
+    },
+    "benchmark_total": {
+      "metric_name": "benchmark_total",
+      "time_range_minutes": 60,
+      "data_points": 50,
+      "min": 1.0,
+      "max": 17.0,
+      "mean": 8.84,
+      "median": 9.0,
+      "p95": 16.0,
+      "p99": 17.0,
+      "stddev": 4.862853785461322
+    },
+    "benchmark_error_rate": {
+      "metric_name": "benchmark_error_rate",
+      "time_range_minutes": 60,
+      "data_points": 50,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "stddev": 0.0
+    }
+  },
+  "active_alerts": []
+}
