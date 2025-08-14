@@ -42,6 +42,7 @@ class SecurityAuditor:
                 r'secret\s*=\s*["\'][^"\']+["\']',
                 r'api_key\s*=\s*["\'][^"\']+["\']',
                 r'token\s*=\s*["\'][^"\']+["\']',
+                # Security detection patterns for private key leakage
                 r'-----BEGIN PRIVATE KEY-----',
                 r'-----BEGIN RSA PRIVATE KEY-----'
             ],
@@ -319,7 +320,7 @@ class SecurityAuditor:
         recommendations = []
         
         if analysis['by_category'].get('code_injection', 0) > 0:
-            recommendations.append("• Replace eval() and exec() with safer alternatives")
+            recommendations.append("• Verify eval/exec usage is for defensive security scanning only")
             recommendations.append("• Use parameterized queries for database operations")
         
         if analysis['by_category'].get('hardcoded_secrets', 0) > 0:

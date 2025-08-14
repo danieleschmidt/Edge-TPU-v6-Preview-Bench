@@ -1,0 +1,54 @@
+{
+  "benchmark_info": {
+    "success": true,
+    "benchmark_id": "enhanced_1755200305",
+    "total_duration_s": 6.00499701499939,
+    "optimization_rounds": 3,
+    "final_workers": 2,
+    "adaptive_optimization": true
+  },
+  "performance_metrics": {
+    "latency_mean_ms": 1.2069219052942037,
+    "latency_median_ms": 1.195669174194336,
+    "latency_p95_ms": 1.2874603271484375,
+    "latency_p99_ms": 1.3713836669921875,
+    "latency_std_ms": 0.13662457169827857,
+    "throughput_peak_fps": 1570.2549878535679,
+    "throughput_mean_fps": 1320.058674749253,
+    "throughput_sustained_fps": 828.7691114647993
+  },
+  "resource_metrics": {
+    "memory_peak_mb": 50.0,
+    "memory_mean_mb": 50.0,
+    "cpu_peak_percent": 50.0,
+    "cpu_mean_percent": 41.666666666666664
+  },
+  "optimization_report": {
+    "analysis": {
+      "latency_stability": 0.11320083851239278,
+      "throughput_efficiency": 1.189534236538266,
+      "memory_efficiency": 1.0,
+      "cache_effectiveness": 0.0
+    },
+    "optimization_suggestions": [
+      {
+        "type": "cache_optimization",
+        "priority": "low",
+        "description": "Low cache hit rate - tune cache parameters",
+        "expected_improvement": "10-20% performance boost"
+      }
+    ],
+    "performance_score": 82.2900019407762
+  },
+  "recommendations": [
+    "\u2022 Low cache hit rate - tune cache parameters (Expected: 10-20% performance boost)",
+    "\u2022 Excellent performance - consider production deployment"
+  ],
+  "metadata": {
+    "benchmark_engine": "enhanced",
+    "version": "1.0.0",
+    "timestamp": 1755200311.881932,
+    "optimization_level": "adaptive",
+    "ai_optimization_enabled": true
+  }
+}

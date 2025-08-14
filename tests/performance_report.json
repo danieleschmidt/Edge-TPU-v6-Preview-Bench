@@ -1,3 +1,111 @@
 {
-  "error": "No benchmark results available"
+  "summary": {
+    "total_benchmarks": 5,
+    "total_duration": 5.411469459533691,
+    "performance_score": 100,
+    "avg_throughput": 629.777003162627,
+    "avg_memory_usage": 25.834375,
+    "avg_success_rate": 1.0,
+    "avg_quantum_efficiency": 6.771097244343778
+  },
+  "detailed_results": [
+    {
+      "name": "Task Creation",
+      "duration": 3.0074896812438965,
+      "throughput": 332.50321895914215,
+      "memory_usage": 4.625,
+      "success_rate": 1.0,
+      "quantum_efficiency": 3.3250321895914214,
+      "metadata": {
+        "num_tasks": 1000
+      }
+    },
+    {
+      "name": "Task Execution",
+      "duration": 0.12464189529418945,
+      "throughput": 802.2984548170762,
+      "memory_usage": 0.0,
+      "success_rate": 1.0,
+      "quantum_efficiency": 10.0,
+      "metadata": {
+        "num_tasks": 100,
+        "avg_task_duration": 0.0012454152107238769
+      }
+    },
+    {
+      "name": "Dependency Resolution",
+      "duration": 0.43830180168151855,
+      "throughput": 663.917796661815,
+      "memory_usage": 41.515625,
+      "success_rate": 1.0,
+      "quantum_efficiency": 10.0,
+      "metadata": {
+        "num_chains": 10,
+        "chain_length": 20,
+        "creation_time": 0.13705658912658691,
+        "execution_time": 0.3012421131134033
+      }
+    },
+    {
+      "name": "Parallel Scaling",
+      "duration": 0.39581453800201416,
+      "throughput": 128.47615937952935,
+      "memory_usage": 41.515625,
+      "success_rate": 1.0,
+      "quantum_efficiency": 0.5304540321274709,
+      "metadata": {
+        "worker_results": [
+          {
+            "workers": 1,
+            "duration": 0.48303961753845215,
+            "throughput": 103.51117834764304,
+            "efficiency": 103.51117834764304,
+            "success_rate": 1.0
+          },
+          {
+            "workers": 2,
+            "duration": 0.3971989154815674,
+            "throughput": 125.88151188524664,
+            "efficiency": 62.94075594262332,
+            "success_rate": 1.0
+          },
+          {
+            "workers": 4,
+            "duration": 0.3547959327697754,
+            "throughput": 140.92607998537756,
+            "efficiency": 35.23151999634439,
+            "success_rate": 1.0
+          },
+          {
+            "workers": 8,
+            "duration": 0.3482236862182617,
+            "throughput": 143.5858672998502,
+            "efficiency": 17.948233412481276,
+            "success_rate": 1.0
+          }
+        ],
+        "scaling_efficiency": [
+          1.0,
+          0.6080575735621165,
+          0.34036439888665043,
+          0.17339415606111647
+        ]
+      }
+    },
+    {
+      "name": "Quantum Algorithms",
+      "duration": 0.06139039993286133,
+      "throughput": 1221.6893859955726,
+      "memory_usage": 41.515625,
+      "success_rate": 1.0,
+      "quantum_efficiency": 10.0,
+      "metadata": {
+        "num_tasks": 75,
+        "coherence_maintained": true
+      }
+    }
+  ],
+  "recommendations": [
+    "Performance is excellent - no specific optimizations needed"
+  ]
 }

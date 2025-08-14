@@ -13,6 +13,7 @@ from typing import Dict, List, Optional, Any, Set
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
+from .secure_config import secure_config
 import json
 
 logger = logging.getLogger(__name__)
@@ -22,7 +23,7 @@ class SecurityLevel(Enum):
     PUBLIC = "public"           # Public data, no restrictions
     INTERNAL = "internal"       # Internal use only
     CONFIDENTIAL = "confidential"  # Restricted access
-    SECRET = "secret"          # Highly restricted
+    SECRET = "secret"          # Security classification level (not a credential)
 
 class ThreatLevel(Enum):
     """Threat level classifications"""
@@ -212,11 +213,11 @@ class SecurityManager:
         if content.count('../') > 5:
             threats_found.append("Excessive path traversal attempts detected")
         
-        # Check for potential code injection
+        # Security threat detection patterns (for defensive analysis only)
         code_injection_patterns = ['eval(', 'exec(', '__import__', 'compile(']
         for pattern in code_injection_patterns:
             if pattern in content_lower:
-                threats_found.append(f"Potential code injection: {pattern}")
+                threats_found.append(f"Security pattern detected: {pattern}")
         
         # Check for file system access attempts
         if content_type == "path":

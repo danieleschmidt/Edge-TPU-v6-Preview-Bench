@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "timestamp": 1755038004.509497,
-    "execution_time_s": 2.123767137527466,
+    "timestamp": 1755200604.297283,
+    "execution_time_s": 2.1242434978485107,
     "project_root": "/root/repo"
   },
   "summary": {
     "overall_success": false,
-    "overall_score": 59.54465780691997,
+    "overall_score": 59.28852282539221,
     "max_possible_score": 84.0,
-    "pass_percentage": 70.88649738919044,
+    "pass_percentage": 70.58157479213358,
     "grade": "C"
   },
   "gate_results": [
@@ -18,7 +18,7 @@
       "score": 9.9,
       "max_score": 10.0,
       "percentage": 99.0,
-      "execution_time_s": 0.0576021671295166,
+      "execution_time_s": 0.06552457809448242,
       "issues_count": 1,
       "issues": [
         "High complexity detected in 1 files"
@@ -28,8 +28,8 @@
         "Code quality is good - consider automated linting in CI/CD"
       ],
       "details": {
-        "files_checked": 71,
-        "total_lines": 24667,
+        "files_checked": 81,
+        "total_lines": 28078,
         "complexity_issues": 1,
         "style_issues": 0,
         "import_issues": 0
@@ -41,14 +41,12 @@
       "score": 0.0,
       "max_score": 10.0,
       "percentage": 0.0,
-      "execution_time_s": 0.22786736488342285,
-      "issues_count": 18,
+      "execution_time_s": 0.3068075180053711,
+      "issues_count": 16,
       "issues": [
+        "Unsafe function usage in quality_gates_comprehensive.py",
         "Security issue (path_traversal) in quality_gates_direct.py",
         "Security issue (path_traversal) in quality_gates_validator.py",
-        "Unsafe function usage in security_audit.py",
-        "Unsafe function usage in security_audit.py",
-        "Unsafe function usage in quality_gates_comprehensive.py",
         "Security issue (path_traversal) in performance_benchmark.py",
         "Unsafe function usage in security_scan.py",
         "Unsafe function usage in security_scan.py",
@@ -68,11 +66,11 @@
         "Replace unsafe functions with secure alternatives"
       ],
       "details": {
-        "files_scanned": 82,
-        "vulnerabilities_found": 35,
-        "security_patterns_checked": 328,
+        "files_scanned": 102,
+        "vulnerabilities_found": 33,
+        "security_patterns_checked": 408,
         "secrets_detected": 1,
-        "unsafe_functions": 10
+        "unsafe_functions": 8
       }
     },
     {
@@ -81,7 +79,7 @@
       "score": 10.0,
       "max_score": 10.0,
       "percentage": 100.0,
-      "execution_time_s": 0.11985158920288086,
+      "execution_time_s": 0.20088410377502441,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -91,8 +89,8 @@
       ],
       "details": {
         "benchmarks_run": 3,
-        "avg_latency_ms": 2.172788400008585,
-        "throughput_fps": 460.23809773471214,
+        "avg_latency_ms": 2.223054550006509,
+        "throughput_fps": 449.83151672867046,
         "memory_usage_mb": 50.0,
         "performance_targets_met": 4,
         "total_targets": 4
@@ -101,10 +99,10 @@
     {
       "gate_name": "documentation",
       "success": true,
-      "score": 6.98471986417657,
+      "score": 7.026296018031555,
       "max_score": 10.0,
-      "percentage": 69.8471986417657,
-      "execution_time_s": 0.6857061386108398,
+      "percentage": 70.26296018031555,
+      "execution_time_s": 0.6134400367736816,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -113,47 +111,46 @@
       "details": {
         "readme_exists": true,
         "readme_size_kb": 16.5224609375,
-        "docstrings_found": 1057,
-        "functions_documented": 879,
-        "total_functions": 1178,
-        "documentation_coverage": 0.7461799660441426
+        "docstrings_found": 1217,
+        "functions_documented": 1007,
+        "total_functions": 1331,
+        "documentation_coverage": 0.7565740045078888
       }
     },
     {
       "gate_name": "type_checking",
       "success": true,
-      "score": 6.791171477079796,
+      "score": 7.02854996243426,
       "max_score": 10.0,
-      "percentage": 67.91171477079796,
-      "execution_time_s": 0.827643632888794,
+      "percentage": 70.2854996243426,
+      "execution_time_s": 0.773421049118042,
       "issues_count": 0,
       "issues": [],
       "recommendations": [],
       "details": {
-        "files_checked": 71,
-        "functions_with_types": 638,
-        "total_functions": 1178,
-        "type_coverage": 0.5415959252971138,
+        "files_checked": 81,
+        "functions_with_types": 766,
+        "total_functions": 1331,
+        "type_coverage": 0.5755071374906086,
         "import_typing": true
       }
     },
     {
       "gate_name": "code_coverage",
       "success": true,
-      "score": 8.744827586206895,
+      "score": 8.241791044776118,
       "max_score": 10.0,
-      "percentage": 87.44827586206895,
-      "execution_time_s": 0.18898940086364746,
+      "percentage": 82.41791044776117,
+      "execution_time_s": 0.1483898162841797,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
-        "Good estimated test coverage: 74.9%",
         "Test framework imports detected"
       ],
       "details": {
         "test_files_found": 27,
-        "source_files": 58,
-        "estimated_coverage": 74.89655172413792,
+        "source_files": 67,
+        "estimated_coverage": 64.83582089552237,
         "test_functions": 272
       }
     },
@@ -163,7 +160,7 @@
       "score": 10.0,
       "max_score": 10.0,
       "percentage": 100.0,
-      "execution_time_s": 0.00928950309753418,
+      "execution_time_s": 0.010085582733154297,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -184,7 +181,7 @@
       "score": 6.0,
       "max_score": 10.0,
       "percentage": 60.0,
-      "execution_time_s": 0.003644704818725586,
+      "execution_time_s": 0.0032014846801757812,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -202,7 +199,7 @@
     }
   ],
   "recommendations": [
-    "CRITICAL: Fix 18 critical issues",
+    "CRITICAL: Fix 16 critical issues",
     "Consider refactoring complex functions",
     "Code quality is good - consider automated linting in CI/CD",
     "Remove hardcoded secrets and use environment variables",
@@ -211,17 +208,17 @@
     "Scalable benchmark system is operational",
     "Performance targets are being met",
     "Consider adding a docs/ directory",
-    "Good estimated test coverage: 74.9%"
+    "Test framework imports detected"
   ],
   "detailed_summary": {
     "total_gates": 8,
     "gates_passed": 7,
     "gates_failed": 1,
     "critical_failures": 1,
-    "pass_percentage": 70.88649738919044,
+    "pass_percentage": 70.58157479213358,
     "grade": "C",
-    "execution_time_s": 2.123767137527466,
-    "recommendations_count": 16,
+    "execution_time_s": 2.1242434978485107,
+    "recommendations_count": 15,
     "top_performing_gates": [
       "performance_tests",
       "integration_tests",
