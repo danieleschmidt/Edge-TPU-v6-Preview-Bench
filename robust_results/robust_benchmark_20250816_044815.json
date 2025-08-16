@@ -1,0 +1,43 @@
+{
+  "benchmark_info": {
+    "timestamp": 1755319695.1294146,
+    "end_timestamp": 1755319695.1634817,
+    "total_duration_s": 0.03406715393066406,
+    "success": true,
+    "device_type": "edge_tpu_v6",
+    "security_level": "strict"
+  },
+  "model_info": {
+    "path": "",
+    "size_mb": 0.0,
+    "hash": null,
+    "integrity_verified": false,
+    "security_scan_passed": false
+  },
+  "performance_metrics": {
+    "latency_mean_ms": 2.571719799999528,
+    "latency_median_ms": 2.693726499998661,
+    "latency_p95_ms": 3.1279241999961016,
+    "latency_p99_ms": 3.2031440399937594,
+    "latency_std_ms": 0.4774352803201509,
+    "latency_min_ms": 1.64423900000088,
+    "latency_max_ms": 3.221948999993174,
+    "throughput_fps": 388.84485004944304,
+    "throughput_mbps": 0.0
+  },
+  "reliability_metrics": {
+    "total_measurements": 10,
+    "successful_measurements": 10,
+    "failed_measurements": 0,
+    "success_rate": 1.0
+  },
+  "system_metrics": {
+    "cpu_usage_percent": 1.376953125,
+    "memory_usage_mb": 491.16015625
+  },
+  "error_info": {
+    "error_message": null,
+    "error_trace": null,
+    "warnings": []
+  }
+}
