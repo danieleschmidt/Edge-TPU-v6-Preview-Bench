@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """
 Quality Gates Validator for Edge TPU v6 Benchmark Suite

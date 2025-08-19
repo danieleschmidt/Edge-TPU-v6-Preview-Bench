@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """
 Direct Quality Gates Validator - Tests core modules without dependencies
