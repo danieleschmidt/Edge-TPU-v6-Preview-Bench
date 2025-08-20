@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "timestamp": 1755577460.351838,
-    "execution_time_s": 2.354365587234497,
+    "timestamp": 1755693570.209844,
+    "execution_time_s": 3.0432546138763428,
     "project_root": "/root/repo"
   },
   "summary": {
@@ -18,7 +18,7 @@
       "score": 9.9,
       "max_score": 10.0,
       "percentage": 99.0,
-      "execution_time_s": 0.06540942192077637,
+      "execution_time_s": 0.0955512523651123,
       "issues_count": 1,
       "issues": [
         "High complexity detected in 1 files"
@@ -29,7 +29,7 @@
       ],
       "details": {
         "files_checked": 83,
-        "total_lines": 29318,
+        "total_lines": 29319,
         "complexity_issues": 1,
         "style_issues": 0,
         "import_issues": 0
@@ -41,12 +41,10 @@
       "score": 0.0,
       "max_score": 10.0,
       "percentage": 0.0,
-      "execution_time_s": 0.3160521984100342,
-      "issues_count": 16,
+      "execution_time_s": 0.39360952377319336,
+      "issues_count": 14,
       "issues": [
         "Unsafe function usage in quality_gates_comprehensive.py",
-        "Security issue (path_traversal) in quality_gates_direct.py",
-        "Security issue (path_traversal) in quality_gates_validator.py",
         "Security issue (path_traversal) in performance_benchmark.py",
         "Unsafe function usage in security_scan.py",
         "Unsafe function usage in security_scan.py",
@@ -67,7 +65,7 @@
       ],
       "details": {
         "files_scanned": 111,
-        "vulnerabilities_found": 33,
+        "vulnerabilities_found": 29,
         "security_patterns_checked": 444,
         "secrets_detected": 1,
         "unsafe_functions": 8
@@ -79,7 +77,7 @@
       "score": 10.0,
       "max_score": 10.0,
       "percentage": 100.0,
-      "execution_time_s": 0.2789499759674072,
+      "execution_time_s": 0.1374344825744629,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -89,8 +87,8 @@
       ],
       "details": {
         "benchmarks_run": 3,
-        "avg_latency_ms": 2.077105349999897,
-        "throughput_fps": 481.4392298397621,
+        "avg_latency_ms": 2.1793052499994303,
+        "throughput_fps": 458.8618322285331,
         "memory_usage_mb": 50.0,
         "performance_targets_met": 4,
         "total_targets": 4
@@ -102,7 +100,7 @@
       "score": 7.0375722543352595,
       "max_score": 10.0,
       "percentage": 70.3757225433526,
-      "execution_time_s": 0.7086694240570068,
+      "execution_time_s": 0.9526839256286621,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -123,7 +121,7 @@
       "score": 7.096820809248555,
       "max_score": 10.0,
       "percentage": 70.96820809248555,
-      "execution_time_s": 0.8165440559387207,
+      "execution_time_s": 1.1924104690551758,
       "issues_count": 0,
       "issues": [],
       "recommendations": [],
@@ -141,7 +139,7 @@
       "score": 8.147826086956522,
       "max_score": 10.0,
       "percentage": 81.47826086956522,
-      "execution_time_s": 0.15298700332641602,
+      "execution_time_s": 0.24072504043579102,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -160,7 +158,7 @@
       "score": 10.0,
       "max_score": 10.0,
       "percentage": 100.0,
-      "execution_time_s": 0.009446382522583008,
+      "execution_time_s": 0.015035390853881836,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -181,7 +179,7 @@
       "score": 6.0,
       "max_score": 10.0,
       "percentage": 60.0,
-      "execution_time_s": 0.003348112106323242,
+      "execution_time_s": 0.011078834533691406,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -199,7 +197,7 @@
     }
   ],
   "recommendations": [
-    "CRITICAL: Fix 16 critical issues",
+    "CRITICAL: Fix 14 critical issues",
     "Consider refactoring complex functions",
     "Code quality is good - consider automated linting in CI/CD",
     "Remove hardcoded secrets and use environment variables",
@@ -217,7 +215,7 @@
     "critical_failures": 1,
     "pass_percentage": 70.5535983556529,
     "grade": "C",
-    "execution_time_s": 2.354365587234497,
+    "execution_time_s": 3.0432546138763428,
     "recommendations_count": 15,
     "top_performing_gates": [
       "performance_tests",
