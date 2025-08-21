@@ -1,25 +1,25 @@
 🛡️  SECURITY AUDIT REPORT
 ============================================================
 📁 Project: /root/repo
-📄 Files scanned: 113 / 215
-🚨 Issues found: 136
-⚡ Risk score: 518
+📄 Files scanned: 113 / 210
+🚨 Issues found: 126
+⚡ Risk score: 463
 
 📊 ISSUES BY SEVERITY
 ------------------------------
-  🚨 CRITICAL: 10
-  ⚠️ HIGH: 58
+  🚨 CRITICAL: 9
+  ⚠️ HIGH: 49
   ⚡ MEDIUM: 60
   💡 LOW: 8
 
 📋 ISSUES BY CATEGORY
 ------------------------------
   • Weak Crypto: 60
-  • Path Traversal: 53
+  • Path Traversal: 44
   • Debug Code: 8
   • Code Injection: 7
   • Unsafe Deserialization: 5
-  • Hardcoded Secrets: 3
+  • Hardcoded Secrets: 2
 
 🔍 DETAILED FINDINGS (Top 10)
 ----------------------------------------
@@ -53,25 +53,25 @@
    📍 Line: 217
    📝 Context: code_injection_patterns = ['eval(', 'exec(', '__import__', 'compile(']...
 
-7. 🚨 CRITICAL: hardcoded_secrets
-   📁 File: /root/repo/src/edge_tpu_v6_bench/core/security.py
-   📍 Line: 26
-   📝 Context: SECRET = "secret"          # Security classification level (not a credential)...
-
-8. 🚨 CRITICAL: code_injection
+7. 🚨 CRITICAL: code_injection
    📁 File: /root/repo/tests/security_scan.py
    📍 Line: 37
    📝 Context: r'eval\s*\(': "Code injection via eval()",...
 
-9. 🚨 CRITICAL: code_injection
+8. 🚨 CRITICAL: code_injection
    📁 File: /root/repo/tests/security_scan.py
    📍 Line: 38
    📝 Context: r'exec\s*\(': "Code injection via exec()",...
 
-10. 🚨 CRITICAL: code_injection
+9. 🚨 CRITICAL: code_injection
    📁 File: /root/repo/tests/security_scan.py
    📍 Line: 168
    📝 Context: description="Use of os.system() - potential command injection",...
+
+10. ⚠️ HIGH: path_traversal
+   📁 File: /root/repo/deploy/docker-compose.yml
+   📍 Line: 99
+   📝 Context: - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro...
 
 💡 SECURITY RECOMMENDATIONS
 ----------------------------------------
