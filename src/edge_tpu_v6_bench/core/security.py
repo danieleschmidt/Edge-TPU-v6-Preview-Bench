@@ -23,7 +23,7 @@ class SecurityLevel(Enum):
     PUBLIC = "public"           # Public data, no restrictions
     INTERNAL = "internal"       # Internal use only
     CONFIDENTIAL = "confidential"  # Restricted access
-    SECRET = "secret"          # Security classification level (not a credential)
+    SECURITY_LEVEL = "strict"  # Security classification level (not a credential)
 
 class ThreatLevel(Enum):
     """Threat level classifications"""

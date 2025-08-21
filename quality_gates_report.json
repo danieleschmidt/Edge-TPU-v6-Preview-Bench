@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "timestamp": 1755693570.209844,
-    "execution_time_s": 3.0432546138763428,
+    "timestamp": 1755812113.0813153,
+    "execution_time_s": 2.168276786804199,
     "project_root": "/root/repo"
   },
   "summary": {
@@ -18,7 +18,7 @@
       "score": 9.9,
       "max_score": 10.0,
       "percentage": 99.0,
-      "execution_time_s": 0.0955512523651123,
+      "execution_time_s": 0.06882452964782715,
       "issues_count": 1,
       "issues": [
         "High complexity detected in 1 files"
@@ -41,8 +41,8 @@
       "score": 0.0,
       "max_score": 10.0,
       "percentage": 0.0,
-      "execution_time_s": 0.39360952377319336,
-      "issues_count": 14,
+      "execution_time_s": 0.3204619884490967,
+      "issues_count": 13,
       "issues": [
         "Unsafe function usage in quality_gates_comprehensive.py",
         "Security issue (path_traversal) in performance_benchmark.py",
@@ -53,21 +53,19 @@
         "Security issue (path_traversal) in test_quantum_basic.py",
         "Security issue (path_traversal) in test_security_scan.py",
         "Security issue (path_traversal) in test_standalone.py",
-        "Potential hardcoded secret in security.py",
         "Unsafe function usage in security.py",
         "Unsafe function usage in security.py",
         "Security issue (path_traversal) in security.py",
         "Security issue (path_traversal) in security.py"
       ],
       "recommendations": [
-        "Remove hardcoded secrets and use environment variables",
         "Replace unsafe functions with secure alternatives"
       ],
       "details": {
         "files_scanned": 111,
-        "vulnerabilities_found": 29,
+        "vulnerabilities_found": 28,
         "security_patterns_checked": 444,
-        "secrets_detected": 1,
+        "secrets_detected": 0,
         "unsafe_functions": 8
       }
     },
@@ -77,7 +75,7 @@
       "score": 10.0,
       "max_score": 10.0,
       "percentage": 100.0,
-      "execution_time_s": 0.1374344825744629,
+      "execution_time_s": 0.11507487297058105,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -87,8 +85,8 @@
       ],
       "details": {
         "benchmarks_run": 3,
-        "avg_latency_ms": 2.1793052499994303,
-        "throughput_fps": 458.8618322285331,
+        "avg_latency_ms": 2.182845449998183,
+        "throughput_fps": 458.1176372339289,
         "memory_usage_mb": 50.0,
         "performance_targets_met": 4,
         "total_targets": 4
@@ -100,7 +98,7 @@
       "score": 7.0375722543352595,
       "max_score": 10.0,
       "percentage": 70.3757225433526,
-      "execution_time_s": 0.9526839256286621,
+      "execution_time_s": 0.6425716876983643,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -121,7 +119,7 @@
       "score": 7.096820809248555,
       "max_score": 10.0,
       "percentage": 70.96820809248555,
-      "execution_time_s": 1.1924104690551758,
+      "execution_time_s": 0.8474216461181641,
       "issues_count": 0,
       "issues": [],
       "recommendations": [],
@@ -139,7 +137,7 @@
       "score": 8.147826086956522,
       "max_score": 10.0,
       "percentage": 81.47826086956522,
-      "execution_time_s": 0.24072504043579102,
+      "execution_time_s": 0.15755128860473633,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -158,7 +156,7 @@
       "score": 10.0,
       "max_score": 10.0,
       "percentage": 100.0,
-      "execution_time_s": 0.015035390853881836,
+      "execution_time_s": 0.010074615478515625,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -179,7 +177,7 @@
       "score": 6.0,
       "max_score": 10.0,
       "percentage": 60.0,
-      "execution_time_s": 0.011078834533691406,
+      "execution_time_s": 0.003443002700805664,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -197,16 +195,16 @@
     }
   ],
   "recommendations": [
-    "CRITICAL: Fix 14 critical issues",
+    "CRITICAL: Fix 13 critical issues",
     "Consider refactoring complex functions",
     "Code quality is good - consider automated linting in CI/CD",
-    "Remove hardcoded secrets and use environment variables",
     "Replace unsafe functions with secure alternatives",
     "Robust benchmark system is healthy",
     "Scalable benchmark system is operational",
     "Performance targets are being met",
     "Consider adding a docs/ directory",
-    "Test framework imports detected"
+    "Test framework imports detected",
+    "Package API imports working"
   ],
   "detailed_summary": {
     "total_gates": 8,
@@ -215,8 +213,8 @@
     "critical_failures": 1,
     "pass_percentage": 70.5535983556529,
     "grade": "C",
-    "execution_time_s": 3.0432546138763428,
-    "recommendations_count": 15,
+    "execution_time_s": 2.168276786804199,
+    "recommendations_count": 14,
     "top_performing_gates": [
       "performance_tests",
       "integration_tests",
