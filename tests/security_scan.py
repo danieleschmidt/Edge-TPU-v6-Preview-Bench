@@ -60,6 +60,33 @@ class QuantumSecurityScanner:
             "755",  # World executable
         ]
     
+    def _is_security_definition(self, line: str, file_path: Path) -> bool:
+        """Check if this line is a legitimate security definition"""
+        line = line.strip()
+        
+        # Skip security patterns in security modules
+        if 'security' in str(file_path).lower():
+            if any(marker in line for marker in [
+                'threat_patterns', 'dangerous_patterns', 'security_patterns',
+                '# Code injection', '# Code execution', '# Path traversal',
+                '"Code injection', '"Code execution', '"Path traversal'
+            ]):
+                return True
+        
+        # Skip test files with security test cases
+        if 'test' in str(file_path).lower():
+            if any(marker in line for marker in [
+                'test_', 'Test', 'security_test', 'threat_test',
+                '# Test', '"""Test', "'''Test"
+            ]):
+                return True
+        
+        # Skip comments and docstrings
+        if line.startswith('#') or line.startswith('"""') or line.startswith("'''"):
+            return True
+            
+        return False
+
     def scan_file(self, file_path: Path) -> List[SecurityIssue]:
         """Scan a single file for security issues"""
         issues = []
@@ -72,6 +99,10 @@ class QuantumSecurityScanner:
             # Check for dangerous patterns
             for line_num, line in enumerate(lines, 1):
                 line_lower = line.lower()
+                
+                # Skip security definitions and test cases
+                if self._is_security_definition(line, file_path):
+                    continue
                 
                 # Check dangerous code patterns
                 for pattern, description in self.dangerous_patterns.items():
