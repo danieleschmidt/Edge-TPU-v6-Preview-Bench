@@ -1,7 +1,7 @@
 🛡️  SECURITY AUDIT REPORT
 ============================================================
 📁 Project: /root/repo
-📄 Files scanned: 113 / 210
+📄 Files scanned: 117 / 209
 🚨 Issues found: 126
 ⚡ Risk score: 463
 
@@ -65,7 +65,7 @@
 
 9. 🚨 CRITICAL: code_injection
    📁 File: /root/repo/tests/security_scan.py
-   📍 Line: 168
+   📍 Line: 199
    📝 Context: description="Use of os.system() - potential command injection",...
 
 10. ⚠️ HIGH: path_traversal

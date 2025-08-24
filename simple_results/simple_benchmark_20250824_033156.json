@@ -1,0 +1,14 @@
+{
+  "timestamp": 1756006316.1521266,
+  "success": true,
+  "model_path": "test_model_simple.txt",
+  "device_type": "edge_tpu_v6",
+  "metrics": {
+    "latency_mean_ms": 2.1979018000003236,
+    "latency_p95_ms": 2.5664473999917448,
+    "latency_p99_ms": 2.6508894800015526,
+    "throughput_fps": 454.979380789375,
+    "total_measurements": 20
+  },
+  "error_message": null
+}
