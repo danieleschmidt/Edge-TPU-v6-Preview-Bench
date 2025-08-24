@@ -1,0 +1,43 @@
+{
+  "benchmark_info": {
+    "timestamp": 1756006342.6666274,
+    "end_timestamp": 1756006342.6966653,
+    "total_duration_s": 0.030037879943847656,
+    "success": true,
+    "device_type": "edge_tpu_v6",
+    "security_level": "strict"
+  },
+  "model_info": {
+    "path": "/root/repo/test_model_simple.txt",
+    "size_mb": 3.337860107421875e-05,
+    "hash": "b26953b0e007b375c68606ef46f2252d90f5ddaa824d0a189bac70fef07e65ac",
+    "integrity_verified": true,
+    "security_scan_passed": true
+  },
+  "performance_metrics": {
+    "latency_mean_ms": 2.123441500000922,
+    "latency_median_ms": 1.9609450000004358,
+    "latency_p95_ms": 2.9162318500027595,
+    "latency_p99_ms": 2.9375823700081583,
+    "latency_std_ms": 0.5139488101789056,
+    "latency_min_ms": 1.576274999990801,
+    "latency_max_ms": 2.942920000009508,
+    "throughput_fps": 470.9336235538232,
+    "throughput_mbps": 0.015719105553039372
+  },
+  "reliability_metrics": {
+    "total_measurements": 10,
+    "successful_measurements": 10,
+    "failed_measurements": 0,
+    "success_rate": 1.0
+  },
+  "system_metrics": {
+    "cpu_usage_percent": 3.30078125,
+    "memory_usage_mb": 530.75
+  },
+  "error_info": {
+    "error_message": null,
+    "error_trace": null,
+    "warnings": []
+  }
+}
