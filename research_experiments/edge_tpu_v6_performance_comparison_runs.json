@@ -15,12 +15,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519888+00:00"
+      "timestamp": "2025-08-25T13:35:59.750774+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 66,
-    "execution_timestamp": "2025-08-17T15:18:47.521722+00:00",
-    "duration_seconds": 4.0531158447265625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.752974+00:00",
+    "duration_seconds": 4.9114227294921875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.8539035910160675,
@@ -46,12 +46,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519746+00:00"
+      "timestamp": "2025-08-25T13:35:59.750619+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 48,
-    "execution_timestamp": "2025-08-17T15:18:47.521907+00:00",
-    "duration_seconds": 2.6464462280273438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.753148+00:00",
+    "duration_seconds": 2.002716064453125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.251592170017887,
@@ -77,12 +77,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520868+00:00"
+      "timestamp": "2025-08-25T13:35:59.751913+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 194,
-    "execution_timestamp": "2025-08-17T15:18:47.522057+00:00",
-    "duration_seconds": 1.5020370483398438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.753274+00:00",
+    "duration_seconds": 1.621246337890625e-05,
     "success": true,
     "results": {
       "latency_ms": 18.117286341349264,
@@ -108,12 +108,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521241+00:00"
+      "timestamp": "2025-08-25T13:35:59.752380+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 274,
-    "execution_timestamp": "2025-08-17T15:18:47.522189+00:00",
-    "duration_seconds": 1.4543533325195312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.753440+00:00",
+    "duration_seconds": 1.9550323486328125e-05,
     "success": true,
     "results": {
       "latency_ms": 16.938824303269694,
@@ -139,12 +139,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521265+00:00"
+      "timestamp": "2025-08-25T13:35:59.752410+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 280,
-    "execution_timestamp": "2025-08-17T15:18:47.522319+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.753564+00:00",
+    "duration_seconds": 1.5974044799804688e-05,
     "success": true,
     "results": {
       "latency_ms": 15.195584157918944,
@@ -170,12 +170,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520970+00:00"
+      "timestamp": "2025-08-25T13:35:59.752038+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 217,
-    "execution_timestamp": "2025-08-17T15:18:47.522531+00:00",
-    "duration_seconds": 1.9073486328125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.753768+00:00",
+    "duration_seconds": 2.0742416381835938e-05,
     "success": true,
     "results": {
       "latency_ms": 2.534990284897771,
@@ -201,12 +201,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521134+00:00"
+      "timestamp": "2025-08-25T13:35:59.752249+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 257,
-    "execution_timestamp": "2025-08-17T15:18:47.522635+00:00",
-    "duration_seconds": 1.2636184692382812e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.753952+00:00",
+    "duration_seconds": 1.9311904907226562e-05,
     "success": true,
     "results": {
       "latency_ms": 4.769775512832813,
@@ -232,12 +232,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520861+00:00"
+      "timestamp": "2025-08-25T13:35:59.751901+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 192,
-    "execution_timestamp": "2025-08-17T15:18:47.522724+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.754076+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 14.72278557910448,
@@ -263,12 +263,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519763+00:00"
+      "timestamp": "2025-08-25T13:35:59.750683+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 51,
-    "execution_timestamp": "2025-08-17T15:18:47.522811+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.754227+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 2.427374206662842,
@@ -294,12 +294,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520700+00:00"
+      "timestamp": "2025-08-25T13:35:59.751581+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 155,
-    "execution_timestamp": "2025-08-17T15:18:47.522900+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.754382+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.462227276440562,
@@ -325,12 +325,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520006+00:00"
+      "timestamp": "2025-08-25T13:35:59.750926+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 87,
-    "execution_timestamp": "2025-08-17T15:18:47.522995+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.754540+00:00",
+    "duration_seconds": 1.7404556274414062e-05,
     "success": true,
     "results": {
       "latency_ms": 4.35639771875832,
@@ -356,12 +356,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521110+00:00"
+      "timestamp": "2025-08-25T13:35:59.752219+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 251,
-    "execution_timestamp": "2025-08-17T15:18:47.523081+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.754741+00:00",
+    "duration_seconds": 1.9788742065429688e-05,
     "success": true,
     "results": {
       "latency_ms": 3.8689563458445164,
@@ -387,12 +387,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521221+00:00"
+      "timestamp": "2025-08-25T13:35:59.752355+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 269,
-    "execution_timestamp": "2025-08-17T15:18:47.523165+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.754873+00:00",
+    "duration_seconds": 1.5735626220703125e-05,
     "success": true,
     "results": {
       "latency_ms": 14.855083648416493,
@@ -418,12 +418,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520949+00:00"
+      "timestamp": "2025-08-25T13:35:59.752010+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 212,
-    "execution_timestamp": "2025-08-17T15:18:47.523247+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.754988+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 2.5573367284185493,
@@ -449,12 +449,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520560+00:00"
+      "timestamp": "2025-08-25T13:35:59.751398+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 124,
-    "execution_timestamp": "2025-08-17T15:18:47.523330+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.755100+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.572119765232796,
@@ -480,12 +480,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520905+00:00"
+      "timestamp": "2025-08-25T13:35:59.751962+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 203,
-    "execution_timestamp": "2025-08-17T15:18:47.523464+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.755213+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 15.246907994921084,
@@ -511,12 +511,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521257+00:00"
+      "timestamp": "2025-08-25T13:35:59.752399+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 278,
-    "execution_timestamp": "2025-08-17T15:18:47.523558+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.755328+00:00",
+    "duration_seconds": 1.4543533325195312e-05,
     "success": true,
     "results": {
       "latency_ms": 18.50665830163078,
@@ -542,12 +542,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519846+00:00"
+      "timestamp": "2025-08-25T13:35:59.750721+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 57,
-    "execution_timestamp": "2025-08-17T15:18:47.523645+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.755439+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.467236960663274,
@@ -573,12 +573,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520432+00:00"
+      "timestamp": "2025-08-25T13:35:59.751298+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 108,
-    "execution_timestamp": "2025-08-17T15:18:47.523733+00:00",
-    "duration_seconds": 1.1920928955078125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.755551+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 14.177490871357444,
@@ -604,12 +604,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520762+00:00"
+      "timestamp": "2025-08-25T13:35:59.751762+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 169,
-    "execution_timestamp": "2025-08-17T15:18:47.523821+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.755779+00:00",
+    "duration_seconds": 3.337860107421875e-05,
     "success": true,
     "results": {
       "latency_ms": 4.473693843038453,
@@ -635,12 +635,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519937+00:00"
+      "timestamp": "2025-08-25T13:35:59.750835+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 75,
-    "execution_timestamp": "2025-08-17T15:18:47.523911+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.755924+00:00",
+    "duration_seconds": 1.4543533325195312e-05,
     "success": true,
     "results": {
       "latency_ms": 3.9020091037300473,
@@ -666,12 +666,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519864+00:00"
+      "timestamp": "2025-08-25T13:35:59.750746+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 61,
-    "execution_timestamp": "2025-08-17T15:18:47.524045+00:00",
-    "duration_seconds": 1.4543533325195312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.756040+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.392126112110047,
@@ -697,12 +697,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520670+00:00"
+      "timestamp": "2025-08-25T13:35:59.751547+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 150,
-    "execution_timestamp": "2025-08-17T15:18:47.524172+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.756154+00:00",
+    "duration_seconds": 1.4543533325195312e-05,
     "success": true,
     "results": {
       "latency_ms": 4.102819036099395,
@@ -728,12 +728,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519916+00:00"
+      "timestamp": "2025-08-25T13:35:59.750817+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 72,
-    "execution_timestamp": "2025-08-17T15:18:47.524299+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.756267+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 4.333789109607644,
@@ -759,12 +759,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521013+00:00"
+      "timestamp": "2025-08-25T13:35:59.752098+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 227,
-    "execution_timestamp": "2025-08-17T15:18:47.524455+00:00",
-    "duration_seconds": 1.52587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.756380+00:00",
+    "duration_seconds": 1.4066696166992188e-05,
     "success": true,
     "results": {
       "latency_ms": 2.555065793740182,
@@ -790,12 +790,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520917+00:00"
+      "timestamp": "2025-08-25T13:35:59.751978+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 206,
-    "execution_timestamp": "2025-08-17T15:18:47.524586+00:00",
-    "duration_seconds": 1.4543533325195312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.756539+00:00",
+    "duration_seconds": 2.193450927734375e-05,
     "success": true,
     "results": {
       "latency_ms": 2.359444015266158,
@@ -821,12 +821,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519768+00:00"
+      "timestamp": "2025-08-25T13:35:59.750690+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 52,
-    "execution_timestamp": "2025-08-17T15:18:47.524715+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.756750+00:00",
+    "duration_seconds": 2.3126602172851562e-05,
     "success": true,
     "results": {
       "latency_ms": 2.6298689601535408,
@@ -852,12 +852,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520463+00:00"
+      "timestamp": "2025-08-25T13:35:59.751347+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 115,
-    "execution_timestamp": "2025-08-17T15:18:47.524844+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.756946+00:00",
+    "duration_seconds": 1.8596649169921875e-05,
     "success": true,
     "results": {
       "latency_ms": 16.782422723297,
@@ -883,12 +883,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520610+00:00"
+      "timestamp": "2025-08-25T13:35:59.751466+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 135,
-    "execution_timestamp": "2025-08-17T15:18:47.524948+00:00",
-    "duration_seconds": 1.239776611328125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.757120+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.1837860039819397,
@@ -914,12 +914,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520881+00:00"
+      "timestamp": "2025-08-25T13:35:59.751929+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 197,
-    "execution_timestamp": "2025-08-17T15:18:47.525041+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.757245+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 16.319432081552982,
@@ -945,12 +945,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520683+00:00"
+      "timestamp": "2025-08-25T13:35:59.751570+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 153,
-    "execution_timestamp": "2025-08-17T15:18:47.525166+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.757361+00:00",
+    "duration_seconds": 1.5497207641601562e-05,
     "success": true,
     "results": {
       "latency_ms": 4.240833097700689,
@@ -976,12 +976,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521142+00:00"
+      "timestamp": "2025-08-25T13:35:59.752260+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 259,
-    "execution_timestamp": "2025-08-17T15:18:47.525291+00:00",
-    "duration_seconds": 1.3113021850585938e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.757480+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 14.799826868085932,
@@ -1007,12 +1007,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519893+00:00"
+      "timestamp": "2025-08-25T13:35:59.750780+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 67,
-    "execution_timestamp": "2025-08-17T15:18:47.525476+00:00",
-    "duration_seconds": 1.5974044799804688e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.757605+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.7821305380550525,
@@ -1038,12 +1038,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520362+00:00"
+      "timestamp": "2025-08-25T13:35:59.751264+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 102,
-    "execution_timestamp": "2025-08-17T15:18:47.525585+00:00",
-    "duration_seconds": 1.2159347534179688e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.757788+00:00",
+    "duration_seconds": 3.719329833984375e-05,
     "success": true,
     "results": {
       "latency_ms": 18.435547906621466,
@@ -1069,12 +1069,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519860+00:00"
+      "timestamp": "2025-08-25T13:35:59.750740+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 60,
-    "execution_timestamp": "2025-08-17T15:18:47.525693+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.757972+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.2695572516967277,
@@ -1100,12 +1100,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520758+00:00"
+      "timestamp": "2025-08-25T13:35:59.751756+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 168,
-    "execution_timestamp": "2025-08-17T15:18:47.525787+00:00",
-    "duration_seconds": 1.239776611328125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.758131+00:00",
+    "duration_seconds": 1.71661376953125e-05,
     "success": true,
     "results": {
       "latency_ms": 4.42216065159078,
@@ -1131,12 +1131,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520622+00:00"
+      "timestamp": "2025-08-25T13:35:59.751482+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 138,
-    "execution_timestamp": "2025-08-17T15:18:47.525878+00:00",
-    "duration_seconds": 1.239776611328125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.758288+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 2.7100859855705646,
@@ -1162,12 +1162,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521056+00:00"
+      "timestamp": "2025-08-25T13:35:59.752153+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 238,
-    "execution_timestamp": "2025-08-17T15:18:47.526013+00:00",
-    "duration_seconds": 1.5020370483398438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.758446+00:00",
+    "duration_seconds": 1.7404556274414062e-05,
     "success": true,
     "results": {
       "latency_ms": 4.156118990805991,
@@ -1193,12 +1193,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520809+00:00"
+      "timestamp": "2025-08-25T13:35:59.751832+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 179,
-    "execution_timestamp": "2025-08-17T15:18:47.526143+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.758604+00:00",
+    "duration_seconds": 1.7881393432617188e-05,
     "success": true,
     "results": {
       "latency_ms": 15.692867726389185,
@@ -1224,12 +1224,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521274+00:00"
+      "timestamp": "2025-08-25T13:35:59.752420+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 282,
-    "execution_timestamp": "2025-08-17T15:18:47.526271+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.758835+00:00",
+    "duration_seconds": 2.09808349609375e-05,
     "success": true,
     "results": {
       "latency_ms": 13.716659420765545,
@@ -1255,12 +1255,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520528+00:00"
+      "timestamp": "2025-08-25T13:35:59.751358+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 117,
-    "execution_timestamp": "2025-08-17T15:18:47.526431+00:00",
-    "duration_seconds": 6.103515625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.758959+00:00",
+    "duration_seconds": 1.5497207641601562e-05,
     "success": true,
     "results": {
       "latency_ms": 12.911599416001318,
@@ -1286,12 +1286,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520719+00:00"
+      "timestamp": "2025-08-25T13:35:59.751604+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 159,
-    "execution_timestamp": "2025-08-17T15:18:47.526588+00:00",
-    "duration_seconds": 1.239776611328125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.759083+00:00",
+    "duration_seconds": 1.430511474609375e-05,
     "success": true,
     "results": {
       "latency_ms": 3.9442531606030378,
@@ -1317,12 +1317,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520696+00:00"
+      "timestamp": "2025-08-25T13:35:59.751576+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 154,
-    "execution_timestamp": "2025-08-17T15:18:47.526677+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.759198+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 5.171071334512875,
@@ -1348,12 +1348,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519851+00:00"
+      "timestamp": "2025-08-25T13:35:59.750727+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 58,
-    "execution_timestamp": "2025-08-17T15:18:47.526765+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.759310+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.3099534634563685,
@@ -1379,12 +1379,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521052+00:00"
+      "timestamp": "2025-08-25T13:35:59.752148+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 237,
-    "execution_timestamp": "2025-08-17T15:18:47.526855+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.759425+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 4.548492184706164,
@@ -1410,12 +1410,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520436+00:00"
+      "timestamp": "2025-08-25T13:35:59.751304+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 109,
-    "execution_timestamp": "2025-08-17T15:18:47.526950+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.759536+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 15.503378797033331,
@@ -1441,12 +1441,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520937+00:00"
+      "timestamp": "2025-08-25T13:35:59.751994+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 209,
-    "execution_timestamp": "2025-08-17T15:18:47.527036+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.759763+00:00",
+    "duration_seconds": 2.002716064453125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.388031830237359,
@@ -1472,12 +1472,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519976+00:00"
+      "timestamp": "2025-08-25T13:35:59.750885+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 80,
-    "execution_timestamp": "2025-08-17T15:18:47.527123+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.759909+00:00",
+    "duration_seconds": 1.621246337890625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.9979382331822055,
@@ -1503,12 +1503,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520992+00:00"
+      "timestamp": "2025-08-25T13:35:59.752064+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 222,
-    "execution_timestamp": "2025-08-17T15:18:47.527207+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.760066+00:00",
+    "duration_seconds": 1.7881393432617188e-05,
     "success": true,
     "results": {
       "latency_ms": 2.9908562542411534,
@@ -1534,12 +1534,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520711+00:00"
+      "timestamp": "2025-08-25T13:35:59.751593+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 157,
-    "execution_timestamp": "2025-08-17T15:18:47.527301+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.760225+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.3603224946760015,
@@ -1565,12 +1565,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521102+00:00"
+      "timestamp": "2025-08-25T13:35:59.752210+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 249,
-    "execution_timestamp": "2025-08-17T15:18:47.527423+00:00",
-    "duration_seconds": 1.52587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.760384+00:00",
+    "duration_seconds": 2.6941299438476562e-05,
     "success": true,
     "results": {
       "latency_ms": 4.799597830267034,
@@ -1596,12 +1596,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520893+00:00"
+      "timestamp": "2025-08-25T13:35:59.751945+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 200,
-    "execution_timestamp": "2025-08-17T15:18:47.527529+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.760553+00:00",
+    "duration_seconds": 1.7881393432617188e-05,
     "success": true,
     "results": {
       "latency_ms": 13.507501766001317,
@@ -1627,12 +1627,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520784+00:00"
+      "timestamp": "2025-08-25T13:35:59.751797+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 174,
-    "execution_timestamp": "2025-08-17T15:18:47.527618+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.760753+00:00",
+    "duration_seconds": 1.9311904907226562e-05,
     "success": true,
     "results": {
       "latency_ms": 4.598492629974305,
@@ -1658,12 +1658,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520569+00:00"
+      "timestamp": "2025-08-25T13:35:59.751409+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 126,
-    "execution_timestamp": "2025-08-17T15:18:47.527704+00:00",
-    "duration_seconds": 1.1920928955078125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.760932+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.3344236483915397,
@@ -1689,12 +1689,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520341+00:00"
+      "timestamp": "2025-08-25T13:35:59.751236+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 97,
-    "execution_timestamp": "2025-08-17T15:18:47.527792+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.761090+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 13.033123352958638,
@@ -1720,12 +1720,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520577+00:00"
+      "timestamp": "2025-08-25T13:35:59.751419+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 128,
-    "execution_timestamp": "2025-08-17T15:18:47.527877+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.761254+00:00",
+    "duration_seconds": 1.71661376953125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.4000002502011015,
@@ -1751,12 +1751,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520909+00:00"
+      "timestamp": "2025-08-25T13:35:59.751967+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 204,
-    "execution_timestamp": "2025-08-17T15:18:47.527972+00:00",
-    "duration_seconds": 1.2159347534179688e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.761411+00:00",
+    "duration_seconds": 1.7404556274414062e-05,
     "success": true,
     "results": {
       "latency_ms": 2.455326161185304,
@@ -1782,12 +1782,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520984+00:00"
+      "timestamp": "2025-08-25T13:35:59.752053+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 220,
-    "execution_timestamp": "2025-08-17T15:18:47.528059+00:00",
-    "duration_seconds": 1.2159347534179688e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.761570+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.1689121054269096,
@@ -1813,12 +1813,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521209+00:00"
+      "timestamp": "2025-08-25T13:35:59.752340+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 266,
-    "execution_timestamp": "2025-08-17T15:18:47.528145+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.761749+00:00",
+    "duration_seconds": 1.8358230590820312e-05,
     "success": true,
     "results": {
       "latency_ms": 15.109889914026303,
@@ -1844,12 +1844,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521233+00:00"
+      "timestamp": "2025-08-25T13:35:59.752370+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 272,
-    "execution_timestamp": "2025-08-17T15:18:47.528232+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.761903+00:00",
+    "duration_seconds": 1.5974044799804688e-05,
     "success": true,
     "results": {
       "latency_ms": 16.608216667023928,
@@ -1875,12 +1875,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520876+00:00"
+      "timestamp": "2025-08-25T13:35:59.751924+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 196,
-    "execution_timestamp": "2025-08-17T15:18:47.528316+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.762018+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 16.93560167161264,
@@ -1906,12 +1906,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520626+00:00"
+      "timestamp": "2025-08-25T13:35:59.751487+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 139,
-    "execution_timestamp": "2025-08-17T15:18:47.528446+00:00",
-    "duration_seconds": 1.430511474609375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.762136+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.9119315779355586,
@@ -1937,12 +1937,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520825+00:00"
+      "timestamp": "2025-08-25T13:35:59.751853+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 183,
-    "execution_timestamp": "2025-08-17T15:18:47.528544+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.762256+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 15.632666817421594,
@@ -1968,12 +1968,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521040+00:00"
+      "timestamp": "2025-08-25T13:35:59.752133+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 234,
-    "execution_timestamp": "2025-08-17T15:18:47.528632+00:00",
-    "duration_seconds": 1.0728836059570312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.762368+00:00",
+    "duration_seconds": 1.4543533325195312e-05,
     "success": true,
     "results": {
       "latency_ms": 4.543892480083641,
@@ -1999,12 +1999,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520440+00:00"
+      "timestamp": "2025-08-25T13:35:59.751310+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 110,
-    "execution_timestamp": "2025-08-17T15:18:47.528720+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.762483+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 16.319183420247878,
@@ -2030,12 +2030,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520728+00:00"
+      "timestamp": "2025-08-25T13:35:59.751614+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 161,
-    "execution_timestamp": "2025-08-17T15:18:47.528809+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.762594+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 4.127733788279788,
@@ -2061,12 +2061,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520445+00:00"
+      "timestamp": "2025-08-25T13:35:59.751315+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 111,
-    "execution_timestamp": "2025-08-17T15:18:47.528895+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.762769+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 14.00853543179173,
@@ -2092,12 +2092,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520872+00:00"
+      "timestamp": "2025-08-25T13:35:59.751918+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 195,
-    "execution_timestamp": "2025-08-17T15:18:47.528988+00:00",
-    "duration_seconds": 1.2159347534179688e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.762898+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 17.33210204284322,
@@ -2123,12 +2123,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521048+00:00"
+      "timestamp": "2025-08-25T13:35:59.752143+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 236,
-    "execution_timestamp": "2025-08-17T15:18:47.529072+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.763047+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.599235963043502,
@@ -2154,12 +2154,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520654+00:00"
+      "timestamp": "2025-08-25T13:35:59.751525+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 146,
-    "execution_timestamp": "2025-08-17T15:18:47.529155+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.763164+00:00",
+    "duration_seconds": 1.5735626220703125e-05,
     "success": true,
     "results": {
       "latency_ms": 3.0991196410112734,
@@ -2185,12 +2185,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520674+00:00"
+      "timestamp": "2025-08-25T13:35:59.751558+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 151,
-    "execution_timestamp": "2025-08-17T15:18:47.529244+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.763287+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 3.9325702121086006,
@@ -2216,12 +2216,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521032+00:00"
+      "timestamp": "2025-08-25T13:35:59.752123+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 232,
-    "execution_timestamp": "2025-08-17T15:18:47.529328+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.763399+00:00",
+    "duration_seconds": 1.430511474609375e-05,
     "success": true,
     "results": {
       "latency_ms": 3.709920508125813,
@@ -2247,12 +2247,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520547+00:00"
+      "timestamp": "2025-08-25T13:35:59.751381+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 121,
-    "execution_timestamp": "2025-08-17T15:18:47.529459+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.763512+00:00",
+    "duration_seconds": 1.4066696166992188e-05,
     "success": true,
     "results": {
       "latency_ms": 15.464987598539913,
@@ -2278,12 +2278,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519911+00:00"
+      "timestamp": "2025-08-25T13:35:59.750811+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 71,
-    "execution_timestamp": "2025-08-17T15:18:47.529551+00:00",
-    "duration_seconds": 1.0728836059570312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.763718+00:00",
+    "duration_seconds": 2.384185791015625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.019146677113489,
@@ -2309,12 +2309,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520732+00:00"
+      "timestamp": "2025-08-25T13:35:59.751620+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 162,
-    "execution_timestamp": "2025-08-17T15:18:47.529637+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.763889+00:00",
+    "duration_seconds": 1.5974044799804688e-05,
     "success": true,
     "results": {
       "latency_ms": 4.672327825491809,
@@ -2340,12 +2340,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520707+00:00"
+      "timestamp": "2025-08-25T13:35:59.751587+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 156,
-    "execution_timestamp": "2025-08-17T15:18:47.529725+00:00",
-    "duration_seconds": 1.0728836059570312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.764009+00:00",
+    "duration_seconds": 1.4066696166992188e-05,
     "success": true,
     "results": {
       "latency_ms": 4.44566552255445,
@@ -2371,12 +2371,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521278+00:00"
+      "timestamp": "2025-08-25T13:35:59.752425+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 283,
-    "execution_timestamp": "2025-08-17T15:18:47.529809+00:00",
-    "duration_seconds": 1.0728836059570312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.764133+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 13.154763223100773,
@@ -2402,12 +2402,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519740+00:00"
+      "timestamp": "2025-08-25T13:35:59.750613+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 47,
-    "execution_timestamp": "2025-08-17T15:18:47.529894+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.764250+00:00",
+    "duration_seconds": 1.430511474609375e-05,
     "success": true,
     "results": {
       "latency_ms": 2.287997631058465,
@@ -2433,12 +2433,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520345+00:00"
+      "timestamp": "2025-08-25T13:35:59.751241+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 98,
-    "execution_timestamp": "2025-08-17T15:18:47.529986+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.764361+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 16.548472988399872,
@@ -2464,12 +2464,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520749+00:00"
+      "timestamp": "2025-08-25T13:35:59.751745+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 166,
-    "execution_timestamp": "2025-08-17T15:18:47.530071+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.764475+00:00",
+    "duration_seconds": 1.430511474609375e-05,
     "success": true,
     "results": {
       "latency_ms": 4.565791211494609,
@@ -2495,12 +2495,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520849+00:00"
+      "timestamp": "2025-08-25T13:35:59.751885+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 189,
-    "execution_timestamp": "2025-08-17T15:18:47.530155+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.764585+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 12.82526166415479,
@@ -2526,12 +2526,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521217+00:00"
+      "timestamp": "2025-08-25T13:35:59.752349+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 268,
-    "execution_timestamp": "2025-08-17T15:18:47.530244+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.764792+00:00",
+    "duration_seconds": 2.8133392333984375e-05,
     "success": true,
     "results": {
       "latency_ms": 16.518777330721118,
@@ -2557,12 +2557,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520427+00:00"
+      "timestamp": "2025-08-25T13:35:59.751293+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 107,
-    "execution_timestamp": "2025-08-17T15:18:47.530329+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.764940+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 16.58050726315975,
@@ -2588,12 +2588,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520941+00:00"
+      "timestamp": "2025-08-25T13:35:59.751999+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 210,
-    "execution_timestamp": "2025-08-17T15:18:47.530523+00:00",
-    "duration_seconds": 1.5735626220703125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.765058+00:00",
+    "duration_seconds": 1.4066696166992188e-05,
     "success": true,
     "results": {
       "latency_ms": 2.4252933375207197,
@@ -2619,12 +2619,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521098+00:00"
+      "timestamp": "2025-08-25T13:35:59.752205+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 248,
-    "execution_timestamp": "2025-08-17T15:18:47.530624+00:00",
-    "duration_seconds": 1.1920928955078125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.765213+00:00",
+    "duration_seconds": 1.71661376953125e-05,
     "success": true,
     "results": {
       "latency_ms": 4.136235543230099,
@@ -2650,12 +2650,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520837+00:00"
+      "timestamp": "2025-08-25T13:35:59.751868+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 186,
-    "execution_timestamp": "2025-08-17T15:18:47.530710+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.765370+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 18.89839742697256,
@@ -2681,12 +2681,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519920+00:00"
+      "timestamp": "2025-08-25T13:35:59.750823+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 73,
-    "execution_timestamp": "2025-08-17T15:18:47.530803+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.765529+00:00",
+    "duration_seconds": 1.6450881958007812e-05,
     "success": true,
     "results": {
       "latency_ms": 4.442261481550175,
@@ -2712,12 +2712,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519831+00:00"
+      "timestamp": "2025-08-25T13:35:59.750703+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 54,
-    "execution_timestamp": "2025-08-17T15:18:47.530889+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.765742+00:00",
+    "duration_seconds": 2.002716064453125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.036947313846773,
@@ -2743,12 +2743,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519946+00:00"
+      "timestamp": "2025-08-25T13:35:59.750846+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 77,
-    "execution_timestamp": "2025-08-17T15:18:47.530984+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.765884+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 4.294266837871734,
@@ -2774,12 +2774,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519907+00:00"
+      "timestamp": "2025-08-25T13:35:59.750797+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 70,
-    "execution_timestamp": "2025-08-17T15:18:47.531070+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.766009+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 4.557418911486801,
@@ -2805,12 +2805,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519993+00:00"
+      "timestamp": "2025-08-25T13:35:59.750908+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 84,
-    "execution_timestamp": "2025-08-17T15:18:47.531156+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.766166+00:00",
+    "duration_seconds": 1.7404556274414062e-05,
     "success": true,
     "results": {
       "latency_ms": 4.1447228751702525,
@@ -2836,12 +2836,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520642+00:00"
+      "timestamp": "2025-08-25T13:35:59.751509+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 143,
-    "execution_timestamp": "2025-08-17T15:18:47.531244+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.766324+00:00",
+    "duration_seconds": 1.7881393432617188e-05,
     "success": true,
     "results": {
       "latency_ms": 2.2917114146283875,
@@ -2867,12 +2867,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520754+00:00"
+      "timestamp": "2025-08-25T13:35:59.751751+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 167,
-    "execution_timestamp": "2025-08-17T15:18:47.531330+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.766482+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 3.6573018444194343,
@@ -2898,12 +2898,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520975+00:00"
+      "timestamp": "2025-08-25T13:35:59.752043+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 218,
-    "execution_timestamp": "2025-08-17T15:18:47.531464+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.766679+00:00",
+    "duration_seconds": 2.2172927856445312e-05,
     "success": true,
     "results": {
       "latency_ms": 2.2726144133485917,
@@ -2929,12 +2929,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520324+00:00"
+      "timestamp": "2025-08-25T13:35:59.751214+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 93,
-    "execution_timestamp": "2025-08-17T15:18:47.531558+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.766859+00:00",
+    "duration_seconds": 2.002716064453125e-05,
     "success": true,
     "results": {
       "latency_ms": 4.884683193744391,
@@ -2960,12 +2960,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520618+00:00"
+      "timestamp": "2025-08-25T13:35:59.751476+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 137,
-    "execution_timestamp": "2025-08-17T15:18:47.531645+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.767022+00:00",
+    "duration_seconds": 1.71661376953125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.772693871818289,
@@ -2991,12 +2991,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520817+00:00"
+      "timestamp": "2025-08-25T13:35:59.751842+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 181,
-    "execution_timestamp": "2025-08-17T15:18:47.531753+00:00",
-    "duration_seconds": 1.1920928955078125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.767180+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 14.200913108331381,
@@ -3022,12 +3022,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521044+00:00"
+      "timestamp": "2025-08-25T13:35:59.752138+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 235,
-    "execution_timestamp": "2025-08-17T15:18:47.532635+00:00",
-    "duration_seconds": 6.628036499023438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.767338+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.217021775662137,
@@ -3053,12 +3053,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520532+00:00"
+      "timestamp": "2025-08-25T13:35:59.751363+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 118,
-    "execution_timestamp": "2025-08-17T15:18:47.532872+00:00",
-    "duration_seconds": 1.8358230590820312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.767500+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 15.981143447337876,
@@ -3084,12 +3084,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519989+00:00"
+      "timestamp": "2025-08-25T13:35:59.750902+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 83,
-    "execution_timestamp": "2025-08-17T15:18:47.532987+00:00",
-    "duration_seconds": 1.2874603271484375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.767769+00:00",
+    "duration_seconds": 2.1219253540039062e-05,
     "success": true,
     "results": {
       "latency_ms": 4.55671141213554,
@@ -3115,12 +3115,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521061+00:00"
+      "timestamp": "2025-08-25T13:35:59.752158+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 239,
-    "execution_timestamp": "2025-08-17T15:18:47.533086+00:00",
-    "duration_seconds": 1.1920928955078125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.767912+00:00",
+    "duration_seconds": 1.5497207641601562e-05,
     "success": true,
     "results": {
       "latency_ms": 3.8799482706163255,
@@ -3146,12 +3146,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520853+00:00"
+      "timestamp": "2025-08-25T13:35:59.751890+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 190,
-    "execution_timestamp": "2025-08-17T15:18:47.533216+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.768075+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 16.921312498811943,
@@ -3177,12 +3177,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520542+00:00"
+      "timestamp": "2025-08-25T13:35:59.751376+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 120,
-    "execution_timestamp": "2025-08-17T15:18:47.533345+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.768236+00:00",
+    "duration_seconds": 1.71661376953125e-05,
     "success": true,
     "results": {
       "latency_ms": 16.03297063859305,
@@ -3208,12 +3208,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520833+00:00"
+      "timestamp": "2025-08-25T13:35:59.751863+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 185,
-    "execution_timestamp": "2025-08-17T15:18:47.533513+00:00",
-    "duration_seconds": 1.52587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.768395+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 15.870644635683233,
@@ -3239,12 +3239,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519898+00:00"
+      "timestamp": "2025-08-25T13:35:59.750786+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 68,
-    "execution_timestamp": "2025-08-17T15:18:47.533645+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.768553+00:00",
+    "duration_seconds": 2.7418136596679688e-05,
     "success": true,
     "results": {
       "latency_ms": 2.263880908907085,
@@ -3270,12 +3270,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521249+00:00"
+      "timestamp": "2025-08-25T13:35:59.752390+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 276,
-    "execution_timestamp": "2025-08-17T15:18:47.533739+00:00",
-    "duration_seconds": 1.239776611328125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.768757+00:00",
+    "duration_seconds": 2.0265579223632812e-05,
     "success": true,
     "results": {
       "latency_ms": 15.812270222329895,
@@ -3301,12 +3301,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520897+00:00"
+      "timestamp": "2025-08-25T13:35:59.751951+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 201,
-    "execution_timestamp": "2025-08-17T15:18:47.533839+00:00",
-    "duration_seconds": 1.2159347534179688e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.768938+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 16.300517862680955,
@@ -3332,12 +3332,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521000+00:00"
+      "timestamp": "2025-08-25T13:35:59.752075+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 224,
-    "execution_timestamp": "2025-08-17T15:18:47.533926+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.769100+00:00",
+    "duration_seconds": 1.8596649169921875e-05,
     "success": true,
     "results": {
       "latency_ms": 1.8166122888337637,
@@ -3363,12 +3363,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521070+00:00"
+      "timestamp": "2025-08-25T13:35:59.752168+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 241,
-    "execution_timestamp": "2025-08-17T15:18:47.534671+00:00",
-    "duration_seconds": 4.4345855712890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.769259+00:00",
+    "duration_seconds": 1.71661376953125e-05,
     "success": true,
     "results": {
       "latency_ms": 4.734956197966266,
@@ -3394,12 +3394,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519585+00:00"
+      "timestamp": "2025-08-25T13:35:59.750550+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 42,
-    "execution_timestamp": "2025-08-17T15:18:47.534816+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.769418+00:00",
+    "duration_seconds": 1.71661376953125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.6241785382528082,
@@ -3425,12 +3425,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519622+00:00"
+      "timestamp": "2025-08-25T13:35:59.750591+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 44,
-    "execution_timestamp": "2025-08-17T15:18:47.534911+00:00",
-    "duration_seconds": 1.2636184692382812e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.769577+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 2.3123463206860317,
@@ -3456,12 +3456,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520538+00:00"
+      "timestamp": "2025-08-25T13:35:59.751371+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 119,
-    "execution_timestamp": "2025-08-17T15:18:47.535013+00:00",
-    "duration_seconds": 1.2159347534179688e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.769779+00:00",
+    "duration_seconds": 2.6464462280273438e-05,
     "success": true,
     "results": {
       "latency_ms": 15.788132295467381,
@@ -3487,12 +3487,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520010+00:00"
+      "timestamp": "2025-08-25T13:35:59.750931+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 88,
-    "execution_timestamp": "2025-08-17T15:18:47.535100+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.769949+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 4.244891407743742,
@@ -3518,12 +3518,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520638+00:00"
+      "timestamp": "2025-08-25T13:35:59.751503+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 142,
-    "execution_timestamp": "2025-08-17T15:18:47.535188+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.770107+00:00",
+    "duration_seconds": 1.8358230590820312e-05,
     "success": true,
     "results": {
       "latency_ms": 2.5324349088213784,
@@ -3549,12 +3549,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521245+00:00"
+      "timestamp": "2025-08-25T13:35:59.752385+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 275,
-    "execution_timestamp": "2025-08-17T15:18:47.535279+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.770264+00:00",
+    "duration_seconds": 1.7404556274414062e-05,
     "success": true,
     "results": {
       "latency_ms": 18.256265270427313,
@@ -3580,12 +3580,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520845+00:00"
+      "timestamp": "2025-08-25T13:35:59.751879+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 188,
-    "execution_timestamp": "2025-08-17T15:18:47.535368+00:00",
-    "duration_seconds": 4.839897155761719e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.770423+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 18.130728193543646,
@@ -3611,12 +3611,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520962+00:00"
+      "timestamp": "2025-08-25T13:35:59.752026+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 215,
-    "execution_timestamp": "2025-08-17T15:18:47.535542+00:00",
-    "duration_seconds": 1.7881393432617188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.770544+00:00",
+    "duration_seconds": 1.5735626220703125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.4908650265144936,
@@ -3642,12 +3642,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520593+00:00"
+      "timestamp": "2025-08-25T13:35:59.751449+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 132,
-    "execution_timestamp": "2025-08-17T15:18:47.535676+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.770717+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 2.363024621512417,
@@ -3673,12 +3673,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520573+00:00"
+      "timestamp": "2025-08-25T13:35:59.751414+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 127,
-    "execution_timestamp": "2025-08-17T15:18:47.535805+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.770852+00:00",
+    "duration_seconds": 1.5735626220703125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.3570476293351543,
@@ -3704,12 +3704,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521094+00:00"
+      "timestamp": "2025-08-25T13:35:59.752200+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 247,
-    "execution_timestamp": "2025-08-17T15:18:47.535942+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.770976+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 4.512443463388176,
@@ -3735,11 +3735,11 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521122+00:00"
+      "timestamp": "2025-08-25T13:35:59.752234+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 254,
-    "execution_timestamp": "2025-08-17T15:18:47.536096+00:00",
+    "execution_timestamp": "2025-08-25T13:35:59.771095+00:00",
     "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
@@ -3766,12 +3766,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520630+00:00"
+      "timestamp": "2025-08-25T13:35:59.751492+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 140,
-    "execution_timestamp": "2025-08-17T15:18:47.536204+00:00",
-    "duration_seconds": 1.1920928955078125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.771212+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 2.3832080446838138,
@@ -3797,12 +3797,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519951+00:00"
+      "timestamp": "2025-08-25T13:35:59.750872+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 78,
-    "execution_timestamp": "2025-08-17T15:18:47.536319+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.771376+00:00",
+    "duration_seconds": 1.71661376953125e-05,
     "success": true,
     "results": {
       "latency_ms": 4.251259377634341,
@@ -3828,12 +3828,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520829+00:00"
+      "timestamp": "2025-08-25T13:35:59.751858+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 184,
-    "execution_timestamp": "2025-08-17T15:18:47.536468+00:00",
-    "duration_seconds": 1.5020370483398438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.771539+00:00",
+    "duration_seconds": 1.7881393432617188e-05,
     "success": true,
     "results": {
       "latency_ms": 15.814836023296843,
@@ -3859,12 +3859,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520366+00:00"
+      "timestamp": "2025-08-25T13:35:59.751269+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 103,
-    "execution_timestamp": "2025-08-17T15:18:47.536600+00:00",
-    "duration_seconds": 1.2874603271484375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.771815+00:00",
+    "duration_seconds": 2.1219253540039062e-05,
     "success": true,
     "results": {
       "latency_ms": 13.826140206369331,
@@ -3890,12 +3890,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519879+00:00"
+      "timestamp": "2025-08-25T13:35:59.750763+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 64,
-    "execution_timestamp": "2025-08-17T15:18:47.536726+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.771946+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.7750807348079216,
@@ -3921,12 +3921,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520724+00:00"
+      "timestamp": "2025-08-25T13:35:59.751609+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 160,
-    "execution_timestamp": "2025-08-17T15:18:47.536854+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.772250+00:00",
+    "duration_seconds": 3.1948089599609375e-05,
     "success": true,
     "results": {
       "latency_ms": 3.991352650286207,
@@ -3952,12 +3952,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521146+00:00"
+      "timestamp": "2025-08-25T13:35:59.752265+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 260,
-    "execution_timestamp": "2025-08-17T15:18:47.536960+00:00",
-    "duration_seconds": 1.239776611328125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.772430+00:00",
+    "duration_seconds": 1.8358230590820312e-05,
     "success": true,
     "results": {
       "latency_ms": 15.57609139449814,
@@ -3983,12 +3983,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520805+00:00"
+      "timestamp": "2025-08-25T13:35:59.751827+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 178,
-    "execution_timestamp": "2025-08-17T15:18:47.537086+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.772589+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 14.916423014621046,
@@ -4014,12 +4014,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519826+00:00"
+      "timestamp": "2025-08-25T13:35:59.750697+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 53,
-    "execution_timestamp": "2025-08-17T15:18:47.537214+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.772798+00:00",
+    "duration_seconds": 2.8848648071289062e-05,
     "success": true,
     "results": {
       "latency_ms": 2.5514662167126567,
@@ -4045,12 +4045,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521261+00:00"
+      "timestamp": "2025-08-25T13:35:59.752405+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 279,
-    "execution_timestamp": "2025-08-17T15:18:47.537342+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.772937+00:00",
+    "duration_seconds": 2.5510787963867188e-05,
     "success": true,
     "results": {
       "latency_ms": 15.466132376080662,
@@ -4076,12 +4076,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519902+00:00"
+      "timestamp": "2025-08-25T13:35:59.750792+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 69,
-    "execution_timestamp": "2025-08-17T15:18:47.537498+00:00",
-    "duration_seconds": 1.5020370483398438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.773142+00:00",
+    "duration_seconds": 3.2901763916015625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.5845129813902,
@@ -4107,12 +4107,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521164+00:00"
+      "timestamp": "2025-08-25T13:35:59.752284+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 264,
-    "execution_timestamp": "2025-08-17T15:18:47.537652+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.773368+00:00",
+    "duration_seconds": 2.3126602172851562e-05,
     "success": true,
     "results": {
       "latency_ms": 14.660552886970894,
@@ -4138,12 +4138,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519732+00:00"
+      "timestamp": "2025-08-25T13:35:59.750606+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 46,
-    "execution_timestamp": "2025-08-17T15:18:47.537758+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.773504+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 2.6462189599676296,
@@ -4169,12 +4169,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520741+00:00"
+      "timestamp": "2025-08-25T13:35:59.751734+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 164,
-    "execution_timestamp": "2025-08-17T15:18:47.537851+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.773707+00:00",
+    "duration_seconds": 2.5272369384765625e-05,
     "success": true,
     "results": {
       "latency_ms": 3.62223103188067,
@@ -4200,12 +4200,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519932+00:00"
+      "timestamp": "2025-08-25T13:35:59.750828+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 74,
-    "execution_timestamp": "2025-08-17T15:18:47.537985+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.773887+00:00",
+    "duration_seconds": 1.6450881958007812e-05,
     "success": true,
     "results": {
       "latency_ms": 4.455505107399251,
@@ -4231,12 +4231,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520821+00:00"
+      "timestamp": "2025-08-25T13:35:59.751848+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 182,
-    "execution_timestamp": "2025-08-17T15:18:47.538083+00:00",
-    "duration_seconds": 1.1920928955078125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.774006+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 16.217377232337334,
@@ -4262,12 +4262,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520957+00:00"
+      "timestamp": "2025-08-25T13:35:59.752020+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 214,
-    "execution_timestamp": "2025-08-17T15:18:47.538175+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.774124+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.465012139645816,
@@ -4293,12 +4293,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520813+00:00"
+      "timestamp": "2025-08-25T13:35:59.751837+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 180,
-    "execution_timestamp": "2025-08-17T15:18:47.538300+00:00",
-    "duration_seconds": 1.3113021850585938e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.774238+00:00",
+    "duration_seconds": 1.3828277587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 14.405208944137044,
@@ -4324,12 +4324,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520370+00:00"
+      "timestamp": "2025-08-25T13:35:59.751275+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 104,
-    "execution_timestamp": "2025-08-17T15:18:47.538508+00:00",
-    "duration_seconds": 1.5735626220703125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.774351+00:00",
+    "duration_seconds": 1.4543533325195312e-05,
     "success": true,
     "results": {
       "latency_ms": 15.139223094524642,
@@ -4355,12 +4355,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520801+00:00"
+      "timestamp": "2025-08-25T13:35:59.751822+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 177,
-    "execution_timestamp": "2025-08-17T15:18:47.538645+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.774465+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 18.163031001810168,
@@ -4386,12 +4386,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520766+00:00"
+      "timestamp": "2025-08-25T13:35:59.751767+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 170,
-    "execution_timestamp": "2025-08-17T15:18:47.538774+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.774578+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.214333114122985,
@@ -4417,12 +4417,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521150+00:00"
+      "timestamp": "2025-08-25T13:35:59.752270+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 261,
-    "execution_timestamp": "2025-08-17T15:18:47.538902+00:00",
-    "duration_seconds": 1.3113021850585938e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.774839+00:00",
+    "duration_seconds": 2.2649765014648438e-05,
     "success": true,
     "results": {
       "latency_ms": 15.694068594217626,
@@ -4448,12 +4448,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521004+00:00"
+      "timestamp": "2025-08-25T13:35:59.752081+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 225,
-    "execution_timestamp": "2025-08-17T15:18:47.539036+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.774981+00:00",
+    "duration_seconds": 1.5735626220703125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.577502556783494,
@@ -4479,12 +4479,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520449+00:00"
+      "timestamp": "2025-08-25T13:35:59.751321+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 112,
-    "execution_timestamp": "2025-08-17T15:18:47.539162+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.775141+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 18.134814679933854,
@@ -4510,12 +4510,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521016+00:00"
+      "timestamp": "2025-08-25T13:35:59.752103+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 228,
-    "execution_timestamp": "2025-08-17T15:18:47.539287+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.775301+00:00",
+    "duration_seconds": 1.7881393432617188e-05,
     "success": true,
     "results": {
       "latency_ms": 2.8178286775492625,
@@ -4541,12 +4541,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520421+00:00"
+      "timestamp": "2025-08-25T13:35:59.751286+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 106,
-    "execution_timestamp": "2025-08-17T15:18:47.539445+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.775461+00:00",
+    "duration_seconds": 1.7881393432617188e-05,
     "success": true,
     "results": {
       "latency_ms": 19.220597201158405,
@@ -4572,12 +4572,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520002+00:00"
+      "timestamp": "2025-08-25T13:35:59.750920+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 86,
-    "execution_timestamp": "2025-08-17T15:18:47.539574+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.775619+00:00",
+    "duration_seconds": 0.00012302398681640625,
     "success": true,
     "results": {
       "latency_ms": 3.949559998033733,
@@ -4603,12 +4603,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520885+00:00"
+      "timestamp": "2025-08-25T13:35:59.751935+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 198,
-    "execution_timestamp": "2025-08-17T15:18:47.539702+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.775932+00:00",
+    "duration_seconds": 2.09808349609375e-05,
     "success": true,
     "results": {
       "latency_ms": 16.5396220300708,
@@ -4634,12 +4634,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519984+00:00"
+      "timestamp": "2025-08-25T13:35:59.750897+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 82,
-    "execution_timestamp": "2025-08-17T15:18:47.539831+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.776099+00:00",
+    "duration_seconds": 1.9311904907226562e-05,
     "success": true,
     "results": {
       "latency_ms": 4.553073169157535,
@@ -4665,12 +4665,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520745+00:00"
+      "timestamp": "2025-08-25T13:35:59.751739+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 165,
-    "execution_timestamp": "2025-08-17T15:18:47.539966+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.776313+00:00",
+    "duration_seconds": 2.002716064453125e-05,
     "success": true,
     "results": {
       "latency_ms": 4.370498287917787,
@@ -4696,12 +4696,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519884+00:00"
+      "timestamp": "2025-08-25T13:35:59.750768+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 65,
-    "execution_timestamp": "2025-08-17T15:18:47.540063+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.776535+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.291583794216829,
@@ -4727,12 +4727,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520996+00:00"
+      "timestamp": "2025-08-25T13:35:59.752069+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 223,
-    "execution_timestamp": "2025-08-17T15:18:47.540154+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.776836+00:00",
+    "duration_seconds": 2.3365020751953125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.6336936449199957,
@@ -4758,12 +4758,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520980+00:00"
+      "timestamp": "2025-08-25T13:35:59.752048+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 219,
-    "execution_timestamp": "2025-08-17T15:18:47.540277+00:00",
-    "duration_seconds": 1.3113021850585938e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.777065+00:00",
+    "duration_seconds": 1.9073486328125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.357157596606937,
@@ -4789,12 +4789,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520556+00:00"
+      "timestamp": "2025-08-25T13:35:59.751392+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 123,
-    "execution_timestamp": "2025-08-17T15:18:47.540442+00:00",
-    "duration_seconds": 1.4781951904296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.777287+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.2285923491748596,
@@ -4820,12 +4820,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519980+00:00"
+      "timestamp": "2025-08-25T13:35:59.750891+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 81,
-    "execution_timestamp": "2025-08-17T15:18:47.540543+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.777505+00:00",
+    "duration_seconds": 1.9550323486328125e-05,
     "success": true,
     "results": {
       "latency_ms": 3.6288418562681515,
@@ -4851,12 +4851,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521117+00:00"
+      "timestamp": "2025-08-25T13:35:59.752229+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 253,
-    "execution_timestamp": "2025-08-17T15:18:47.540636+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.777794+00:00",
+    "duration_seconds": 2.9802322387695312e-05,
     "success": true,
     "results": {
       "latency_ms": 4.566060605829572,
@@ -4882,12 +4882,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520014+00:00"
+      "timestamp": "2025-08-25T13:35:59.750937+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 89,
-    "execution_timestamp": "2025-08-17T15:18:47.540761+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.778030+00:00",
+    "duration_seconds": 1.9550323486328125e-05,
     "success": true,
     "results": {
       "latency_ms": 3.4886333888502192,
@@ -4913,12 +4913,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520614+00:00"
+      "timestamp": "2025-08-25T13:35:59.751471+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 136,
-    "execution_timestamp": "2025-08-17T15:18:47.540891+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.778258+00:00",
+    "duration_seconds": 2.002716064453125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.46090363799199,
@@ -4944,12 +4944,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521008+00:00"
+      "timestamp": "2025-08-25T13:35:59.752090+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 226,
-    "execution_timestamp": "2025-08-17T15:18:47.541026+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.778479+00:00",
+    "duration_seconds": 1.8596649169921875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.42594328545848,
@@ -4975,12 +4975,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519998+00:00"
+      "timestamp": "2025-08-25T13:35:59.750914+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 85,
-    "execution_timestamp": "2025-08-17T15:18:47.541156+00:00",
-    "duration_seconds": 1.2874603271484375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.778765+00:00",
+    "duration_seconds": 2.2649765014648438e-05,
     "success": true,
     "results": {
       "latency_ms": 4.274277302853123,
@@ -5006,12 +5006,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520841+00:00"
+      "timestamp": "2025-08-25T13:35:59.751874+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 187,
-    "execution_timestamp": "2025-08-17T15:18:47.541284+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.779003+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 17.961215811042845,
@@ -5037,12 +5037,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520921+00:00"
+      "timestamp": "2025-08-25T13:35:59.751983+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 207,
-    "execution_timestamp": "2025-08-17T15:18:47.541444+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.779231+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 1.9264044411041912,
@@ -5068,12 +5068,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519719+00:00"
+      "timestamp": "2025-08-25T13:35:59.750599+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 45,
-    "execution_timestamp": "2025-08-17T15:18:47.541572+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.779454+00:00",
+    "duration_seconds": 1.8358230590820312e-05,
     "success": true,
     "results": {
       "latency_ms": 2.5065936932123907,
@@ -5099,12 +5099,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520658+00:00"
+      "timestamp": "2025-08-25T13:35:59.751530+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 147,
-    "execution_timestamp": "2025-08-17T15:18:47.541699+00:00",
-    "duration_seconds": 5.340576171875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.779820+00:00",
+    "duration_seconds": 2.7418136596679688e-05,
     "success": true,
     "results": {
       "latency_ms": 2.8489701109948555,
@@ -5130,12 +5130,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520333+00:00"
+      "timestamp": "2025-08-25T13:35:59.751225+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 95,
-    "execution_timestamp": "2025-08-17T15:18:47.541890+00:00",
-    "duration_seconds": 1.6450881958007812e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.780065+00:00",
+    "duration_seconds": 1.9073486328125e-05,
     "success": true,
     "results": {
       "latency_ms": 3.9209986621879613,
@@ -5161,12 +5161,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520788+00:00"
+      "timestamp": "2025-08-25T13:35:59.751811+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 175,
-    "execution_timestamp": "2025-08-17T15:18:47.542029+00:00",
-    "duration_seconds": 1.430511474609375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.780291+00:00",
+    "duration_seconds": 1.9073486328125e-05,
     "success": true,
     "results": {
       "latency_ms": 3.9332635021528843,
@@ -5192,12 +5192,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521155+00:00"
+      "timestamp": "2025-08-25T13:35:59.752274+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 262,
-    "execution_timestamp": "2025-08-17T15:18:47.542158+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.780519+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 18.193930189071867,
@@ -5223,12 +5223,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521090+00:00"
+      "timestamp": "2025-08-25T13:35:59.752195+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 246,
-    "execution_timestamp": "2025-08-17T15:18:47.542286+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.780820+00:00",
+    "duration_seconds": 2.4557113647460938e-05,
     "success": true,
     "results": {
       "latency_ms": 4.566891718702559,
@@ -5254,12 +5254,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521213+00:00"
+      "timestamp": "2025-08-25T13:35:59.752345+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 267,
-    "execution_timestamp": "2025-08-17T15:18:47.542492+00:00",
-    "duration_seconds": 1.71661376953125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.781054+00:00",
+    "duration_seconds": 2.1696090698242188e-05,
     "success": true,
     "results": {
       "latency_ms": 16.44411750651521,
@@ -5285,12 +5285,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520315+00:00"
+      "timestamp": "2025-08-25T13:35:59.751203+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 91,
-    "execution_timestamp": "2025-08-17T15:18:47.542631+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.781193+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 3.9454291725514,
@@ -5316,12 +5316,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520913+00:00"
+      "timestamp": "2025-08-25T13:35:59.751973+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 205,
-    "execution_timestamp": "2025-08-17T15:18:47.542757+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.781319+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.5178686651196336,
@@ -5347,12 +5347,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520551+00:00"
+      "timestamp": "2025-08-25T13:35:59.751386+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 122,
-    "execution_timestamp": "2025-08-17T15:18:47.542884+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.781434+00:00",
+    "duration_seconds": 1.5497207641601562e-05,
     "success": true,
     "results": {
       "latency_ms": 16.565794622358762,
@@ -5378,12 +5378,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519941+00:00"
+      "timestamp": "2025-08-25T13:35:59.750841+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 76,
-    "execution_timestamp": "2025-08-17T15:18:47.543021+00:00",
-    "duration_seconds": 1.52587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.781550+00:00",
+    "duration_seconds": 1.430511474609375e-05,
     "success": true,
     "results": {
       "latency_ms": 4.594926550501934,
@@ -5409,12 +5409,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521074+00:00"
+      "timestamp": "2025-08-25T13:35:59.752173+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 242,
-    "execution_timestamp": "2025-08-17T15:18:47.543119+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.781760+00:00",
+    "duration_seconds": 2.1457672119140625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.0498418504029665,
@@ -5440,12 +5440,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519751+00:00"
+      "timestamp": "2025-08-25T13:35:59.750667+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 49,
-    "execution_timestamp": "2025-08-17T15:18:47.543209+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.781907+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 2.239210230448351,
@@ -5471,12 +5471,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520954+00:00"
+      "timestamp": "2025-08-25T13:35:59.752015+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 213,
-    "execution_timestamp": "2025-08-17T15:18:47.543334+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.782026+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.5337113668672933,
@@ -5502,12 +5502,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520679+00:00"
+      "timestamp": "2025-08-25T13:35:59.751565+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 152,
-    "execution_timestamp": "2025-08-17T15:18:47.543487+00:00",
-    "duration_seconds": 1.4781951904296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.782151+00:00",
+    "duration_seconds": 1.430511474609375e-05,
     "success": true,
     "results": {
       "latency_ms": 4.166252228804394,
@@ -5533,12 +5533,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520601+00:00"
+      "timestamp": "2025-08-25T13:35:59.751454+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 133,
-    "execution_timestamp": "2025-08-17T15:18:47.543617+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.782267+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.24279848137025,
@@ -5564,12 +5564,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520565+00:00"
+      "timestamp": "2025-08-25T13:35:59.751403+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 125,
-    "execution_timestamp": "2025-08-17T15:18:47.543744+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.782383+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.3252907640708393,
@@ -5595,12 +5595,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521138+00:00"
+      "timestamp": "2025-08-25T13:35:59.752255+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 258,
-    "execution_timestamp": "2025-08-17T15:18:47.543872+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.782599+00:00",
+    "duration_seconds": 1.9550323486328125e-05,
     "success": true,
     "results": {
       "latency_ms": 16.185649602866064,
@@ -5626,12 +5626,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521160+00:00"
+      "timestamp": "2025-08-25T13:35:59.752279+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 263,
-    "execution_timestamp": "2025-08-17T15:18:47.544003+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.782859+00:00",
+    "duration_seconds": 2.288818359375e-05,
     "success": true,
     "results": {
       "latency_ms": 18.199837278320288,
@@ -5657,12 +5657,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520589+00:00"
+      "timestamp": "2025-08-25T13:35:59.751443+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 131,
-    "execution_timestamp": "2025-08-17T15:18:47.544130+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.783082+00:00",
+    "duration_seconds": 1.8596649169921875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.6125558027696956,
@@ -5688,12 +5688,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519757+00:00"
+      "timestamp": "2025-08-25T13:35:59.750676+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 50,
-    "execution_timestamp": "2025-08-17T15:18:47.544258+00:00",
-    "duration_seconds": 1.3113021850585938e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.783305+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.109911972829087,
@@ -5719,12 +5719,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519836+00:00"
+      "timestamp": "2025-08-25T13:35:59.750710+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 55,
-    "execution_timestamp": "2025-08-17T15:18:47.544414+00:00",
-    "duration_seconds": 1.52587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.783533+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.0940672213415015,
@@ -5750,12 +5750,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520358+00:00"
+      "timestamp": "2025-08-25T13:35:59.751259+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 101,
-    "execution_timestamp": "2025-08-17T15:18:47.544548+00:00",
-    "duration_seconds": 2.0503997802734375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.783889+00:00",
+    "duration_seconds": 2.6941299438476562e-05,
     "success": true,
     "results": {
       "latency_ms": 20.076822746251903,
@@ -5781,12 +5781,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521106+00:00"
+      "timestamp": "2025-08-25T13:35:59.752215+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 250,
-    "execution_timestamp": "2025-08-17T15:18:47.544683+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.784067+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 3.9059489258876283,
@@ -5812,12 +5812,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520779+00:00"
+      "timestamp": "2025-08-25T13:35:59.751792+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 173,
-    "execution_timestamp": "2025-08-17T15:18:47.544810+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.784193+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.314662763965767,
@@ -5843,12 +5843,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519855+00:00"
+      "timestamp": "2025-08-25T13:35:59.750734+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 59,
-    "execution_timestamp": "2025-08-17T15:18:47.544944+00:00",
-    "duration_seconds": 1.430511474609375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.784349+00:00",
+    "duration_seconds": 1.7404556274414062e-05,
     "success": true,
     "results": {
       "latency_ms": 2.082679119651319,
@@ -5874,12 +5874,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520932+00:00"
+      "timestamp": "2025-08-25T13:35:59.751988+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 208,
-    "execution_timestamp": "2025-08-17T15:18:47.545073+00:00",
-    "duration_seconds": 1.3113021850585938e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.784473+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.5270098631227764,
@@ -5905,12 +5905,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520458+00:00"
+      "timestamp": "2025-08-25T13:35:59.751332+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 114,
-    "execution_timestamp": "2025-08-17T15:18:47.545200+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.784691+00:00",
+    "duration_seconds": 2.5272369384765625e-05,
     "success": true,
     "results": {
       "latency_ms": 15.765615957518804,
@@ -5936,12 +5936,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521126+00:00"
+      "timestamp": "2025-08-25T13:35:59.752239+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 255,
-    "execution_timestamp": "2025-08-17T15:18:47.545334+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.784891+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 3.564367017961121,
@@ -5967,12 +5967,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520796+00:00"
+      "timestamp": "2025-08-25T13:35:59.751816+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 176,
-    "execution_timestamp": "2025-08-17T15:18:47.545474+00:00",
-    "duration_seconds": 1.3828277587890625e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.785016+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 3.6987198367785847,
@@ -5998,12 +5998,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521065+00:00"
+      "timestamp": "2025-08-25T13:35:59.752163+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 240,
-    "execution_timestamp": "2025-08-17T15:18:47.545574+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.785180+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 3.9554225196956914,
@@ -6029,12 +6029,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521205+00:00"
+      "timestamp": "2025-08-25T13:35:59.752334+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 265,
-    "execution_timestamp": "2025-08-17T15:18:47.545680+00:00",
-    "duration_seconds": 1.239776611328125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.785304+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 18.84880622697415,
@@ -6060,12 +6060,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520414+00:00"
+      "timestamp": "2025-08-25T13:35:59.751280+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 105,
-    "execution_timestamp": "2025-08-17T15:18:47.545807+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.785420+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 15.412385446079332,
@@ -6091,12 +6091,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520337+00:00"
+      "timestamp": "2025-08-25T13:35:59.751231+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 96,
-    "execution_timestamp": "2025-08-17T15:18:47.545904+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.785575+00:00",
+    "duration_seconds": 1.6927719116210938e-05,
     "success": true,
     "results": {
       "latency_ms": 15.910359484130275,
@@ -6122,12 +6122,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520666+00:00"
+      "timestamp": "2025-08-25T13:35:59.751541+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 149,
-    "execution_timestamp": "2025-08-17T15:18:47.546038+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.785836+00:00",
+    "duration_seconds": 2.288818359375e-05,
     "success": true,
     "results": {
       "latency_ms": 2.525452361925934,
@@ -6153,12 +6153,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520319+00:00"
+      "timestamp": "2025-08-25T13:35:59.751209+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 92,
-    "execution_timestamp": "2025-08-17T15:18:47.546166+00:00",
-    "duration_seconds": 1.3113021850585938e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.786003+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.296725681548565,
@@ -6184,12 +6184,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521078+00:00"
+      "timestamp": "2025-08-25T13:35:59.752180+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 243,
-    "execution_timestamp": "2025-08-17T15:18:47.546292+00:00",
-    "duration_seconds": 1.2874603271484375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.786129+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.465808031652762,
@@ -6215,12 +6215,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520966+00:00"
+      "timestamp": "2025-08-25T13:35:59.752032+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 216,
-    "execution_timestamp": "2025-08-17T15:18:47.546493+00:00",
-    "duration_seconds": 1.6689300537109375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.786244+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.2421213461598155,
@@ -6246,12 +6246,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521229+00:00"
+      "timestamp": "2025-08-25T13:35:59.752365+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 271,
-    "execution_timestamp": "2025-08-17T15:18:47.546629+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.786372+00:00",
+    "duration_seconds": 1.5497207641601562e-05,
     "success": true,
     "results": {
       "latency_ms": 13.585808217608436,
@@ -6277,12 +6277,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521028+00:00"
+      "timestamp": "2025-08-25T13:35:59.752118+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 231,
-    "execution_timestamp": "2025-08-17T15:18:47.546758+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.786489+00:00",
+    "duration_seconds": 1.4066696166992188e-05,
     "success": true,
     "results": {
       "latency_ms": 4.375536232559194,
@@ -6308,12 +6308,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521269+00:00"
+      "timestamp": "2025-08-25T13:35:59.752415+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 281,
-    "execution_timestamp": "2025-08-17T15:18:47.546886+00:00",
-    "duration_seconds": 1.4066696166992188e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.786709+00:00",
+    "duration_seconds": 2.3126602172851562e-05,
     "success": true,
     "results": {
       "latency_ms": 14.440843466320072,
@@ -6339,12 +6339,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521237+00:00"
+      "timestamp": "2025-08-25T13:35:59.752375+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 273,
-    "execution_timestamp": "2025-08-17T15:18:47.547021+00:00",
-    "duration_seconds": 1.4543533325195312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.786896+00:00",
+    "duration_seconds": 1.8358230590820312e-05,
     "success": true,
     "results": {
       "latency_ms": 17.142601598166458,
@@ -6370,12 +6370,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520945+00:00"
+      "timestamp": "2025-08-25T13:35:59.752004+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 211,
-    "execution_timestamp": "2025-08-17T15:18:47.547115+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.787021+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 2.6747954438218606,
@@ -6401,12 +6401,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520354+00:00"
+      "timestamp": "2025-08-25T13:35:59.751253+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 100,
-    "execution_timestamp": "2025-08-17T15:18:47.547204+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.787190+00:00",
+    "duration_seconds": 1.7404556274414062e-05,
     "success": true,
     "results": {
       "latency_ms": 13.035370552573578,
@@ -6432,12 +6432,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520308+00:00"
+      "timestamp": "2025-08-25T13:35:59.751196+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 90,
-    "execution_timestamp": "2025-08-17T15:18:47.547292+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.787314+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 4.105715599356283,
@@ -6463,12 +6463,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520585+00:00"
+      "timestamp": "2025-08-25T13:35:59.751437+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 130,
-    "execution_timestamp": "2025-08-17T15:18:47.547413+00:00",
-    "duration_seconds": 1.4781951904296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.787432+00:00",
+    "duration_seconds": 1.4543533325195312e-05,
     "success": true,
     "results": {
       "latency_ms": 2.393109790740018,
@@ -6494,12 +6494,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519874+00:00"
+      "timestamp": "2025-08-25T13:35:59.750757+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 63,
-    "execution_timestamp": "2025-08-17T15:18:47.547520+00:00",
-    "duration_seconds": 1.1920928955078125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.787589+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 1.9652553366204764,
@@ -6525,12 +6525,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520349+00:00"
+      "timestamp": "2025-08-25T13:35:59.751247+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 99,
-    "execution_timestamp": "2025-08-17T15:18:47.547612+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.787949+00:00",
+    "duration_seconds": 2.8133392333984375e-05,
     "success": true,
     "results": {
       "latency_ms": 15.575073028530921,
@@ -6556,12 +6556,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521086+00:00"
+      "timestamp": "2025-08-25T13:35:59.752190+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 245,
-    "execution_timestamp": "2025-08-17T15:18:47.547698+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.788128+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 4.102237683156519,
@@ -6587,12 +6587,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520901+00:00"
+      "timestamp": "2025-08-25T13:35:59.751956+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 202,
-    "execution_timestamp": "2025-08-17T15:18:47.547783+00:00",
-    "duration_seconds": 1.0728836059570312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.788252+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 14.637319487710167,
@@ -6618,12 +6618,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521253+00:00"
+      "timestamp": "2025-08-25T13:35:59.752394+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 277,
-    "execution_timestamp": "2025-08-17T15:18:47.547866+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.788410+00:00",
+    "duration_seconds": 1.7404556274414062e-05,
     "success": true,
     "results": {
       "latency_ms": 12.563712682783597,
@@ -6649,12 +6649,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521021+00:00"
+      "timestamp": "2025-08-25T13:35:59.752108+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 229,
-    "execution_timestamp": "2025-08-17T15:18:47.547959+00:00",
-    "duration_seconds": 1.1920928955078125e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.788532+00:00",
+    "duration_seconds": 1.52587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 2.565194537479329,
@@ -6680,12 +6680,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521036+00:00"
+      "timestamp": "2025-08-25T13:35:59.752128+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 233,
-    "execution_timestamp": "2025-08-17T15:18:47.548046+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.788797+00:00",
+    "duration_seconds": 3.0994415283203125e-05,
     "success": true,
     "results": {
       "latency_ms": 4.570172765073547,
@@ -6711,12 +6711,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520771+00:00"
+      "timestamp": "2025-08-25T13:35:59.751773+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 171,
-    "execution_timestamp": "2025-08-17T15:18:47.548132+00:00",
-    "duration_seconds": 1.0728836059570312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.788942+00:00",
+    "duration_seconds": 1.4543533325195312e-05,
     "success": true,
     "results": {
       "latency_ms": 4.534198928639187,
@@ -6742,12 +6742,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519971+00:00"
+      "timestamp": "2025-08-25T13:35:59.750879+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 79,
-    "execution_timestamp": "2025-08-17T15:18:47.548217+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.789109+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.8071292952765647,
@@ -6773,12 +6773,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520889+00:00"
+      "timestamp": "2025-08-25T13:35:59.751940+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 199,
-    "execution_timestamp": "2025-08-17T15:18:47.548301+00:00",
-    "duration_seconds": 1.0728836059570312e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.789232+00:00",
+    "duration_seconds": 1.5497207641601562e-05,
     "success": true,
     "results": {
       "latency_ms": 17.550752942686632,
@@ -6804,12 +6804,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521225+00:00"
+      "timestamp": "2025-08-25T13:35:59.752360+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 270,
-    "execution_timestamp": "2025-08-17T15:18:47.548426+00:00",
-    "duration_seconds": 1.430511474609375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.789387+00:00",
+    "duration_seconds": 1.7642974853515625e-05,
     "success": true,
     "results": {
       "latency_ms": 17.303984557056896,
@@ -6835,12 +6835,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519613+00:00"
+      "timestamp": "2025-08-25T13:35:59.750581+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 43,
-    "execution_timestamp": "2025-08-17T15:18:47.548560+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.789512+00:00",
+    "duration_seconds": 1.5735626220703125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.564349981336173,
@@ -6866,12 +6866,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520328+00:00"
+      "timestamp": "2025-08-25T13:35:59.751219+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 94,
-    "execution_timestamp": "2025-08-17T15:18:47.548686+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.789679+00:00",
+    "duration_seconds": 2.7179718017578125e-05,
     "success": true,
     "results": {
       "latency_ms": 4.51225035051561,
@@ -6897,12 +6897,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520857+00:00"
+      "timestamp": "2025-08-25T13:35:59.751896+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 191,
-    "execution_timestamp": "2025-08-17T15:18:47.548812+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.789883+00:00",
+    "duration_seconds": 1.9073486328125e-05,
     "success": true,
     "results": {
       "latency_ms": 13.191485383121917,
@@ -6928,12 +6928,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520775+00:00"
+      "timestamp": "2025-08-25T13:35:59.751786+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 172,
-    "execution_timestamp": "2025-08-17T15:18:47.548944+00:00",
-    "duration_seconds": 1.3589859008789062e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.790008+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 4.6855611290565635,
@@ -6959,12 +6959,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520865+00:00"
+      "timestamp": "2025-08-25T13:35:59.751907+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 193,
-    "execution_timestamp": "2025-08-17T15:18:47.549039+00:00",
-    "duration_seconds": 1.2159347534179688e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.790129+00:00",
+    "duration_seconds": 1.4543533325195312e-05,
     "success": true,
     "results": {
       "latency_ms": 18.46218274958238,
@@ -6990,12 +6990,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520650+00:00"
+      "timestamp": "2025-08-25T13:35:59.751519+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 145,
-    "execution_timestamp": "2025-08-17T15:18:47.549126+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.790243+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 2.2928443056969967,
@@ -7021,12 +7021,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520634+00:00"
+      "timestamp": "2025-08-25T13:35:59.751498+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 141,
-    "execution_timestamp": "2025-08-17T15:18:47.549212+00:00",
-    "duration_seconds": 1.1682510375976562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.790359+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.511339101622907,
@@ -7052,12 +7052,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520715+00:00"
+      "timestamp": "2025-08-25T13:35:59.751598+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 158,
-    "execution_timestamp": "2025-08-17T15:18:47.549296+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.790473+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 4.785905494799367,
@@ -7083,12 +7083,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520581+00:00"
+      "timestamp": "2025-08-25T13:35:59.751425+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 129,
-    "execution_timestamp": "2025-08-17T15:18:47.549417+00:00",
-    "duration_seconds": 1.4781951904296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.790689+00:00",
+    "duration_seconds": 2.2411346435546875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.0927971555155773,
@@ -7114,12 +7114,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521082+00:00"
+      "timestamp": "2025-08-25T13:35:59.752185+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 244,
-    "execution_timestamp": "2025-08-17T15:18:47.549525+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.790881+00:00",
+    "duration_seconds": 1.9311904907226562e-05,
     "success": true,
     "results": {
       "latency_ms": 3.9637281977156915,
@@ -7145,12 +7145,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520523+00:00"
+      "timestamp": "2025-08-25T13:35:59.751352+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 116,
-    "execution_timestamp": "2025-08-17T15:18:47.549615+00:00",
-    "duration_seconds": 1.1205673217773438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.791005+00:00",
+    "duration_seconds": 1.5020370483398438e-05,
     "success": true,
     "results": {
       "latency_ms": 13.44216706751696,
@@ -7176,12 +7176,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521129+00:00"
+      "timestamp": "2025-08-25T13:35:59.752244+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 256,
-    "execution_timestamp": "2025-08-17T15:18:47.549703+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.791164+00:00",
+    "duration_seconds": 1.7404556274414062e-05,
     "success": true,
     "results": {
       "latency_ms": 4.243807229884743,
@@ -7207,12 +7207,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521114+00:00"
+      "timestamp": "2025-08-25T13:35:59.752224+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 252,
-    "execution_timestamp": "2025-08-17T15:18:47.549790+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.791289+00:00",
+    "duration_seconds": 1.4781951904296875e-05,
     "success": true,
     "results": {
       "latency_ms": 4.195170634221453,
@@ -7238,12 +7238,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520737+00:00"
+      "timestamp": "2025-08-25T13:35:59.751726+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 163,
-    "execution_timestamp": "2025-08-17T15:18:47.549875+00:00",
-    "duration_seconds": 1.0967254638671875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.791406+00:00",
+    "duration_seconds": 1.3828277587890625e-05,
     "success": true,
     "results": {
       "latency_ms": 4.087976639929457,
@@ -7269,12 +7269,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521282+00:00"
+      "timestamp": "2025-08-25T13:35:59.752430+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 284,
-    "execution_timestamp": "2025-08-17T15:18:47.549972+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.791519+00:00",
+    "duration_seconds": 1.430511474609375e-05,
     "success": true,
     "results": {
       "latency_ms": 16.177504357745583,
@@ -7300,12 +7300,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519869+00:00"
+      "timestamp": "2025-08-25T13:35:59.750752+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 62,
-    "execution_timestamp": "2025-08-17T15:18:47.550061+00:00",
-    "duration_seconds": 1.1444091796875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.791787+00:00",
+    "duration_seconds": 3.4809112548828125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.496918643424074,
@@ -7331,12 +7331,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.521024+00:00"
+      "timestamp": "2025-08-25T13:35:59.752113+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 230,
-    "execution_timestamp": "2025-08-17T15:18:47.550187+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.791958+00:00",
+    "duration_seconds": 1.5735626220703125e-05,
     "success": true,
     "results": {
       "latency_ms": 2.7182389745893074,
@@ -7362,12 +7362,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520454+00:00"
+      "timestamp": "2025-08-25T13:35:59.751326+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 113,
-    "execution_timestamp": "2025-08-17T15:18:47.550316+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.792082+00:00",
+    "duration_seconds": 1.8835067749023438e-05,
     "success": true,
     "results": {
       "latency_ms": 15.563016129345838,
@@ -7393,12 +7393,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520662+00:00"
+      "timestamp": "2025-08-25T13:35:59.751536+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 148,
-    "execution_timestamp": "2025-08-17T15:18:47.550524+00:00",
-    "duration_seconds": 1.5497207641601562e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.792204+00:00",
+    "duration_seconds": 1.4543533325195312e-05,
     "success": true,
     "results": {
       "latency_ms": 2.2284786369936675,
@@ -7424,12 +7424,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.519841+00:00"
+      "timestamp": "2025-08-25T13:35:59.750715+00:00"
     },
     "replication_number": 1,
     "randomization_seed": 56,
-    "execution_timestamp": "2025-08-17T15:18:47.550657+00:00",
-    "duration_seconds": 1.430511474609375e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.792320+00:00",
+    "duration_seconds": 1.4543533325195312e-05,
     "success": true,
     "results": {
       "latency_ms": 2.240589206124356,
@@ -7455,12 +7455,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520605+00:00"
+      "timestamp": "2025-08-25T13:35:59.751460+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 134,
-    "execution_timestamp": "2025-08-17T15:18:47.550787+00:00",
-    "duration_seconds": 1.5020370483398438e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.792434+00:00",
+    "duration_seconds": 1.430511474609375e-05,
     "success": true,
     "results": {
       "latency_ms": 2.4439211361006636,
@@ -7486,12 +7486,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520988+00:00"
+      "timestamp": "2025-08-25T13:35:59.752059+00:00"
     },
     "replication_number": 3,
     "randomization_seed": 221,
-    "execution_timestamp": "2025-08-17T15:18:47.550917+00:00",
-    "duration_seconds": 2.0265579223632812e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.792545+00:00",
+    "duration_seconds": 1.4066696166992188e-05,
     "success": true,
     "results": {
       "latency_ms": 2.630736852810755,
@@ -7517,12 +7517,12 @@
       "power_supply_stability_percent": 99.0,
       "electromagnetic_interference_db": -60.0,
       "location": "laboratory",
-      "timestamp": "2025-08-17T15:18:47.520646+00:00"
+      "timestamp": "2025-08-25T13:35:59.751514+00:00"
     },
     "replication_number": 2,
     "randomization_seed": 144,
-    "execution_timestamp": "2025-08-17T15:18:47.551051+00:00",
-    "duration_seconds": 1.33514404296875e-05,
+    "execution_timestamp": "2025-08-25T13:35:59.792734+00:00",
+    "duration_seconds": 1.811981201171875e-05,
     "success": true,
     "results": {
       "latency_ms": 2.175357237916364,
