@@ -1,0 +1,161 @@
+{
+  "baseline_devices": [
+    "edge_tpu_v6",
+    "edge_tpu_v5e",
+    "jetson_nano",
+    "neural_compute_stick_2"
+  ],
+  "model_path": "mobilenet_v3_small.tflite",
+  "best_device": "edge_tpu_v6",
+  "normalization": "latency",
+  "device_metrics": {
+    "edge_tpu_v6": {
+      "device": "edge_tpu_v6",
+      "model_name": "mobilenet_v3_small",
+      "latency_mean_ms": 2.6144854599960072,
+      "latency_std_ms": 0.8391585511370665,
+      "latency_p50_ms": 2.499743725514066,
+      "latency_p95_ms": 2.969296334306723,
+      "latency_p99_ms": 7.611206654848902,
+      "throughput_fps": 382.4844373016812,
+      "power_avg_w": 2.0984390114960245,
+      "power_peak_w": 2.4011823208450105,
+      "energy_per_inference_mj": 5.48633828424475,
+      "temp_avg_c": 45.05724507032633,
+      "temp_peak_c": 52.705462981309445,
+      "thermal_throttling": false,
+      "accuracy": 0.8790876885581373,
+      "top5_accuracy": 0.9790876885581373,
+      "memory_usage_mb": 0.0,
+      "cpu_utilization_pct": 0.0,
+      "sample_size": 1000,
+      "measurement_duration_s": 0.014918088912963867,
+      "ambient_temp_c": 25.0,
+      "confidence_interval_95": [
+        2.562473874139847,
+        2.6664970458521675
+      ],
+      "standard_error": 0.0265365233960001
+    },
+    "edge_tpu_v5e": {
+      "device": "edge_tpu_v5e",
+      "model_name": "mobilenet_v3_small",
+      "latency_mean_ms": 4.3484403080513685,
+      "latency_std_ms": 1.231442756513479,
+      "latency_p50_ms": 4.2009394172845544,
+      "latency_p95_ms": 4.993218586075872,
+      "latency_p99_ms": 11.154123477962983,
+      "throughput_fps": 229.96751229364855,
+      "power_avg_w": 2.7942975201388487,
+      "power_peak_w": 3.210992106325889,
+      "energy_per_inference_mj": 12.15083596925975,
+      "temp_avg_c": 47.91321101890377,
+      "temp_peak_c": 54.225820402087685,
+      "thermal_throttling": false,
+      "accuracy": 0.874205807929925,
+      "top5_accuracy": 0.974205807929925,
+      "memory_usage_mb": 0.0,
+      "cpu_utilization_pct": 0.0,
+      "sample_size": 1000,
+      "measurement_duration_s": 0.014450788497924805,
+      "ambient_temp_c": 25.0,
+      "confidence_interval_95": [
+        4.272114695244873,
+        4.424765920857864
+      ],
+      "standard_error": 0.03894163918698743
+    },
+    "jetson_nano": {
+      "device": "jetson_nano",
+      "model_name": "mobilenet_v3_small",
+      "latency_mean_ms": 16.285394059227674,
+      "latency_std_ms": 4.060400735344021,
+      "latency_p50_ms": 15.83773855247457,
+      "latency_p95_ms": 18.752315563088292,
+      "latency_p99_ms": 36.056002089118046,
+      "throughput_fps": 61.40471617469872,
+      "power_avg_w": 10.491633548698122,
+      "power_peak_w": 12.019709168498501,
+      "energy_per_inference_mj": 170.86038666556215,
+      "temp_avg_c": 54.96819196623587,
+      "temp_peak_c": 61.1350042231733,
+      "thermal_throttling": false,
+      "accuracy": 0.8699281514578945,
+      "top5_accuracy": 0.9699281514578945,
+      "memory_usage_mb": 0.0,
+      "cpu_utilization_pct": 0.0,
+      "sample_size": 1000,
+      "measurement_duration_s": 0.015924692153930664,
+      "ambient_temp_c": 25.0,
+      "confidence_interval_95": [
+        16.033727814308165,
+        16.537060304147182
+      ],
+      "standard_error": 0.12840114536709657
+    },
+    "neural_compute_stick_2": {
+      "device": "neural_compute_stick_2",
+      "model_name": "mobilenet_v3_small",
+      "latency_mean_ms": 12.544064385563146,
+      "latency_std_ms": 3.5656190825644294,
+      "latency_p50_ms": 12.121356891614456,
+      "latency_p95_ms": 14.22718242183987,
+      "latency_p99_ms": 33.412883490489115,
+      "throughput_fps": 79.7189785753086,
+      "power_avg_w": 1.799880434909289,
+      "power_peak_w": 2.139974097851531,
+      "energy_per_inference_mj": 22.57781606181752,
+      "temp_avg_c": 42.04188608936898,
+      "temp_peak_c": 48.56823640257577,
+      "thermal_throttling": false,
+      "accuracy": 0.862602664226318,
+      "top5_accuracy": 0.962602664226318,
+      "memory_usage_mb": 0.0,
+      "cpu_utilization_pct": 0.0,
+      "sample_size": 1000,
+      "measurement_duration_s": 0.016496896743774414,
+      "ambient_temp_c": 25.0,
+      "confidence_interval_95": [
+        12.323065025201661,
+        12.765063745924632
+      ],
+      "standard_error": 0.11275477569463567
+    }
+  },
+  "comparison_matrix": {
+    "edge_tpu_v6": {
+      "edge_tpu_v5e": 1.663210744364977,
+      "jetson_nano": 6.228909782979839,
+      "neural_compute_stick_2": 4.79790940798818
+    },
+    "edge_tpu_v5e": {
+      "edge_tpu_v6": 0.6012467171631972,
+      "jetson_nano": 3.745111558522351,
+      "neural_compute_stick_2": 2.884727280799312
+    },
+    "jetson_nano": {
+      "edge_tpu_v6": 0.16054173761393145,
+      "edge_tpu_v5e": 0.26701474291851374,
+      "neural_compute_stick_2": 0.7702647132726516
+    },
+    "neural_compute_stick_2": {
+      "edge_tpu_v6": 0.20842411037087752,
+      "edge_tpu_v5e": 0.34665321975355534,
+      "jetson_nano": 1.2982549800980288
+    }
+  },
+  "statistical_significance": {
+    "edge_tpu_v6 vs edge_tpu_v5e": 1.9342200263097505e-236,
+    "edge_tpu_v6 vs jetson_nano": 0.0,
+    "edge_tpu_v6 vs neural_compute_stick_2": 0.0,
+    "edge_tpu_v5e vs jetson_nano": 0.0,
+    "edge_tpu_v5e vs neural_compute_stick_2": 0.0,
+    "jetson_nano vs neural_compute_stick_2": 3.090469306927758e-95
+  },
+  "experiment_metadata": {
+    "sample_size": 1000,
+    "confidence_level": 0.95,
+    "random_seed": 42,
+    "timestamp": 1756128959.095413
+  }
+}
