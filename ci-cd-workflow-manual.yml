@@ -1,291 +1,302 @@
-name: CI/CD Pipeline
+name: 🚀 Enhanced CI/CD Pipeline - Edge TPU v6 Benchmark
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, terragon/* ]
   pull_request:
     branches: [ main ]
   release:
-    types: [ published ]
+    types: [published]
 
 env:
-  PYTHON_VERSION: "3.10"
-  POETRY_VERSION: "1.6.1"
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  PYTHON_VERSION: '3.8'
+  NODE_VERSION: '18'
+  DOCKER_REGISTRY: ghcr.io
+  IMAGE_NAME: edge-tpu-v6-bench
 
 jobs:
-  # Code Quality Check
-  code-quality:
+  # Stage 1: Code Quality & Security Analysis
+  quality-gate:
+    name: 🔍 Quality Gate Analysis
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
+    outputs:
+      security-score: ${{ steps.security.outputs.score }}
+      quality-score: ${{ steps.quality.outputs.score }}
+      should-deploy: ${{ steps.gate.outputs.deploy }}
     
-    - name: Set up Python
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for proper analysis
+    
+    - name: 🐍 Setup Python
       uses: actions/setup-python@v4
       with:
         python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
     
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
-      with:
-        version: ${{ env.POETRY_VERSION }}
-        virtualenvs-create: true
-        virtualenvs-in-project: true
-    
-    - name: Install dependencies
-      run: poetry install --no-interaction --no-ansi
-    
-    - name: Run linting
+    - name: 📦 Install Dependencies
       run: |
-        echo "Running code quality checks..."
-        echo "Code quality checks passed"
-
-  # Quality Gates and Testing
-  quality-gates:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
+        python -m pip install --upgrade pip
+        pip install -r requirements-prod.txt
+        sudo apt-get update
+        sudo apt-get install -y python3-numpy python3-scipy python3-matplotlib
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-    
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
-      with:
-        version: ${{ env.POETRY_VERSION }}
-        virtualenvs-create: true
-        virtualenvs-in-project: true
-    
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: .venv
-        key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
-    
-    - name: Install dependencies
-      run: poetry install --no-interaction --no-ansi
-    
-    - name: Run quality gates
+    - name: 🔒 Security Audit
+      id: security
       run: |
-        poetry run python quality_gates_comprehensive.py
-        cat quality_gates_report.json
+        python3 security_audit.py --output-format json > security_report.json
+        SCORE=$(python3 -c "import json; data=json.load(open('security_report.json')); print(100 - min(100, data.get('risk_score', 0) * 10))")
+        echo "score=$SCORE" >> $GITHUB_OUTPUT
+        echo "🛡️ Security Score: $SCORE/100"
     
-    - name: Upload quality report
+    - name: ⚡ Performance Benchmark
+      id: performance
+      run: |
+        python3 src/edge_tpu_v6_bench/scalable_cli.py benchmark --model test_model.txt --mode hybrid --workers 2
+        echo "✅ Performance validation completed"
+    
+    - name: 🎯 Quality Gate Validation
+      id: quality
+      run: |
+        python3 quality_gates_comprehensive.py --json > quality_report.json
+        SCORE=$(python3 -c "import json; data=json.load(open('quality_report.json')); print(data.get('overall_score', 0))")
+        echo "score=$SCORE" >> $GITHUB_OUTPUT
+        echo "📊 Quality Score: $SCORE/100"
+    
+    - name: 🚪 Deployment Gate Decision
+      id: gate
+      run: |
+        SECURITY_SCORE="${{ steps.security.outputs.score }}"
+        QUALITY_SCORE="${{ steps.quality.outputs.score }}"
+        
+        # Deployment criteria: Security > 70, Quality > 60
+        if (( $(echo "$SECURITY_SCORE > 70" | bc -l) )) && (( $(echo "$QUALITY_SCORE > 60" | bc -l) )); then
+          echo "deploy=true" >> $GITHUB_OUTPUT
+          echo "✅ Deployment gate PASSED"
+        else
+          echo "deploy=false" >> $GITHUB_OUTPUT
+          echo "❌ Deployment gate FAILED - Security: $SECURITY_SCORE, Quality: $QUALITY_SCORE"
+        fi
+    
+    - name: 📊 Upload Quality Reports
       uses: actions/upload-artifact@v3
       with:
-        name: quality-gates-report
-        path: quality_gates_report.json
+        name: quality-reports
+        path: |
+          security_report.json
+          quality_report.json
+          scalable_results/*.json
 
-  # Security Audit
-  security-audit:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
+  # Stage 2: Multi-Platform Testing
+  test-matrix:
+    name: 🧪 Test Matrix (${{ matrix.os }}, Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    needs: quality-gate
+    if: needs.quality-gate.outputs.should-deploy == 'true'
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-    
-    - name: Run security audit
-      run: |
-        python3 security_audit.py || true
-        echo "Security audit completed"
-
-  # Build and Test
-  test:
-    runs-on: ubuntu-latest
-    needs: [code-quality, security-audit]
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        os: [ubuntu-latest, ubuntu-20.04]
+        python-version: ['3.8', '3.9', '3.10', '3.11']
+        exclude:
+          - os: ubuntu-20.04
+            python-version: '3.11'  # Not available on 20.04
     
     steps:
-    - uses: actions/checkout@v4
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
     
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: 🐍 Setup Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
+        cache: 'pip'
     
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
-      with:
-        version: ${{ env.POETRY_VERSION }}
-    
-    - name: Install dependencies
-      run: poetry install --no-interaction --no-ansi
-    
-    - name: Build package
-      run: poetry build
-    
-    - name: Test package installation
+    - name: 📦 Install System Dependencies
       run: |
-        pip install dist/*.whl
-        python -c "import edge_tpu_v6_bench; print('Package installed successfully')"
-
-  # Docker Build and Push
-  build-and-push:
-    runs-on: ubuntu-latest
-    needs: [quality-gates, security-audit, test]
-    if: github.event_name != 'pull_request'
+        sudo apt-get update
+        sudo apt-get install -y python3-numpy python3-scipy python3-matplotlib python3-pytest
     
-    permissions:
-      contents: read
-      packages: write
+    - name: 🔧 Install Package
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+    
+    - name: 🏃 Run Test Suite
+      run: |
+        python3 -m pytest tests/ -v --tb=short --maxfail=5
+        echo "✅ Tests completed on ${{ matrix.os }} with Python ${{ matrix.python-version }}"
+    
+    - name: 📈 Performance Validation
+      run: |
+        python3 src/edge_tpu_v6_bench/simple_cli.py benchmark --model test_model.txt
+        python3 tests/performance_benchmark.py
+        echo "✅ Performance validation completed"
+
+  # Stage 3: Docker Build & Security Scan
+  docker-build:
+    name: 🐳 Docker Build & Security Scan
+    runs-on: ubuntu-latest
+    needs: [quality-gate, test-matrix]
+    if: needs.quality-gate.outputs.should-deploy == 'true'
     
     steps:
-    - name: Checkout repository
+    - name: 📥 Checkout Repository
       uses: actions/checkout@v4
     
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-    
-    - name: Log in to Container Registry
+    - name: 🔑 Login to Container Registry
       uses: docker/login-action@v3
       with:
-        registry: ${{ env.REGISTRY }}
+        registry: ${{ env.DOCKER_REGISTRY }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     
-    - name: Extract metadata
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=sha
-    
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        target: runtime
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-    
-    - name: Test Docker image
+    - name: 🏗️ Build Docker Image
       run: |
-        docker run --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} edge-tpu-v6-bench --version
-
-  # Performance Benchmarks
-  performance:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-    - uses: actions/checkout@v4
+        docker build -t ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+        docker build -t ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest .
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: 🔍 Container Security Scan
+      uses: aquasecurity/trivy-action@master
       with:
-        python-version: ${{ env.PYTHON_VERSION }}
+        image-ref: ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        format: 'sarif'
+        output: 'trivy-results.sarif'
     
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
+    - name: 📊 Upload Security Scan Results
+      uses: github/codeql-action/upload-sarif@v2
       with:
-        version: ${{ env.POETRY_VERSION }}
+        sarif_file: 'trivy-results.sarif'
     
-    - name: Install dependencies
-      run: poetry install --no-interaction --no-ansi
-    
-    - name: Run performance benchmarks
+    - name: 🚀 Push Docker Images
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: |
-        poetry run python tests/performance_benchmark.py
-        cat tests/performance_report.json
-    
-    - name: Upload performance report
-      uses: actions/upload-artifact@v3
-      with:
-        name: performance-report
-        path: tests/performance_report.json
+        docker push ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        docker push ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
 
-  # Deployment to Staging
-  deploy-staging:
-    runs-on: ubuntu-latest
-    needs: [build-and-push, performance]
-    if: github.ref == 'refs/heads/develop'
-    environment: staging
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Deploy to staging
-      run: |
-        echo "Deploying to staging environment..."
-        echo "Image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
-        # Add actual deployment commands here
-
-  # Deployment to Production
+  # Stage 4: Production Deployment
   deploy-production:
+    name: 🚀 Production Deployment
     runs-on: ubuntu-latest
-    needs: [build-and-push, performance]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [quality-gate, test-matrix, docker-build]
+    if: |
+      needs.quality-gate.outputs.should-deploy == 'true' && 
+      github.event_name == 'push' && 
+      github.ref == 'refs/heads/main'
     environment: production
     
     steps:
-    - uses: actions/checkout@v4
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
     
-    - name: Validate deployment readiness
+    - name: 🔧 Setup Deployment Tools
       run: |
-        python3 validate_deployment.py
-        if [ $? -ne 0 ]; then
-          echo "Deployment validation failed"
-          exit 1
-        fi
+        # Install kubectl, helm, etc. for K8s deployment
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        chmod +x kubectl
+        sudo mv kubectl /usr/local/bin/
     
-    - name: Deploy to production
+    - name: 🎯 Pre-deployment Validation
       run: |
-        echo "Deploying to production environment..."
-        echo "Image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
-        # Add actual deployment commands here
+        python3 validate_deployment.py --environment production
+        echo "✅ Pre-deployment validation completed"
+    
+    - name: 🚀 Deploy to Production
+      run: |
+        echo "🚀 Deploying Edge TPU v6 Benchmark Suite to Production"
+        echo "📊 Security Score: ${{ needs.quality-gate.outputs.security-score }}/100"
+        echo "📊 Quality Score: ${{ needs.quality-gate.outputs.quality-score }}/100"
+        echo "🐳 Docker Image: ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+        
+        # Apply Kubernetes manifests
+        kubectl apply -f deploy/k8s/
+        kubectl rollout status deployment/edge-tpu-v6-bench
+        
+        echo "✅ Production deployment completed successfully"
+    
+    - name: 🔍 Post-deployment Health Check
+      run: |
+        # Wait for deployment to be ready
+        sleep 30
+        
+        # Health check
+        kubectl get pods -l app=edge-tpu-v6-bench
+        kubectl logs -l app=edge-tpu-v6-bench --tail=50
+        
+        echo "✅ Health check completed"
+    
+    - name: 📢 Deployment Notification
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        channel: '#deployments'
+        text: |
+          🚀 Edge TPU v6 Benchmark Suite deployed to production!
+          📊 Security Score: ${{ needs.quality-gate.outputs.security-score }}/100
+          📊 Quality Score: ${{ needs.quality-gate.outputs.quality-score }}/100
+          🔗 Commit: ${{ github.sha }}
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      if: always()
 
-  # Release Management
-  release:
+  # Stage 5: Performance Monitoring
+  monitor-performance:
+    name: 📊 Performance Monitoring
     runs-on: ubuntu-latest
-    needs: [build-and-push, performance]
-    if: github.event_name == 'release'
+    needs: deploy-production
+    if: success()
     
     steps:
-    - uses: actions/checkout@v4
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-    
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
-      with:
-        version: ${{ env.POETRY_VERSION }}
-    
-    - name: Build and publish to PyPI
-      env:
-        POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
+    - name: 📈 Run Production Performance Tests
       run: |
-        poetry build
-        poetry publish
-    
-    - name: Create release artifacts
-      run: |
-        # Create release packages
-        tar -czf edge-tpu-v6-bench-${{ github.ref_name }}.tar.gz -C dist .
+        echo "📊 Running production performance monitoring..."
         
-    - name: Upload release assets
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Simulate production load testing
+        python3 src/edge_tpu_v6_bench/scalable_cli.py benchmark \
+          --model test_model.txt \
+          --mode hybrid \
+          --workers 4 \
+          --duration 60
+        
+        echo "✅ Performance monitoring completed"
+    
+    - name: 📊 Generate Performance Report
+      run: |
+        python3 tests/performance_report_demo.py
+        echo "📊 Performance report generated"
+    
+    - name: 📤 Upload Performance Results
+      uses: actions/upload-artifact@v3
       with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: edge-tpu-v6-bench-${{ github.ref_name }}.tar.gz
-        asset_name: edge-tpu-v6-bench-${{ github.ref_name }}.tar.gz
-        asset_content_type: application/gzip
+        name: production-performance-report
+        path: |
+          scalable_results/*.json
+          tests/performance_report.json
+
+# Workflow Summary
+summary:
+  name: 📋 CI/CD Summary
+  runs-on: ubuntu-latest
+  needs: [quality-gate, test-matrix, docker-build, deploy-production, monitor-performance]
+  if: always()
+  
+  steps:
+  - name: 📋 Pipeline Summary
+    run: |
+      echo "🚀 CI/CD Pipeline Summary"
+      echo "========================"
+      echo "📊 Quality Gate: ${{ needs.quality-gate.result }}"
+      echo "🧪 Test Matrix: ${{ needs.test-matrix.result }}"
+      echo "🐳 Docker Build: ${{ needs.docker-build.result }}"
+      echo "🚀 Deployment: ${{ needs.deploy-production.result }}"
+      echo "📊 Monitoring: ${{ needs.monitor-performance.result }}"
+      echo ""
+      echo "📊 Security Score: ${{ needs.quality-gate.outputs.security-score }}/100"
+      echo "📊 Quality Score: ${{ needs.quality-gate.outputs.quality-score }}/100"
+      echo "🎯 Deployment Gate: ${{ needs.quality-gate.outputs.should-deploy }}"
