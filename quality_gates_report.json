@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "timestamp": 1756128852.3935864,
-    "execution_time_s": 3.2564914226531982,
+    "timestamp": 1756216684.023051,
+    "execution_time_s": 3.081223726272583,
     "project_root": "/root/repo"
   },
   "summary": {
@@ -18,7 +18,7 @@
       "score": 9.9,
       "max_score": 10.0,
       "percentage": 99.0,
-      "execution_time_s": 0.08945178985595703,
+      "execution_time_s": 0.10785818099975586,
       "issues_count": 1,
       "issues": [
         "High complexity detected in 1 files"
@@ -41,16 +41,16 @@
       "score": 7.5,
       "max_score": 10.0,
       "percentage": 75.0,
-      "execution_time_s": 0.4148077964782715,
+      "execution_time_s": 0.3654019832611084,
       "issues_count": 1,
       "issues": [
         "Security issue (path_traversal) in performance_benchmark.py"
       ],
       "recommendations": [],
       "details": {
-        "files_scanned": 115,
+        "files_scanned": 116,
         "vulnerabilities_found": 1,
-        "security_patterns_checked": 460,
+        "security_patterns_checked": 464,
         "secrets_detected": 0,
         "unsafe_functions": 0
       }
@@ -61,7 +61,7 @@
       "score": 10.0,
       "max_score": 10.0,
       "percentage": 100.0,
-      "execution_time_s": 0.4156463146209717,
+      "execution_time_s": 0.516822338104248,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -71,8 +71,8 @@
       ],
       "details": {
         "benchmarks_run": 3,
-        "avg_latency_ms": 2.3347101000027237,
-        "throughput_fps": 428.31870218012654,
+        "avg_latency_ms": 2.205187900001704,
+        "throughput_fps": 453.47609607291395,
         "memory_usage_mb": 50.0,
         "performance_targets_met": 4,
         "total_targets": 4
@@ -84,7 +84,7 @@
       "score": 7.038961038961039,
       "max_score": 10.0,
       "percentage": 70.3896103896104,
-      "execution_time_s": 0.8733081817626953,
+      "execution_time_s": 0.7482566833496094,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -105,7 +105,7 @@
       "score": 7.095959595959596,
       "max_score": 10.0,
       "percentage": 70.95959595959596,
-      "execution_time_s": 1.218249797821045,
+      "execution_time_s": 1.1500725746154785,
       "issues_count": 0,
       "issues": [],
       "recommendations": [],
@@ -123,7 +123,7 @@
       "score": 8.147826086956522,
       "max_score": 10.0,
       "percentage": 81.47826086956522,
-      "execution_time_s": 0.22585678100585938,
+      "execution_time_s": 0.1745903491973877,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -142,7 +142,7 @@
       "score": 10.0,
       "max_score": 10.0,
       "percentage": 100.0,
-      "execution_time_s": 0.011704683303833008,
+      "execution_time_s": 0.011128902435302734,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -163,7 +163,7 @@
       "score": 6.0,
       "max_score": 10.0,
       "percentage": 60.0,
-      "execution_time_s": 0.0038902759552001953,
+      "execution_time_s": 0.0039043426513671875,
       "issues_count": 0,
       "issues": [],
       "recommendations": [
@@ -199,7 +199,7 @@
     "critical_failures": 0,
     "pass_percentage": 83.94685542201071,
     "grade": "B",
-    "execution_time_s": 3.2564914226531982,
+    "execution_time_s": 3.081223726272583,
     "recommendations_count": 12,
     "top_performing_gates": [
       "performance_tests",
