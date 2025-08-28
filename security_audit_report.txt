@@ -1,7 +1,7 @@
 🛡️  SECURITY AUDIT REPORT
 ============================================================
 📁 Project: /root/repo
-📄 Files scanned: 132 / 259
+📄 Files scanned: 133 / 271
 🚨 Issues found: 141
 ⚡ Risk score: 538
 

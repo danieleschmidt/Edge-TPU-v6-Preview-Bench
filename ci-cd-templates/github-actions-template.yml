@@ -16,8 +16,8 @@ env:
 
 jobs:
   # Stage 1: Code Quality & Security Analysis
-  security-audit:
-    name: 🔍 Security Audit
+  quality-gate:
+    name: 🔍 Quality Gate Analysis
     runs-on: ubuntu-latest
     outputs:
       security-score: ${{ steps.security.outputs.score }}
@@ -89,27 +89,12 @@ jobs:
           quality_report.json
           scalable_results/*.json
 
-  # Stage 1b: Code Quality Analysis
-  code-quality:
-    name: 🎯 Code Quality Analysis
-    runs-on: ubuntu-latest
-    needs: security-audit
-    steps:
-    - name: 📥 Checkout Repository
-      uses: actions/checkout@v4
-    - name: 🐍 Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-    - name: 🎯 Run Quality Gates
-      run: python3 quality_gates_comprehensive.py
-
   # Stage 2: Multi-Platform Testing
   test-matrix:
     name: 🧪 Test Matrix (${{ matrix.os }}, Python ${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
-    needs: code-quality
-    if: needs.security-audit.outputs.should-deploy == 'true'
+    needs: quality-gate
+    if: needs.quality-gate.outputs.should-deploy == 'true'
     
     strategy:
       fail-fast: false
@@ -152,11 +137,11 @@ jobs:
         echo "✅ Performance validation completed"
 
   # Stage 3: Docker Build & Security Scan
-  build-and-push:
-    name: 🐳 Build and Push
+  docker-build:
+    name: 🐳 Docker Build & Security Scan
     runs-on: ubuntu-latest
-    needs: [security-audit, code-quality, test-matrix]
-    if: needs.security-audit.outputs.should-deploy == 'true'
+    needs: [quality-gate, test-matrix]
+    if: needs.quality-gate.outputs.should-deploy == 'true'
     
     steps:
     - name: 📥 Checkout Repository
@@ -192,16 +177,16 @@ jobs:
         docker push ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
         docker push ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
 
-  # Stage 4: Staging Deployment
-  deploy-staging:
-    name: 🚀 Deploy to Staging
+  # Stage 4: Production Deployment
+  deploy-production:
+    name: 🚀 Production Deployment
     runs-on: ubuntu-latest
-    needs: [security-audit, code-quality, test-matrix, build-and-push]
+    needs: [quality-gate, test-matrix, docker-build]
     if: |
-      needs.security-audit.outputs.should-deploy == 'true' && 
+      needs.quality-gate.outputs.should-deploy == 'true' && 
       github.event_name == 'push' && 
       github.ref == 'refs/heads/main'
-    environment: staging
+    environment: production
     
     steps:
     - name: 📥 Checkout Repository
@@ -219,18 +204,18 @@ jobs:
         python3 validate_deployment.py --environment production
         echo "✅ Pre-deployment validation completed"
     
-    - name: 🚀 Deploy to Staging
+    - name: 🚀 Deploy to Production
       run: |
-        echo "🚀 Deploying Edge TPU v6 Benchmark Suite to Staging"
-        echo "📊 Security Score: ${{ needs.security-audit.outputs.security-score }}/100"
-        echo "📊 Quality Score: ${{ needs.security-audit.outputs.quality-score }}/100"
+        echo "🚀 Deploying Edge TPU v6 Benchmark Suite to Production"
+        echo "📊 Security Score: ${{ needs.quality-gate.outputs.security-score }}/100"
+        echo "📊 Quality Score: ${{ needs.quality-gate.outputs.quality-score }}/100"
         echo "🐳 Docker Image: ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
         
         # Apply Kubernetes manifests
         kubectl apply -f deploy/k8s/
         kubectl rollout status deployment/edge-tpu-v6-bench
         
-        echo "✅ Staging deployment completed successfully"
+        echo "✅ Production deployment completed successfully"
     
     - name: 🔍 Post-deployment Health Check
       run: |
@@ -250,35 +235,14 @@ jobs:
         channel: '#deployments'
         text: |
           🚀 Edge TPU v6 Benchmark Suite deployed to production!
-          📊 Security Score: ${{ needs.security-audit.outputs.security-score }}/100
-          📊 Quality Score: ${{ needs.security-audit.outputs.quality-score }}/100
+          📊 Security Score: ${{ needs.quality-gate.outputs.security-score }}/100
+          📊 Quality Score: ${{ needs.quality-gate.outputs.quality-score }}/100
           🔗 Commit: ${{ github.sha }}
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       if: always()
 
-  # Stage 5: Production Deployment  
-  deploy-production:
-    name: 🚀 Deploy to Production
-    runs-on: ubuntu-latest
-    needs: deploy-staging
-    if: success()
-    environment: production
-    
-    steps:
-    - name: 📥 Checkout Repository
-      uses: actions/checkout@v4
-    
-    - name: 🚀 Deploy to Production
-      run: |
-        echo "🚀 Deploying Edge TPU v6 Benchmark Suite to Production"
-        echo "✅ Production deployment completed successfully"
-    
-    - name: 🔍 Production Health Check
-      run: |
-        echo "✅ Production health check completed"
-
-  # Stage 6: Performance Monitoring
+  # Stage 5: Performance Monitoring
   monitor-performance:
     name: 📊 Performance Monitoring
     runs-on: ubuntu-latest
@@ -319,7 +283,7 @@ jobs:
 summary:
   name: 📋 CI/CD Summary
   runs-on: ubuntu-latest
-  needs: [security-audit, code-quality, test-matrix, build-and-push, deploy-staging, deploy-production, monitor-performance]
+  needs: [quality-gate, test-matrix, docker-build, deploy-production, monitor-performance]
   if: always()
   
   steps:
@@ -327,14 +291,12 @@ summary:
     run: |
       echo "🚀 CI/CD Pipeline Summary"
       echo "========================"
-      echo "🔒 Security Audit: ${{ needs.security-audit.result }}"
-      echo "🎯 Code Quality: ${{ needs.code-quality.result }}"
+      echo "📊 Quality Gate: ${{ needs.quality-gate.result }}"
       echo "🧪 Test Matrix: ${{ needs.test-matrix.result }}"
-      echo "🐳 Build and Push: ${{ needs.build-and-push.result }}"
-      echo "🚀 Deploy Staging: ${{ needs.deploy-staging.result }}"
-      echo "🏭 Deploy Production: ${{ needs.deploy-production.result }}"
+      echo "🐳 Docker Build: ${{ needs.docker-build.result }}"
+      echo "🚀 Deployment: ${{ needs.deploy-production.result }}"
       echo "📊 Monitoring: ${{ needs.monitor-performance.result }}"
       echo ""
-      echo "📊 Security Score: ${{ needs.security-audit.outputs.security-score }}/100"
-      echo "📊 Quality Score: ${{ needs.security-audit.outputs.quality-score }}/100"
-      echo "🎯 Deployment Gate: ${{ needs.security-audit.outputs.should-deploy }}"
+      echo "📊 Security Score: ${{ needs.quality-gate.outputs.security-score }}/100"
+      echo "📊 Quality Score: ${{ needs.quality-gate.outputs.quality-score }}/100"
+      echo "🎯 Deployment Gate: ${{ needs.quality-gate.outputs.should-deploy }}"
