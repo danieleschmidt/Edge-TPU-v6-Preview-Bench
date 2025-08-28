@@ -1,0 +1,139 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: edge-tpu-production
+  labels:
+    name: edge-tpu-production
+    environment: production
+    team: ml-infrastructure
+    project: edge-tpu-v6-benchmark
+    version: v1.0.0
+  annotations:
+    description: "Production namespace for Edge TPU v6 benchmark suite"
+    contact: "ml-team@terragonlabs.ai"
+    cost-center: "ml-infrastructure"
+    compliance.kubernetes.io/enforce: "restricted"
+    
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: edge-tpu-staging
+  labels:
+    name: edge-tpu-staging
+    environment: staging
+    team: ml-infrastructure
+    project: edge-tpu-v6-benchmark
+    version: v1.0.0
+  annotations:
+    description: "Staging namespace for Edge TPU v6 benchmark suite"
+    contact: "ml-team@terragonlabs.ai"
+    cost-center: "ml-infrastructure"
+    compliance.kubernetes.io/enforce: "restricted"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: edge-tpu-monitoring
+  labels:
+    name: edge-tpu-monitoring
+    environment: monitoring
+    team: sre
+    project: edge-tpu-v6-benchmark
+    version: v1.0.0
+  annotations:
+    description: "Monitoring namespace for Edge TPU v6 benchmark observability stack"
+    contact: "sre-team@terragonlabs.ai"
+    cost-center: "sre-infrastructure"
+    compliance.kubernetes.io/enforce: "baseline"
+
+---
+# Multi-region deployment labels for node selectors
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: region-config
+  namespace: edge-tpu-production
+data:
+  primary-region: "us-east-1"
+  secondary-regions: "us-west-2,eu-west-1,ap-southeast-1"
+  failover-strategy: "round-robin"
+  
+---
+# Resource quotas for production namespace
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: edge-tpu-production-quota
+  namespace: edge-tpu-production
+spec:
+  hard:
+    requests.cpu: "20"
+    requests.memory: 40Gi
+    requests.storage: 200Gi
+    limits.cpu: "50"
+    limits.memory: 100Gi
+    persistentvolumeclaims: "10"
+    pods: "20"
+    services: "10"
+    secrets: "10"
+    configmaps: "10"
+    
+---
+# Resource quotas for staging namespace
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: edge-tpu-staging-quota
+  namespace: edge-tpu-staging
+spec:
+  hard:
+    requests.cpu: "10"
+    requests.memory: 20Gi
+    requests.storage: 100Gi
+    limits.cpu: "20"
+    limits.memory: 40Gi
+    persistentvolumeclaims: "5"
+    pods: "10"
+    services: "5"
+    secrets: "10"
+    configmaps: "10"
+
+---
+# Limit ranges for resource constraints
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: edge-tpu-production-limits
+  namespace: edge-tpu-production
+spec:
+  limits:
+  - type: Container
+    default:
+      cpu: "1000m"
+      memory: "2Gi"
+      ephemeral-storage: "4Gi"
+    defaultRequest:
+      cpu: "100m"
+      memory: "512Mi"
+      ephemeral-storage: "1Gi"
+    max:
+      cpu: "4000m"
+      memory: "8Gi"
+      ephemeral-storage: "20Gi"
+    min:
+      cpu: "50m"
+      memory: "128Mi"
+      ephemeral-storage: "100Mi"
+  - type: Pod
+    max:
+      cpu: "8000m"
+      memory: "16Gi"
+      ephemeral-storage: "40Gi"
+  - type: PersistentVolumeClaim
+    min:
+      storage: "1Gi"
+    max:
+      storage: "100Gi"

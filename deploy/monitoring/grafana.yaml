@@ -1,0 +1,660 @@
+---
+# Grafana Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  namespace: edge-tpu-monitoring
+  labels:
+    app: grafana
+    component: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      serviceAccountName: grafana
+      securityContext:
+        fsGroup: 472
+        runAsUser: 472
+        runAsGroup: 472
+        runAsNonRoot: true
+      containers:
+      - name: grafana
+        image: grafana/grafana:10.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+          name: http-grafana
+          protocol: TCP
+        env:
+        - name: GF_SECURITY_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: grafana-admin-credentials
+              key: password
+        - name: GF_DATABASE_TYPE
+          value: postgres
+        - name: GF_DATABASE_HOST
+          valueFrom:
+            secretKeyRef:
+              name: grafana-database
+              key: host
+        - name: GF_DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              name: grafana-database
+              key: database
+        - name: GF_DATABASE_USER
+          valueFrom:
+            secretKeyRef:
+              name: grafana-database
+              key: username
+        - name: GF_DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: grafana-database
+              key: password
+        - name: GF_AUTH_ANONYMOUS_ENABLED
+          value: "false"
+        - name: GF_AUTH_DISABLE_LOGIN_FORM
+          value: "false"
+        - name: GF_USERS_ALLOW_SIGN_UP
+          value: "false"
+        - name: GF_SECURITY_ALLOW_EMBEDDING
+          value: "true"
+        - name: GF_INSTALL_PLUGINS
+          value: "grafana-piechart-panel,grafana-worldmap-panel,grafana-kubernetes-app"
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          limits:
+            cpu: 500m
+            memory: 1Gi
+        volumeMounts:
+        - name: grafana-storage
+          mountPath: /var/lib/grafana
+        - name: grafana-config
+          mountPath: /etc/grafana/grafana.ini
+          subPath: grafana.ini
+        - name: grafana-datasources
+          mountPath: /etc/grafana/provisioning/datasources
+        - name: grafana-dashboards-config
+          mountPath: /etc/grafana/provisioning/dashboards
+        - name: grafana-dashboards
+          mountPath: /var/lib/grafana/dashboards
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 10
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: false
+          runAsNonRoot: true
+      volumes:
+      - name: grafana-storage
+        persistentVolumeClaim:
+          claimName: grafana-pvc
+      - name: grafana-config
+        configMap:
+          name: grafana-config
+      - name: grafana-datasources
+        configMap:
+          name: grafana-datasources
+      - name: grafana-dashboards-config
+        configMap:
+          name: grafana-dashboards-config
+      - name: grafana-dashboards
+        configMap:
+          name: grafana-dashboards
+
+---
+# Grafana Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: edge-tpu-monitoring
+  labels:
+    app: grafana
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3000
+    targetPort: 3000
+    name: http
+  selector:
+    app: grafana
+
+---
+# Grafana PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana-pvc
+  namespace: edge-tpu-monitoring
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: fast-ssd
+
+---
+# Grafana Configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+  namespace: edge-tpu-monitoring
+data:
+  grafana.ini: |
+    [analytics]
+    check_for_updates = false
+    reporting_enabled = false
+    
+    [auth.anonymous]
+    enabled = false
+    
+    [security]
+    admin_user = admin
+    disable_gravatar = true
+    cookie_secure = true
+    cookie_samesite = strict
+    content_type_protection = true
+    
+    [server]
+    protocol = http
+    http_port = 3000
+    domain = grafana.edge-tpu.local
+    enforce_domain = false
+    root_url = %(protocol)s://%(domain)s:%(http_port)s/
+    enable_gzip = true
+    
+    [database]
+    type = postgres
+    ssl_mode = require
+    
+    [session]
+    provider = postgres
+    cookie_name = grafana_sess
+    cookie_secure = true
+    session_life_time = 86400
+    gc_interval_time = 86400
+    
+    [log]
+    mode = console
+    level = info
+    
+    [alerting]
+    enabled = true
+    execute_alerts = true
+    
+    [unified_alerting]
+    enabled = true
+    
+    [feature_toggles]
+    enable = ngalert
+    
+    [smtp]
+    enabled = false
+    
+    [users]
+    allow_sign_up = false
+    auto_assign_org = true
+    auto_assign_org_role = Viewer
+    default_theme = dark
+
+---
+# Grafana Datasources
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasources
+  namespace: edge-tpu-monitoring
+data:
+  datasources.yaml: |
+    apiVersion: 1
+    datasources:
+    - name: Prometheus
+      type: prometheus
+      access: proxy
+      url: http://prometheus-service.edge-tpu-monitoring.svc.cluster.local:9090
+      isDefault: true
+      editable: true
+      jsonData:
+        timeInterval: "5s"
+        queryTimeout: "60s"
+        httpMethod: "GET"
+        manageAlerts: true
+        alertManagerUid: "alertmanager"
+      
+    - name: Alertmanager
+      type: alertmanager
+      access: proxy
+      url: http://alertmanager.edge-tpu-monitoring.svc.cluster.local:9093
+      uid: "alertmanager"
+      editable: true
+      jsonData:
+        implementation: "prometheus"
+        
+    - name: Loki
+      type: loki
+      access: proxy
+      url: http://loki.edge-tpu-monitoring.svc.cluster.local:3100
+      editable: true
+      jsonData:
+        maxLines: 1000
+        
+    - name: PostgreSQL
+      type: postgres
+      access: proxy
+      host: postgres.edge-tpu-monitoring.svc.cluster.local:5432
+      database: grafana_metrics
+      user: grafana
+      password: $POSTGRES_PASSWORD
+      sslmode: require
+      jsonData:
+        postgresVersion: 1200
+        timescaledb: true
+
+---
+# Grafana Dashboard Configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards-config
+  namespace: edge-tpu-monitoring
+data:
+  dashboards.yaml: |
+    apiVersion: 1
+    providers:
+    - name: 'edge-tpu-dashboards'
+      orgId: 1
+      folder: 'Edge TPU v6'
+      type: file
+      disableDeletion: false
+      updateIntervalSeconds: 30
+      allowUiUpdates: true
+      options:
+        path: /var/lib/grafana/dashboards
+
+---
+# Edge TPU Performance Dashboard
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards
+  namespace: edge-tpu-monitoring
+data:
+  edge-tpu-performance.json: |
+    {
+      "dashboard": {
+        "id": null,
+        "title": "Edge TPU v6 Performance Dashboard",
+        "tags": ["edge-tpu", "performance", "ml"],
+        "timezone": "browser",
+        "panels": [
+          {
+            "id": 1,
+            "title": "Inference Latency (P95)",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "edge_tpu:inference_latency_p95_5m",
+                "legendFormat": "{{environment}} - {{instance}}"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "steps": [
+                    {"color": "green", "value": 0},
+                    {"color": "yellow", "value": 5},
+                    {"color": "red", "value": 10}
+                  ]
+                },
+                "unit": "ms"
+              }
+            },
+            "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0}
+          },
+          {
+            "id": 2,
+            "title": "Throughput (RPS)",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "edge_tpu:throughput_rps_5m",
+                "legendFormat": "{{environment}} - {{instance}}"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "steps": [
+                    {"color": "red", "value": 0},
+                    {"color": "yellow", "value": 100},
+                    {"color": "green", "value": 200}
+                  ]
+                },
+                "unit": "reqps"
+              }
+            },
+            "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0}
+          },
+          {
+            "id": 3,
+            "title": "Error Rate",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "edge_tpu:error_rate_5m * 100",
+                "legendFormat": "{{environment}} - {{instance}}"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "steps": [
+                    {"color": "green", "value": 0},
+                    {"color": "yellow", "value": 1},
+                    {"color": "red", "value": 5}
+                  ]
+                },
+                "unit": "percent"
+              }
+            },
+            "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0}
+          },
+          {
+            "id": 4,
+            "title": "Model Accuracy",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "edge_tpu:accuracy_mean_5m * 100",
+                "legendFormat": "{{environment}} - {{instance}}"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "steps": [
+                    {"color": "red", "value": 0},
+                    {"color": "yellow", "value": 90},
+                    {"color": "green", "value": 95}
+                  ]
+                },
+                "unit": "percent",
+                "min": 0,
+                "max": 100
+              }
+            },
+            "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0}
+          },
+          {
+            "id": 5,
+            "title": "Inference Latency Over Time",
+            "type": "timeseries",
+            "targets": [
+              {
+                "expr": "edge_tpu:inference_latency_p95_5m",
+                "legendFormat": "P95 - {{environment}}"
+              },
+              {
+                "expr": "edge_tpu:inference_latency_p99_5m",
+                "legendFormat": "P99 - {{environment}}"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "ms",
+                "color": {
+                  "mode": "palette-classic"
+                }
+              }
+            },
+            "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}
+          },
+          {
+            "id": 6,
+            "title": "Throughput Over Time",
+            "type": "timeseries",
+            "targets": [
+              {
+                "expr": "edge_tpu:throughput_rps_5m",
+                "legendFormat": "{{environment}} - {{instance}}"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "reqps",
+                "color": {
+                  "mode": "palette-classic"
+                }
+              }
+            },
+            "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}
+          }
+        ],
+        "time": {
+          "from": "now-1h",
+          "to": "now"
+        },
+        "refresh": "5s",
+        "schemaVersion": 30,
+        "version": 1
+      }
+    }
+    
+  edge-tpu-system.json: |
+    {
+      "dashboard": {
+        "id": null,
+        "title": "Edge TPU v6 System Resources",
+        "tags": ["edge-tpu", "system", "resources"],
+        "timezone": "browser",
+        "panels": [
+          {
+            "id": 1,
+            "title": "CPU Utilization",
+            "type": "timeseries",
+            "targets": [
+              {
+                "expr": "edge_tpu:cpu_utilization_5m * 100",
+                "legendFormat": "{{environment}} - {{instance}}"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "percent",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "min": 0,
+                "max": 100
+              }
+            },
+            "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+          },
+          {
+            "id": 2,
+            "title": "Memory Utilization",
+            "type": "timeseries",
+            "targets": [
+              {
+                "expr": "edge_tpu:memory_utilization_5m * 100",
+                "legendFormat": "{{environment}} - {{instance}}"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "percent",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "min": 0,
+                "max": 100
+              }
+            },
+            "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+          },
+          {
+            "id": 3,
+            "title": "Queue Depth",
+            "type": "timeseries",
+            "targets": [
+              {
+                "expr": "edge_tpu:queue_depth_mean_5m",
+                "legendFormat": "{{environment}} - {{instance}}"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "short",
+                "color": {
+                  "mode": "palette-classic"
+                }
+              }
+            },
+            "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}
+          },
+          {
+            "id": 4,
+            "title": "Power Efficiency",
+            "type": "timeseries",
+            "targets": [
+              {
+                "expr": "edge_tpu:power_efficiency_5m",
+                "legendFormat": "{{environment}} - {{instance}}"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "percentunit",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "min": 0,
+                "max": 1
+              }
+            },
+            "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}
+          }
+        ],
+        "time": {
+          "from": "now-1h",
+          "to": "now"
+        },
+        "refresh": "5s",
+        "schemaVersion": 30,
+        "version": 1
+      }
+    }
+
+---
+# Grafana Secrets
+apiVersion: v1
+kind: Secret
+metadata:
+  name: grafana-admin-credentials
+  namespace: edge-tpu-monitoring
+type: Opaque
+data:
+  password: QWRtaW4xMjMhIyNAIyMhISE=  # Admin123!##@##!!!
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: grafana-database
+  namespace: edge-tpu-monitoring
+type: Opaque
+data:
+  host: cG9zdGdyZXMuZWRnZS10cHUtbW9uaXRvcmluZy5zdmMuY2x1c3Rlci5sb2NhbA==  # postgres.edge-tpu-monitoring.svc.cluster.local
+  database: Z3JhZmFuYQ==  # grafana
+  username: Z3JhZmFuYQ==  # grafana
+  password: Z3JhZmFuYTEyMyE=  # grafana123!
+
+---
+# Grafana ServiceAccount
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: grafana
+  namespace: edge-tpu-monitoring
+
+---
+# Grafana Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  namespace: edge-tpu-monitoring
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingana.kubernetes.io/auth-secret: grafana-basic-auth
+spec:
+  tls:
+  - hosts:
+    - grafana.edge-tpu.terragonlabs.ai
+    secretName: grafana-tls
+  rules:
+  - host: grafana.edge-tpu.terragonlabs.ai
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000
+
+---
+# Basic Auth Secret for Grafana Ingress
+apiVersion: v1
+kind: Secret
+metadata:
+  name: grafana-basic-auth
+  namespace: edge-tpu-monitoring
+type: Opaque
+data:
+  auth: YWRtaW46JGFwcjEkSDZsdzNsU1AkQzFsMi9YaWJpejlxNXlsWjd6TmtqLg==  # admin:admin123
