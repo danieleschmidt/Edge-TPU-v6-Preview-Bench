@@ -1,0 +1,621 @@
+---
+# Default Deny All Network Policy for Production
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: edge-tpu-production
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+
+---
+# Default Deny All Network Policy for Staging  
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: edge-tpu-staging
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+
+---
+# Edge TPU Production Network Policy
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: edge-tpu-production-netpol
+  namespace: edge-tpu-production
+  labels:
+    app: edge-tpu-benchmark
+    environment: production
+spec:
+  podSelector:
+    matchLabels:
+      app: edge-tpu-benchmark
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow ingress from ingress controller namespace
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 8080
+  # Allow ingress from monitoring namespace for metrics scraping
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-monitoring
+    ports:
+    - protocol: TCP
+      port: 9090  # Metrics port
+  # Allow ingress from same namespace for pod-to-pod communication
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-production
+    - podSelector:
+        matchLabels:
+          app: edge-tpu-benchmark
+    ports:
+    - protocol: TCP
+      port: 8080
+    - protocol: TCP
+      port: 9090
+  # Allow health check probes from kubelet
+  - from: []
+    ports:
+    - protocol: TCP
+      port: 8080
+  egress:
+  # Allow DNS resolution
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+    - podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  # Allow HTTPS outbound for external API calls and image pulls
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 443
+  # Allow Kubernetes API server communication
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 6443
+  # Allow communication within production namespace
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-production
+    ports:
+    - protocol: TCP
+      port: 8080
+    - protocol: TCP
+      port: 9090
+  # Allow communication to monitoring namespace for metrics push
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-monitoring
+    ports:
+    - protocol: TCP
+      port: 9090
+    - protocol: TCP
+      port: 9093
+
+---
+# Edge TPU Staging Network Policy (More Permissive)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: edge-tpu-staging-netpol
+  namespace: edge-tpu-staging
+  labels:
+    app: edge-tpu-benchmark
+    environment: staging
+spec:
+  podSelector:
+    matchLabels:
+      app: edge-tpu-benchmark
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow ingress from ingress controller
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+  # Allow ingress from monitoring namespace
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-monitoring
+  # Allow ingress from same namespace
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-staging
+  # Allow development access
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: development
+  egress:
+  # Allow all egress for staging environment
+  - to: []
+
+---
+# Monitoring Namespace Network Policy
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: monitoring-netpol
+  namespace: edge-tpu-monitoring
+  labels:
+    component: monitoring
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow ingress from production and staging for metrics
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-production
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-staging
+  # Allow ingress from ingress controller for dashboards
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+  # Allow ingress within monitoring namespace
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-monitoring
+  egress:
+  # Allow DNS resolution
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+    - podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  # Allow HTTPS outbound
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 443
+  # Allow Kubernetes API access
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 6443
+  # Allow scraping metrics from all Edge TPU namespaces
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-production
+    ports:
+    - protocol: TCP
+      port: 9090
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-staging
+    ports:
+    - protocol: TCP
+      port: 9090
+  # Allow communication within monitoring namespace
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-monitoring
+
+---
+# Prometheus Specific Network Policy
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: prometheus-netpol
+  namespace: edge-tpu-monitoring
+  labels:
+    app: prometheus
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow Grafana to query Prometheus
+  - from:
+    - podSelector:
+        matchLabels:
+          app: grafana
+    ports:
+    - protocol: TCP
+      port: 9090
+  # Allow Alertmanager to receive rules
+  - from:
+    - podSelector:
+        matchLabels:
+          app: alertmanager
+    ports:
+    - protocol: TCP
+      port: 9090
+  # Allow ingress controller for external access
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 9090
+  egress:
+  # Allow scraping all targets
+  - to: []
+  
+---
+# Grafana Specific Network Policy
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: grafana-netpol
+  namespace: edge-tpu-monitoring
+  labels:
+    app: grafana
+spec:
+  podSelector:
+    matchLabels:
+      app: grafana
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow ingress controller
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 3000
+  # Allow internal monitoring access
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-monitoring
+    ports:
+    - protocol: TCP
+      port: 3000
+  egress:
+  # Allow DNS resolution
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+    - podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  # Allow connection to Prometheus
+  - to:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: prometheus
+    ports:
+    - protocol: TCP
+      port: 9090
+  # Allow connection to Alertmanager
+  - to:
+    - podSelector:
+        matchLabels:
+          app: alertmanager
+    ports:
+    - protocol: TCP
+      port: 9093
+  # Allow connection to external services
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 443
+
+---
+# Alertmanager Specific Network Policy
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: alertmanager-netpol
+  namespace: edge-tpu-monitoring
+  labels:
+    app: alertmanager
+spec:
+  podSelector:
+    matchLabels:
+      app: alertmanager
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow Prometheus to send alerts
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: prometheus
+    ports:
+    - protocol: TCP
+      port: 9093
+  # Allow Grafana to query alerts
+  - from:
+    - podSelector:
+        matchLabels:
+          app: grafana
+    ports:
+    - protocol: TCP
+      port: 9093
+  # Allow ingress controller for web UI
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 9093
+  # Allow clustering between Alertmanager instances
+  - from:
+    - podSelector:
+        matchLabels:
+          app: alertmanager
+    ports:
+    - protocol: TCP
+      port: 9094
+  egress:
+  # Allow DNS resolution
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+    - podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  # Allow SMTP/Email notifications
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 587  # SMTP
+    - protocol: TCP
+      port: 465  # SMTPS
+  # Allow HTTPS for webhooks (Slack, PagerDuty, etc.)
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 443
+  # Allow clustering between Alertmanager instances
+  - to:
+    - podSelector:
+        matchLabels:
+          app: alertmanager
+    ports:
+    - protocol: TCP
+      port: 9094
+
+---
+# Micro-segmentation for Edge TPU Components
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: edge-tpu-micro-segmentation
+  namespace: edge-tpu-production
+  labels:
+    security-level: micro-segmentation
+spec:
+  podSelector:
+    matchLabels:
+      app: edge-tpu-benchmark
+      tier: api
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Only allow ingress from load balancer
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: nginx-ingress
+    ports:
+    - protocol: TCP
+      port: 8080
+  # Only allow metrics scraping from monitoring
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-monitoring
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: prometheus
+    ports:
+    - protocol: TCP
+      port: 9090
+  egress:
+  # Restrict egress to only necessary services
+  - to:
+    - podSelector:
+        matchLabels:
+          app: edge-tpu-benchmark
+          tier: data
+    ports:
+    - protocol: TCP
+      port: 8080
+
+---
+# Advanced Network Policy with Time-based Rules
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: edge-tpu-time-based-access
+  namespace: edge-tpu-staging
+  labels:
+    access-type: time-restricted
+  annotations:
+    policy.cilium.io/time-based: "true"
+    policy.cilium.io/allowed-hours: "09:00-17:00"
+    policy.cilium.io/timezone: "UTC"
+spec:
+  podSelector:
+    matchLabels:
+      app: edge-tpu-benchmark
+      access-type: development
+  policyTypes:
+  - Ingress
+  ingress:
+  # Allow development access only during business hours
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: development
+  - from:
+    - ipBlock:
+        cidr: 10.0.0.0/8  # Internal corporate network
+    ports:
+    - protocol: TCP
+      port: 8080
+
+---
+# Global Network Policies (if using Calico)
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: edge-tpu-global-security
+spec:
+  order: 100
+  selector: has(edge-tpu-workload)
+  types:
+  - Ingress
+  - Egress
+  ingress:
+  # Block all traffic from untrusted networks
+  - action: Deny
+    source:
+      nets:
+      - 192.168.0.0/16  # Untrusted network range
+      - 172.16.0.0/12   # Untrusted network range
+  # Allow traffic from trusted networks
+  - action: Allow
+    source:
+      nets:
+      - 10.0.0.0/8      # Trusted corporate network
+  egress:
+  # Block egress to sensitive internal networks
+  - action: Deny
+    destination:
+      nets:
+      - 10.1.0.0/16     # Sensitive internal network
+      - 10.2.0.0/16     # Management network
+  # Allow necessary egress
+  - action: Allow
+    destination:
+      nets:
+      - 0.0.0.0/0
+    protocol: TCP
+    destination:
+      ports:
+      - 53    # DNS
+      - 443   # HTTPS
+      - 6443  # Kubernetes API
+
+---
+# Service Mesh Network Policy Integration
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: edge-tpu-istio-integration
+  namespace: edge-tpu-production
+  labels:
+    service-mesh: istio
+spec:
+  podSelector:
+    matchLabels:
+      app: edge-tpu-benchmark
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow Istio sidecar communication
+  - from:
+    - podSelector:
+        matchLabels:
+          app: istio-proxy
+  # Allow Istio ingress gateway
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: istio-system
+    - podSelector:
+        matchLabels:
+          app: istio-proxy
+          istio: gateway
+    ports:
+    - protocol: TCP
+      port: 8080
+  egress:
+  # Allow Istio sidecar communication
+  - to:
+    - podSelector:
+        matchLabels:
+          app: istio-proxy
+  # Allow Istio control plane communication
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: istio-system
+    ports:
+    - protocol: TCP
+      port: 15010  # Pilot discovery
+    - protocol: TCP
+      port: 15011  # Pilot webhook
+    - protocol: TCP
+      port: 15014  # Pilot monitoring

@@ -1,0 +1,658 @@
+---
+# Operational Runbooks ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: edge-tpu-runbooks
+  namespace: edge-tpu-production
+  labels:
+    component: operational-runbooks
+    documentation: runbooks
+data:
+  high-latency-runbook.md: |
+    # Edge TPU High Latency Runbook
+    
+    ## Alert: EdgeTPUHighLatency
+    **Severity**: Warning  
+    **Threshold**: P95 latency > 10ms  
+    **SLA Impact**: May affect user experience
+    
+    ## Immediate Actions (5 minutes)
+    1. **Verify the alert**
+       ```bash
+       kubectl get pods -n edge-tpu-production -l app=edge-tpu-benchmark
+       kubectl top pods -n edge-tpu-production
+       ```
+    
+    2. **Check current metrics**
+       ```bash
+       # Check Prometheus query
+       curl -G "http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090/api/v1/query" \
+         --data-urlencode 'query=histogram_quantile(0.95, rate(edge_tpu_inference_duration_seconds_bucket[5m]))*1000'
+       ```
+    
+    3. **Quick health check**
+       ```bash
+       kubectl exec -n edge-tpu-production deployment/edge-tpu-v6-benchmark-production -- curl localhost:8080/health
+       ```
+    
+    ## Investigation Steps (15 minutes)
+    1. **Check pod resource utilization**
+       ```bash
+       kubectl top pods -n edge-tpu-production --containers
+       kubectl describe pods -n edge-tpu-production -l app=edge-tpu-benchmark
+       ```
+    
+    2. **Examine application logs**
+       ```bash
+       kubectl logs -n edge-tpu-production -l app=edge-tpu-benchmark --tail=100
+       kubectl logs -n edge-tpu-production -l app=edge-tpu-benchmark -c edge-tpu-benchmark --since=10m
+       ```
+    
+    3. **Check queue depth and concurrent requests**
+       ```bash
+       # Query Prometheus for queue metrics
+       curl -G "http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090/api/v1/query" \
+         --data-urlencode 'query=edge_tpu_queue_depth'
+       ```
+    
+    4. **Verify network connectivity**
+       ```bash
+       kubectl exec -n edge-tpu-production deployment/edge-tpu-v6-benchmark-production -- netstat -an
+       ```
+    
+    ## Resolution Steps
+    ### If CPU bound:
+    ```bash
+    # Scale up deployment
+    kubectl scale deployment edge-tpu-v6-benchmark-production --replicas=6 -n edge-tpu-production
+    
+    # Verify HPA is working
+    kubectl get hpa -n edge-tpu-production
+    ```
+    
+    ### If memory bound:
+    ```bash
+    # Check memory limits and requests
+    kubectl get deployment edge-tpu-v6-benchmark-production -n edge-tpu-production -o yaml | grep -A 4 resources
+    
+    # Consider VPA recommendations
+    kubectl get vpa -n edge-tpu-production
+    ```
+    
+    ### If I/O bound:
+    ```bash
+    # Check persistent volume performance
+    kubectl get pv,pvc -n edge-tpu-production
+    
+    # Monitor disk I/O from node
+    kubectl get nodes -o wide
+    ```
+    
+    ## Escalation
+    - **15 minutes**: Page ML Engineering team
+    - **30 minutes**: Page Site Reliability Engineering
+    - **45 minutes**: Engage incident commander
+    
+    ## Prevention
+    - Monitor model complexity and optimize inference pipeline
+    - Implement proper request rate limiting
+    - Ensure adequate resource allocation
+    - Regular load testing and performance validation
+    
+  critical-latency-runbook.md: |
+    # Edge TPU Critical Latency Runbook
+    
+    ## Alert: EdgeTPUCriticalLatency
+    **Severity**: Critical  
+    **Threshold**: P95 latency > 20ms  
+    **SLA Impact**: Service degradation, immediate action required
+    
+    ## Immediate Actions (2 minutes)
+    1. **Declare incident**
+       - Open incident in PagerDuty
+       - Notify #incident-response Slack channel
+       - Assign incident commander
+    
+    2. **Emergency scaling**
+       ```bash
+       # Immediate scale-up
+       kubectl scale deployment edge-tpu-v6-benchmark-production --replicas=10 -n edge-tpu-production
+       
+       # Force pod recreation if needed
+       kubectl rollout restart deployment edge-tpu-v6-benchmark-production -n edge-tpu-production
+       ```
+    
+    3. **Traffic rerouting (if multi-region)**
+       ```bash
+       # Update traffic weights to healthy regions
+       kubectl patch virtualservice edge-tpu-production-vs -n edge-tpu-production --type='json' \
+         -p='[{"op": "replace", "path": "/spec/http/0/route/0/weight", "value": 0}]'
+       ```
+    
+    ## Emergency Procedures
+    ### Immediate Failover
+    ```bash
+    # Switch to blue-green standby if available
+    kubectl patch rollout edge-tpu-v6-benchmark-rollout -n edge-tpu-production --type='json' \
+      -p='[{"op": "replace", "path": "/spec/strategy/blueGreen/autoPromotionEnabled", "value": true}]'
+    
+    # Or direct traffic to staging (emergency only)
+    kubectl patch ingress edge-tpu-benchmark-ingress -n edge-tpu-production --type='json' \
+      -p='[{"op": "replace", "path": "/spec/rules/0/http/paths/0/backend/service/name", "value": "edge-tpu-benchmark-staging"}]'
+    ```
+    
+    ### Circuit Breaker Activation
+    ```bash
+    # Enable circuit breaker
+    kubectl patch destinationrule edge-tpu-production-dr -n edge-tpu-production --type='json' \
+      -p='[{"op": "replace", "path": "/spec/trafficPolicy/outlierDetection/consecutiveGatewayErrors", "value": 1}]'
+    ```
+    
+    ## Investigation During Incident
+    1. **System metrics dashboard**: https://grafana.edge-tpu.terragonlabs.ai/d/edge-tpu-performance
+    2. **Application traces**: https://jaeger.edge-tpu.terragonlabs.ai
+    3. **Real-time logs**: `kubectl logs -f -n edge-tpu-production -l app=edge-tpu-benchmark`
+    
+    ## Post-Incident
+    - Document root cause
+    - Update monitoring thresholds
+    - Implement additional safeguards
+    - Schedule post-mortem meeting
+    
+  high-error-rate-runbook.md: |
+    # Edge TPU High Error Rate Runbook
+    
+    ## Alert: EdgeTPUHighErrorRate / EdgeTPUCriticalErrorRate
+    **Severity**: Warning/Critical  
+    **Threshold**: Error rate > 5%/10%  
+    
+    ## Immediate Actions
+    1. **Check error types**
+       ```bash
+       # Check recent errors in logs
+       kubectl logs -n edge-tpu-production -l app=edge-tpu-benchmark --since=5m | grep -i error
+       
+       # Check HTTP status codes
+       curl -G "http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090/api/v1/query" \
+         --data-urlencode 'query=sum(rate(http_requests_total{job="edge-tpu-benchmark",code=~"5.."}[5m])) by (code)'
+       ```
+    
+    2. **Identify error patterns**
+       ```bash
+       # Check if errors are from specific endpoints
+       curl -G "http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090/api/v1/query" \
+         --data-urlencode 'query=sum(rate(http_requests_total{job="edge-tpu-benchmark",code=~"5.."}[5m])) by (path)'
+       ```
+    
+    ## Common Error Scenarios
+    ### Model Loading Errors
+    ```bash
+    # Check model files and permissions
+    kubectl exec -n edge-tpu-production deployment/edge-tpu-v6-benchmark-production -- ls -la /app/models/
+    
+    # Verify model integrity
+    kubectl exec -n edge-tpu-production deployment/edge-tpu-v6-benchmark-production -- \
+      python -c "import tensorflow as tf; tf.lite.Interpreter('/app/models/model.tflite')"
+    ```
+    
+    ### Resource Exhaustion
+    ```bash
+    # Check memory usage
+    kubectl top pods -n edge-tpu-production --containers
+    
+    # Check disk space
+    kubectl exec -n edge-tpu-production deployment/edge-tpu-v6-benchmark-production -- df -h
+    ```
+    
+    ### External Dependencies
+    ```bash
+    # Test external API connectivity
+    kubectl exec -n edge-tpu-production deployment/edge-tpu-v6-benchmark-production -- \
+      curl -I https://api.terragonlabs.ai/health
+    ```
+    
+    ## Resolution Steps
+    1. **Restart unhealthy pods**
+       ```bash
+       kubectl delete pods -n edge-tpu-production -l app=edge-tpu-benchmark --field-selector=status.phase!=Running
+       ```
+    
+    2. **Rollback if recent deployment**
+       ```bash
+       kubectl rollout undo deployment edge-tpu-v6-benchmark-production -n edge-tpu-production
+       ```
+    
+    3. **Enable debug logging**
+       ```bash
+       kubectl patch deployment edge-tpu-v6-benchmark-production -n edge-tpu-production --type='json' \
+         -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/env/0/value", "value": "DEBUG"}]'
+       ```
+    
+  accuracy-degradation-runbook.md: |
+    # Edge TPU Model Accuracy Degradation Runbook
+    
+    ## Alert: EdgeTPUAccuracyDegradation / EdgeTPUCriticalAccuracyDegradation
+    **Severity**: Warning/Critical  
+    **Impact**: Model quality degradation affects business outcomes
+    
+    ## Immediate Assessment
+    1. **Verify accuracy metrics**
+       ```bash
+       # Check current accuracy
+       curl -G "http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090/api/v1/query" \
+         --data-urlencode 'query=avg(edge_tpu_model_accuracy)'
+       
+       # Compare to baseline
+       curl -G "http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090/api/v1/query_range" \
+         --data-urlencode 'query=avg(edge_tpu_model_accuracy)' \
+         --data-urlencode 'start=now-24h' \
+         --data-urlencode 'end=now' \
+         --data-urlencode 'step=1h'
+       ```
+    
+    2. **Check recent model deployments**
+       ```bash
+       kubectl rollout history deployment edge-tpu-v6-benchmark-production -n edge-tpu-production
+       
+       # Check if new model version was deployed
+       kubectl get configmap edge-tpu-config-production -n edge-tpu-production -o yaml | grep model
+       ```
+    
+    ## Investigation Steps
+    ### Data Quality Analysis
+    ```bash
+    # Check input data distribution
+    kubectl logs -n edge-tpu-production -l app=edge-tpu-benchmark --since=1h | grep "input_stats"
+    
+    # Verify preprocessing pipeline
+    kubectl exec -n edge-tpu-production deployment/edge-tpu-v6-benchmark-production -- \
+      python -c "from src.edge_tpu_v6_bench.core import validation; validation.check_preprocessing()"
+    ```
+    
+    ### Model Integrity Check
+    ```bash
+    # Verify model checksum
+    kubectl exec -n edge-tpu-production deployment/edge-tpu-v6-benchmark-production -- \
+      sha256sum /app/models/model.tflite
+    
+    # Compare against expected checksum
+    kubectl get configmap model-checksums -n edge-tpu-production -o yaml
+    ```
+    
+    ### Hardware Performance
+    ```bash
+    # Check TPU utilization
+    kubectl exec -n edge-tpu-production deployment/edge-tpu-v6-benchmark-production -- \
+      cat /proc/loadavg
+    
+    # Monitor temperature and power
+    kubectl logs -n edge-tpu-production -l app=edge-tpu-benchmark | grep -i temperature
+    ```
+    
+    ## Resolution Actions
+    ### Model Rollback
+    ```bash
+    # Rollback to previous model version
+    kubectl patch configmap edge-tpu-config-production -n edge-tpu-production --type='json' \
+      -p='[{"op": "replace", "path": "/data/model_version", "value": "v1.2.1"}]'
+    
+    # Restart deployment to pick up new config
+    kubectl rollout restart deployment edge-tpu-v6-benchmark-production -n edge-tpu-production
+    ```
+    
+    ### Recalibration
+    ```bash
+    # Trigger model recalibration job
+    kubectl create job model-recalibration-$(date +%s) --from=cronjob/model-calibration -n edge-tpu-production
+    ```
+    
+    ## Escalation
+    - **Immediate**: Notify ML Engineering team
+    - **15 minutes**: Engage Data Science team for model analysis
+    - **30 minutes**: Consider rolling back to known-good model version
+    
+    ## Prevention
+    - Implement A/B testing for model deployments
+    - Continuous model validation pipeline
+    - Automated model quality gates
+    - Regular baseline accuracy monitoring
+    
+  pod-crashlooping-runbook.md: |
+    # Edge TPU Pod CrashLooping Runbook
+    
+    ## Alert: EdgeTPUPodCrashLooping
+    **Severity**: Critical  
+    **Impact**: Service availability
+    
+    ## Immediate Diagnosis
+    1. **Identify crashing pods**
+       ```bash
+       kubectl get pods -n edge-tpu-production -l app=edge-tpu-benchmark
+       kubectl describe pod <failing-pod-name> -n edge-tpu-production
+       ```
+    
+    2. **Check crash logs**
+       ```bash
+       kubectl logs <failing-pod-name> -n edge-tpu-production --previous
+       kubectl logs <failing-pod-name> -n edge-tpu-production -c edge-tpu-benchmark
+       ```
+    
+    3. **Check events**
+       ```bash
+       kubectl get events -n edge-tpu-production --field-selector involvedObject.name=<failing-pod-name>
+       ```
+    
+    ## Common Crash Scenarios
+    ### Resource Constraints
+    ```bash
+    # Check resource limits and usage
+    kubectl describe pod <failing-pod-name> -n edge-tpu-production | grep -A 10 "Limits\|Requests"
+    kubectl top pod <failing-pod-name> -n edge-tpu-production --containers
+    ```
+    
+    ### Configuration Issues
+    ```bash
+    # Verify ConfigMap and Secrets
+    kubectl get configmap edge-tpu-config-production -n edge-tpu-production -o yaml
+    kubectl describe secret edge-tpu-secrets -n edge-tpu-production
+    ```
+    
+    ### Image Issues
+    ```bash
+    # Check image pull status
+    kubectl describe pod <failing-pod-name> -n edge-tpu-production | grep -A 5 "Events"
+    
+    # Verify image exists and is accessible
+    docker pull terragonlabs/edge-tpu-v6-benchmark:stable
+    ```
+    
+    ### Health Check Failures
+    ```bash
+    # Test health endpoints manually
+    kubectl port-forward <failing-pod-name> 8080:8080 -n edge-tpu-production &
+    curl localhost:8080/health
+    curl localhost:8080/ready
+    ```
+    
+    ## Resolution Steps
+    ### Emergency Scaling
+    ```bash
+    # Scale up healthy replicas
+    kubectl scale deployment edge-tpu-v6-benchmark-production --replicas=6 -n edge-tpu-production
+    
+    # Remove unhealthy pods from service
+    kubectl label pod <failing-pod-name> app- -n edge-tpu-production
+    ```
+    
+    ### Fix Resource Issues
+    ```bash
+    # Increase memory limits
+    kubectl patch deployment edge-tpu-v6-benchmark-production -n edge-tpu-production --type='json' \
+      -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/resources/limits/memory", "value": "8Gi"}]'
+    ```
+    
+    ### Configuration Fix
+    ```bash
+    # Update configuration
+    kubectl patch configmap edge-tpu-config-production -n edge-tpu-production --type='json' \
+      -p='[{"op": "replace", "path": "/data/workers", "value": "2"}]'
+    ```
+    
+    ## Post-Resolution
+    1. Monitor pod stability
+    2. Update resource requests/limits based on findings
+    3. Implement additional monitoring for early detection
+    4. Document root cause and prevention measures
+    
+  deployment-failure-runbook.md: |
+    # Edge TPU Deployment Failure Runbook
+    
+    ## Alert: EdgeTPUDeploymentReplicasMismatch
+    **Severity**: Warning  
+    **Impact**: Reduced capacity, potential service degradation
+    
+    ## Assessment
+    1. **Check deployment status**
+       ```bash
+       kubectl get deployment edge-tpu-v6-benchmark-production -n edge-tpu-production
+       kubectl rollout status deployment edge-tpu-v6-benchmark-production -n edge-tpu-production
+       kubectl describe deployment edge-tpu-v6-benchmark-production -n edge-tpu-production
+       ```
+    
+    2. **Check replica set status**
+       ```bash
+       kubectl get replicasets -n edge-tpu-production -l app=edge-tpu-benchmark
+       kubectl describe replicaset <latest-rs-name> -n edge-tpu-production
+       ```
+    
+    ## Investigation
+    ### Pod Scheduling Issues
+    ```bash
+    # Check pending pods
+    kubectl get pods -n edge-tpu-production --field-selector=status.phase=Pending
+    kubectl describe pod <pending-pod-name> -n edge-tpu-production
+    
+    # Check node capacity
+    kubectl describe nodes | grep -A 5 "Allocated resources"
+    ```
+    
+    ### Resource Quotas
+    ```bash
+    # Check namespace quotas
+    kubectl describe quota -n edge-tpu-production
+    
+    # Check limit ranges
+    kubectl describe limitrange -n edge-tpu-production
+    ```
+    
+    ### Image Pull Issues
+    ```bash
+    # Check image pull secrets
+    kubectl get pods <failing-pod-name> -n edge-tpu-production -o yaml | grep imagePullSecrets
+    kubectl describe secret terragonlabs-registry-secret -n edge-tpu-production
+    ```
+    
+    ## Resolution
+    ### Node Scaling
+    ```bash
+    # Check cluster autoscaler
+    kubectl get nodes -o wide
+    kubectl describe configmap cluster-autoscaler-status -n kube-system
+    ```
+    
+    ### Quick Fixes
+    ```bash
+    # Delete failed pods to trigger recreation
+    kubectl delete pods -n edge-tpu-production --field-selector=status.phase=Failed
+    
+    # Restart deployment if stuck
+    kubectl rollout restart deployment edge-tpu-v6-benchmark-production -n edge-tpu-production
+    ```
+    
+    ### Rollback if Needed
+    ```bash
+    # Check rollout history
+    kubectl rollout history deployment edge-tpu-v6-benchmark-production -n edge-tpu-production
+    
+    # Rollback to previous version
+    kubectl rollout undo deployment edge-tpu-v6-benchmark-production -n edge-tpu-production
+    ```
+    
+    ## Prevention
+    - Monitor cluster resource capacity
+    - Implement proper resource requests and limits
+    - Regular testing of deployment processes
+    - Maintain adequate node capacity buffer
+    
+  security-incident-runbook.md: |
+    # Edge TPU Security Incident Runbook
+    
+    ## Alert: Security-related alerts from Falco or security scanners
+    **Severity**: Critical  
+    **Impact**: Potential security breach
+    
+    ## Immediate Response
+    1. **Isolate affected components**
+       ```bash
+       # Label compromised pods for quarantine
+       kubectl label pod <compromised-pod> security.incident=quarantine -n edge-tpu-production
+       
+       # Apply network policy to isolate
+       kubectl apply -f - <<EOF
+       apiVersion: networking.k8s.io/v1
+       kind: NetworkPolicy
+       metadata:
+         name: security-quarantine
+         namespace: edge-tpu-production
+       spec:
+         podSelector:
+           matchLabels:
+             security.incident: quarantine
+         policyTypes:
+         - Ingress
+         - Egress
+       EOF
+       ```
+    
+    2. **Collect evidence**
+       ```bash
+       # Capture logs
+       kubectl logs <compromised-pod> -n edge-tpu-production > incident-logs-$(date +%s).log
+       
+       # Export pod definition
+       kubectl get pod <compromised-pod> -n edge-tpu-production -o yaml > pod-definition-$(date +%s).yaml
+       
+       # Capture network connections
+       kubectl exec <compromised-pod> -n edge-tpu-production -- netstat -an > network-connections-$(date +%s).txt
+       ```
+    
+    3. **Notify security team**
+       - Page security on-call
+       - Create security incident ticket
+       - Notify incident commander
+    
+    ## Investigation
+    ### Check for Unauthorized Access
+    ```bash
+    # Review authentication logs
+    kubectl logs -n kube-system -l component=kube-apiserver | grep "authentication\|authorization"
+    
+    # Check for suspicious API calls
+    kubectl get events --all-namespaces --field-selector type=Warning
+    ```
+    
+    ### Scan for Vulnerabilities
+    ```bash
+    # Run security scan
+    kubectl create job security-emergency-scan --from=cronjob/security-scan -n edge-tpu-production
+    
+    # Check for malicious processes
+    kubectl exec <compromised-pod> -n edge-tpu-production -- ps aux
+    ```
+    
+    ### Network Analysis
+    ```bash
+    # Check unusual network traffic
+    kubectl exec <compromised-pod> -n edge-tpu-production -- ss -tulpn
+    
+    # Review firewall logs (if available)
+    kubectl logs -n kube-system -l app=calico-node
+    ```
+    
+    ## Containment Actions
+    ```bash
+    # Scale down compromised deployment
+    kubectl scale deployment edge-tpu-v6-benchmark-production --replicas=0 -n edge-tpu-production
+    
+    # Remove from load balancer
+    kubectl patch service edge-tpu-benchmark-active -n edge-tpu-production --type='json' \
+      -p='[{"op": "replace", "path": "/spec/selector", "value": {"app": "maintenance"}}]'
+    
+    # Deploy clean version
+    kubectl set image deployment/edge-tpu-v6-benchmark-production \
+      edge-tpu-benchmark=terragonlabs/edge-tpu-v6-benchmark:known-clean-version \
+      -n edge-tpu-production
+    ```
+    
+    ## Recovery
+    1. Scan all container images
+    2. Rotate all secrets and certificates
+    3. Review and update security policies
+    4. Conduct security assessment
+    5. Update monitoring and detection rules
+    
+    ## Post-Incident
+    - Complete forensic analysis
+    - Update security procedures
+    - Implement additional security controls
+    - Conduct security training
+    - Schedule security review
+
+---
+# Alert to Runbook Mapping ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alert-runbook-mapping
+  namespace: edge-tpu-production
+  labels:
+    component: alert-runbook-mapping
+data:
+  alert-mappings.json: |
+    {
+      "EdgeTPUHighLatency": {
+        "runbook": "high-latency-runbook.md",
+        "severity": "warning",
+        "escalation_time": "15m",
+        "primary_team": "ml-engineering"
+      },
+      "EdgeTPUCriticalLatency": {
+        "runbook": "critical-latency-runbook.md", 
+        "severity": "critical",
+        "escalation_time": "5m",
+        "primary_team": "sre"
+      },
+      "EdgeTPUHighErrorRate": {
+        "runbook": "high-error-rate-runbook.md",
+        "severity": "warning", 
+        "escalation_time": "10m",
+        "primary_team": "ml-engineering"
+      },
+      "EdgeTPUCriticalErrorRate": {
+        "runbook": "high-error-rate-runbook.md",
+        "severity": "critical",
+        "escalation_time": "5m", 
+        "primary_team": "sre"
+      },
+      "EdgeTPUAccuracyDegradation": {
+        "runbook": "accuracy-degradation-runbook.md",
+        "severity": "warning",
+        "escalation_time": "15m",
+        "primary_team": "data-science"
+      },
+      "EdgeTPUCriticalAccuracyDegradation": {
+        "runbook": "accuracy-degradation-runbook.md",
+        "severity": "critical", 
+        "escalation_time": "10m",
+        "primary_team": "data-science"
+      },
+      "EdgeTPUPodCrashLooping": {
+        "runbook": "pod-crashlooping-runbook.md",
+        "severity": "critical",
+        "escalation_time": "5m",
+        "primary_team": "sre"
+      },
+      "EdgeTPUDeploymentReplicasMismatch": {
+        "runbook": "deployment-failure-runbook.md", 
+        "severity": "warning",
+        "escalation_time": "10m",
+        "primary_team": "sre"
+      },
+      "SecurityIncident": {
+        "runbook": "security-incident-runbook.md",
+        "severity": "critical",
+        "escalation_time": "immediate",
+        "primary_team": "security"
+      }
+    }

@@ -1,0 +1,593 @@
+---
+# Pod Security Standards - Restricted Profile for Production
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: edge-tpu-production
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/warn: restricted
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/audit-version: latest
+    pod-security.kubernetes.io/warn-version: latest
+
+---
+# Pod Security Standards - Baseline Profile for Staging
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: edge-tpu-staging
+  labels:
+    pod-security.kubernetes.io/enforce: baseline
+    pod-security.kubernetes.io/audit: baseline
+    pod-security.kubernetes.io/warn: restricted
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/audit-version: latest
+    pod-security.kubernetes.io/warn-version: latest
+
+---
+# Pod Security Standards - Baseline Profile for Monitoring
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: edge-tpu-monitoring
+  labels:
+    pod-security.kubernetes.io/enforce: baseline
+    pod-security.kubernetes.io/audit: baseline
+    pod-security.kubernetes.io/warn: baseline
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/audit-version: latest
+    pod-security.kubernetes.io/warn-version: latest
+
+---
+# Security Context Constraints for Edge TPU Workloads
+apiVersion: v1
+kind: SecurityContextConstraints
+metadata:
+  name: edge-tpu-scc
+allowHostDirVolumePlugin: false
+allowHostIPC: false
+allowHostNetwork: false
+allowHostPID: false
+allowHostPorts: false
+allowPrivilegedContainer: false
+allowedCapabilities: 
+- NET_BIND_SERVICE
+defaultAddCapabilities: []
+requiredDropCapabilities:
+- ALL
+fsGroup:
+  type: MustRunAs
+  ranges:
+  - min: 1000
+  - max: 3000
+readOnlyRootFilesystem: true
+runAsUser:
+  type: MustRunAsNonRoot
+seLinuxContext:
+  type: MustRunAs
+  seLinuxOptions:
+    level: "s0:c123,c456"
+volumes:
+- configMap
+- downwardAPI
+- emptyDir
+- persistentVolumeClaim
+- projected
+- secret
+
+---
+# Advanced Network Policy for Production
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: edge-tpu-production-advanced-netpol
+  namespace: edge-tpu-production
+spec:
+  podSelector:
+    matchLabels:
+      app: edge-tpu-benchmark
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow ingress from monitoring namespace
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-monitoring
+    ports:
+    - protocol: TCP
+      port: 9090  # Metrics port
+  # Allow ingress from ingress controller
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 8080  # HTTP port
+  # Allow ingress from same namespace pods
+  - from:
+    - podSelector: {}
+    ports:
+    - protocol: TCP
+      port: 8080
+    - protocol: TCP
+      port: 9090
+  # Allow health checks from API server
+  - from: []
+    ports:
+    - protocol: TCP
+      port: 8080
+    - protocol: TCP
+      port: 9090
+  egress:
+  # Allow DNS resolution
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+    - podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  # Allow HTTPS outbound for external APIs
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 443
+  # Allow communication with Kubernetes API
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 6443
+  # Allow communication within namespace
+  - to:
+    - podSelector: {}
+    ports:
+    - protocol: TCP
+      port: 8080
+    - protocol: TCP
+      port: 9090
+
+---
+# Network Policy for Staging Environment
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: edge-tpu-staging-netpol
+  namespace: edge-tpu-staging
+spec:
+  podSelector:
+    matchLabels:
+      app: edge-tpu-benchmark
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow all ingress for staging (more permissive)
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-monitoring
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+  - from:
+    - podSelector: {}
+  egress:
+  # Allow all egress for staging
+  - to: []
+
+---
+# Network Policy for Inter-Namespace Communication
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: monitoring-to-production
+  namespace: edge-tpu-production
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: edge-tpu-monitoring
+    ports:
+    - protocol: TCP
+      port: 9090  # Metrics port
+    - protocol: TCP
+      port: 8080  # Health checks
+
+---
+# Security Scanning Job with Trivy
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: security-scan
+  namespace: edge-tpu-production
+spec:
+  schedule: "0 2 * * *"  # Daily at 2 AM
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: security-scan
+        spec:
+          serviceAccountName: security-scanner
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            fsGroup: 1000
+          restartPolicy: OnFailure
+          containers:
+          - name: trivy
+            image: aquasec/trivy:latest
+            command:
+            - trivy
+            - image
+            - --format
+            - json
+            - --output
+            - /reports/trivy-report.json
+            - terragonlabs/edge-tpu-v6-benchmark:stable
+            volumeMounts:
+            - name: reports
+              mountPath: /reports
+            resources:
+              requests:
+                cpu: 100m
+                memory: 256Mi
+              limits:
+                cpu: 500m
+                memory: 512Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                - ALL
+          volumes:
+          - name: reports
+            persistentVolumeClaim:
+              claimName: security-reports-pvc
+
+---
+# RBAC for Security Scanner
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: security-scanner
+  namespace: edge-tpu-production
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: security-scanner-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "nodes"]
+  verbs: ["get", "list"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "daemonsets", "replicasets"]
+  verbs: ["get", "list"]
+- apiGroups: ["extensions", "networking.k8s.io"]
+  resources: ["networkpolicies", "ingresses"]
+  verbs: ["get", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: security-scanner-binding
+subjects:
+- kind: ServiceAccount
+  name: security-scanner
+  namespace: edge-tpu-production
+roleRef:
+  kind: ClusterRole
+  name: security-scanner-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+# PVC for Security Reports
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: security-reports-pvc
+  namespace: edge-tpu-production
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: fast-ssd
+
+---
+# Falco Security Monitoring
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: falco
+  namespace: edge-tpu-monitoring
+  labels:
+    app: falco
+    component: security-monitoring
+spec:
+  selector:
+    matchLabels:
+      app: falco
+  template:
+    metadata:
+      labels:
+        app: falco
+    spec:
+      serviceAccountName: falco
+      hostNetwork: true
+      hostPID: true
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/control-plane
+        effect: NoSchedule
+      containers:
+      - name: falco
+        image: falcosecurity/falco:0.35.1
+        args:
+        - /usr/bin/falco
+        - --cri=/run/containerd/containerd.sock
+        - --k8s-api=https://kubernetes.default.svc
+        - --k8s-api-cert=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        - --k8s-api-key=/var/run/secrets/kubernetes.io/serviceaccount/token
+        - -K=/etc/falco/k8s_audit_rules.yaml
+        - -r=/etc/falco/falco_rules.yaml
+        - -r=/etc/falco/k8s_audit_rules.yaml
+        env:
+        - name: FALCO_K8S_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        securityContext:
+          privileged: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi
+        volumeMounts:
+        - mountPath: /host/var/run/docker.sock
+          name: docker-socket
+        - mountPath: /host/dev
+          name: dev-fs
+        - mountPath: /host/proc
+          name: proc-fs
+          readOnly: true
+        - mountPath: /host/boot
+          name: boot-fs
+          readOnly: true
+        - mountPath: /host/lib/modules
+          name: lib-modules
+          readOnly: true
+        - mountPath: /host/usr
+          name: usr-fs
+          readOnly: true
+        - mountPath: /etc/falco
+          name: config
+        - mountPath: /run/containerd/containerd.sock
+          name: containerd-socket
+      volumes:
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock
+      - name: dev-fs
+        hostPath:
+          path: /dev
+      - name: proc-fs
+        hostPath:
+          path: /proc
+      - name: boot-fs
+        hostPath:
+          path: /boot
+      - name: lib-modules
+        hostPath:
+          path: /lib/modules
+      - name: usr-fs
+        hostPath:
+          path: /usr
+      - name: containerd-socket
+        hostPath:
+          path: /run/containerd/containerd.sock
+      - name: config
+        configMap:
+          name: falco-config
+
+---
+# Falco Configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: falco-config
+  namespace: edge-tpu-monitoring
+data:
+  falco.yaml: |
+    rules_file:
+      - /etc/falco/falco_rules.yaml
+      - /etc/falco/k8s_audit_rules.yaml
+      - /etc/falco/edge_tpu_rules.yaml
+    
+    time_format_iso_8601: true
+    json_output: true
+    json_include_output_property: true
+    json_include_tags_property: true
+    
+    log_stderr: false
+    log_syslog: true
+    log_level: info
+    
+    priority: debug
+    
+    syscall_event_drops:
+      actions:
+        - log
+        - alert
+      rate: 0.03333
+      max_burst: 1000
+    
+    output_timeout: 2000
+    
+  edge_tpu_rules.yaml: |
+    - rule: Edge TPU Sensitive File Access
+      desc: Detect access to sensitive Edge TPU configuration files
+      condition: >
+        (open_read and fd.name startswith "/app/config" and
+         k8s.ns.name in (edge-tpu-production, edge-tpu-staging))
+      output: >
+        Edge TPU sensitive file accessed 
+        (user=%user.name command=%proc.cmdline file=%fd.name container=%container.name)
+      priority: WARNING
+      tags: [edge-tpu, filesystem, security]
+    
+    - rule: Edge TPU Suspicious Network Activity
+      desc: Detect suspicious network connections from Edge TPU containers
+      condition: >
+        (inbound_outbound and k8s.ns.name in (edge-tpu-production, edge-tpu-staging) and
+         not fd.sport in (8080, 9090, 443, 53))
+      output: >
+        Suspicious network activity from Edge TPU container
+        (user=%user.name command=%proc.cmdline connection=%fd.name container=%container.name)
+      priority: WARNING
+      tags: [edge-tpu, network, security]
+    
+    - rule: Edge TPU Container Privilege Escalation
+      desc: Detect privilege escalation attempts in Edge TPU containers
+      condition: >
+        (spawned_process and k8s.ns.name in (edge-tpu-production, edge-tpu-staging) and
+         (proc.name in (su, sudo, doas) or proc.args contains "chmod +s"))
+      output: >
+        Privilege escalation attempt in Edge TPU container
+        (user=%user.name command=%proc.cmdline container=%container.name)
+      priority: CRITICAL
+      tags: [edge-tpu, privilege-escalation, security]
+
+---
+# Falco ServiceAccount
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: falco
+  namespace: edge-tpu-monitoring
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: falco-role
+rules:
+- apiGroups: [""]
+  resources: ["nodes", "namespaces", "pods", "events"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "daemonsets", "replicasets"]
+  verbs: ["get", "list", "watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: falco-binding
+subjects:
+- kind: ServiceAccount
+  name: falco
+  namespace: edge-tpu-monitoring
+roleRef:
+  kind: ClusterRole
+  name: falco-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+# Open Policy Agent (OPA) Gatekeeper Constraints
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: edgetpusecurityconstraints
+spec:
+  crd:
+    spec:
+      names:
+        kind: EdgeTPUSecurityConstraints
+      validation:
+        openAPIV3Schema:
+          type: object
+          properties:
+            allowedImages:
+              type: array
+              items:
+                type: string
+            requiredSecurityContext:
+              type: object
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package edgetpusecurityconstraints
+        
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          not image_allowed(container.image)
+          msg := sprintf("Container image '%v' is not allowed for Edge TPU workloads", [container.image])
+        }
+        
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          not has_required_security_context(container)
+          msg := "Edge TPU containers must run with restricted security context"
+        }
+        
+        image_allowed(image) {
+          allowed := input.parameters.allowedImages[_]
+          startswith(image, allowed)
+        }
+        
+        has_required_security_context(container) {
+          container.securityContext.runAsNonRoot == true
+          container.securityContext.readOnlyRootFilesystem == true
+          container.securityContext.allowPrivilegeEscalation == false
+        }
+
+---
+# OPA Constraint for Edge TPU Security
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: EdgeTPUSecurityConstraints
+metadata:
+  name: edge-tpu-security-constraints
+spec:
+  match:
+    kinds:
+    - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces: ["edge-tpu-production", "edge-tpu-staging"]
+    labelSelector:
+      matchLabels:
+        app: edge-tpu-benchmark
+  parameters:
+    allowedImages:
+    - "terragonlabs/edge-tpu-v6-benchmark"
+    - "registry.k8s.io/"
+    - "quay.io/prometheus/"
+    requiredSecurityContext:
+      runAsNonRoot: true
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false

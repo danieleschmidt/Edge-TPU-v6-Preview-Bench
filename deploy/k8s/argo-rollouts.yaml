@@ -1,0 +1,597 @@
+---
+# Argo Rollout for Blue-Green Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: edge-tpu-v6-benchmark-rollout
+  namespace: edge-tpu-production
+  labels:
+    app: edge-tpu-benchmark
+    environment: production
+    deployment-strategy: blue-green
+spec:
+  replicas: 5
+  revisionHistoryLimit: 10
+  strategy:
+    blueGreen:
+      # Service that will be updated to point to the new version
+      activeService: edge-tpu-benchmark-active
+      # Service that will be updated to point to the preview version
+      previewService: edge-tpu-benchmark-preview
+      # Auto-promotion after successful analysis
+      autoPromotionEnabled: false
+      # Pre-promotion analysis
+      prePromotionAnalysis:
+        templates:
+        - templateName: edge-tpu-success-rate
+        - templateName: edge-tpu-latency-check
+        - templateName: edge-tpu-accuracy-validation
+        args:
+        - name: service-name
+          value: edge-tpu-benchmark-preview.edge-tpu-production.svc.cluster.local
+      # Post-promotion analysis
+      postPromotionAnalysis:
+        templates:
+        - templateName: edge-tpu-success-rate
+        - templateName: edge-tpu-latency-check
+        args:
+        - name: service-name
+          value: edge-tpu-benchmark-active.edge-tpu-production.svc.cluster.local
+      # Scale down delay after promotion
+      scaleDownDelaySeconds: 30
+      # Preview replica count during blue-green deployment
+      previewReplicaCount: 2
+  selector:
+    matchLabels:
+      app: edge-tpu-benchmark
+  template:
+    metadata:
+      labels:
+        app: edge-tpu-benchmark
+        environment: production
+    spec:
+      serviceAccountName: edge-tpu-prod-service-account
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+      containers:
+      - name: edge-tpu-benchmark
+        image: terragonlabs/edge-tpu-v6-benchmark:stable
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        - name: metrics
+          containerPort: 9090
+          protocol: TCP
+        env:
+        - name: EDGE_TPU_LOG_LEVEL
+          value: "INFO"
+        - name: EDGE_TPU_CONFIG_PATH
+          value: "/app/config"
+        - name: EDGE_TPU_DATA_PATH
+          value: "/app/data"
+        - name: WORKERS
+          value: "4"
+        - name: SECURITY_ENABLED
+          value: "true"
+        - name: MONITORING_ENABLED
+          value: "true"
+        - name: DEPLOYMENT_COLOR
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['rollouts-pod-template-hash']
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+            ephemeral-storage: "1Gi"
+          limits:
+            cpu: "2000m"
+            memory: "4Gi"
+            ephemeral-storage: "5Gi"
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+          readOnly: true
+        - name: data-volume
+          mountPath: /app/data
+        - name: cache-volume
+          mountPath: /app/cache
+        - name: logs-volume
+          mountPath: /app/logs
+        - name: tmp-volume
+          mountPath: /tmp
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 10
+          failureThreshold: 6
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+            add:
+            - NET_BIND_SERVICE
+      volumes:
+      - name: config-volume
+        configMap:
+          name: edge-tpu-config-production
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: edge-tpu-data-pvc-production
+      - name: cache-volume
+        emptyDir:
+          sizeLimit: 1Gi
+      - name: logs-volume
+        emptyDir:
+          sizeLimit: 2Gi
+      - name: tmp-volume
+        emptyDir:
+          sizeLimit: 1Gi
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            preference:
+              matchExpressions:
+              - key: hardware.edgetpu
+                operator: In
+                values:
+                - "true"
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - edge-tpu-benchmark
+              topologyKey: kubernetes.io/hostname
+      tolerations:
+      - key: edge-node
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+
+---
+# Active Service (Production Traffic)
+apiVersion: v1
+kind: Service
+metadata:
+  name: edge-tpu-benchmark-active
+  namespace: edge-tpu-production
+  labels:
+    app: edge-tpu-benchmark
+    service-type: active
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+    protocol: TCP
+  - name: metrics
+    port: 9090
+    targetPort: metrics
+    protocol: TCP
+  selector:
+    app: edge-tpu-benchmark
+
+---
+# Preview Service (Blue-Green Testing)
+apiVersion: v1
+kind: Service
+metadata:
+  name: edge-tpu-benchmark-preview
+  namespace: edge-tpu-production
+  labels:
+    app: edge-tpu-benchmark
+    service-type: preview
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+    protocol: TCP
+  - name: metrics
+    port: 9090
+    targetPort: metrics
+    protocol: TCP
+  selector:
+    app: edge-tpu-benchmark
+
+---
+# Analysis Template for Success Rate
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: edge-tpu-success-rate
+  namespace: edge-tpu-production
+spec:
+  args:
+  - name: service-name
+  metrics:
+  - name: success-rate
+    interval: 1m
+    successCondition: result[0] >= 0.95
+    failureLimit: 3
+    provider:
+      prometheus:
+        address: http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090
+        query: |
+          sum(rate(http_requests_total{job="edge-tpu-benchmark",service="{{args.service-name}}",code!~"5.."}[2m])) /
+          sum(rate(http_requests_total{job="edge-tpu-benchmark",service="{{args.service-name}}"}[2m]))
+
+---
+# Analysis Template for Latency Check
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: edge-tpu-latency-check
+  namespace: edge-tpu-production
+spec:
+  args:
+  - name: service-name
+  metrics:
+  - name: p95-latency
+    interval: 1m
+    successCondition: result[0] <= 5
+    failureLimit: 3
+    provider:
+      prometheus:
+        address: http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090
+        query: |
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_seconds_bucket{job="edge-tpu-benchmark",service="{{args.service-name}}"}[2m])) by (le)
+          ) * 1000
+  - name: p99-latency
+    interval: 1m
+    successCondition: result[0] <= 10
+    failureLimit: 5
+    provider:
+      prometheus:
+        address: http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090
+        query: |
+          histogram_quantile(0.99,
+            sum(rate(http_request_duration_seconds_bucket{job="edge-tpu-benchmark",service="{{args.service-name}}"}[2m])) by (le)
+          ) * 1000
+
+---
+# Analysis Template for Accuracy Validation
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: edge-tpu-accuracy-validation
+  namespace: edge-tpu-production
+spec:
+  args:
+  - name: service-name
+  metrics:
+  - name: model-accuracy
+    interval: 2m
+    successCondition: result[0] >= 0.95
+    failureLimit: 2
+    provider:
+      prometheus:
+        address: http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090
+        query: |
+          avg(edge_tpu_model_accuracy{service="{{args.service-name}}"})
+  - name: inference-throughput
+    interval: 1m
+    successCondition: result[0] >= 200
+    failureLimit: 3
+    provider:
+      prometheus:
+        address: http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090
+        query: |
+          sum(rate(edge_tpu_inferences_total{service="{{args.service-name}}"}[2m]))
+
+---
+# Canary Rollout Configuration
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: edge-tpu-v6-benchmark-canary
+  namespace: edge-tpu-staging
+  labels:
+    app: edge-tpu-benchmark
+    environment: staging
+    deployment-strategy: canary
+spec:
+  replicas: 5
+  revisionHistoryLimit: 10
+  strategy:
+    canary:
+      # Canary service for routing subset of traffic
+      canaryService: edge-tpu-benchmark-canary
+      # Stable service for routing majority of traffic
+      stableService: edge-tpu-benchmark-stable
+      # Traffic routing configuration
+      trafficRouting:
+        nginx:
+          stableIngress: edge-tpu-benchmark-stable-ingress
+          additionalIngressAnnotations:
+            canary-by-header: X-Canary
+            canary-by-header-value: "true"
+      # Step-by-step canary deployment
+      steps:
+      - setWeight: 10
+      - pause:
+          duration: 2m
+      - analysis:
+          templates:
+          - templateName: edge-tpu-success-rate
+          - templateName: edge-tpu-latency-check
+          args:
+          - name: service-name
+            value: edge-tpu-benchmark-canary.edge-tpu-staging.svc.cluster.local
+      - setWeight: 25
+      - pause:
+          duration: 5m
+      - analysis:
+          templates:
+          - templateName: edge-tpu-success-rate
+          - templateName: edge-tpu-latency-check
+          - templateName: edge-tpu-accuracy-validation
+          args:
+          - name: service-name
+            value: edge-tpu-benchmark-canary.edge-tpu-staging.svc.cluster.local
+      - setWeight: 50
+      - pause:
+          duration: 10m
+      - analysis:
+          templates:
+          - templateName: edge-tpu-success-rate
+          - templateName: edge-tpu-latency-check
+          - templateName: edge-tpu-accuracy-validation
+          args:
+          - name: service-name
+            value: edge-tpu-benchmark-canary.edge-tpu-staging.svc.cluster.local
+      - setWeight: 75
+      - pause:
+          duration: 10m
+      - setWeight: 100
+      - pause:
+          duration: 30s
+  selector:
+    matchLabels:
+      app: edge-tpu-benchmark
+  template:
+    metadata:
+      labels:
+        app: edge-tpu-benchmark
+        environment: staging
+    spec:
+      serviceAccountName: edge-tpu-staging-service-account
+      containers:
+      - name: edge-tpu-benchmark
+        image: terragonlabs/edge-tpu-v6-benchmark:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        - name: metrics
+          containerPort: 9090
+          protocol: TCP
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "1000m"
+            memory: "2Gi"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 5
+
+---
+# Canary Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: edge-tpu-benchmark-canary
+  namespace: edge-tpu-staging
+  labels:
+    app: edge-tpu-benchmark
+    service-type: canary
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+    protocol: TCP
+  - name: metrics
+    port: 9090
+    targetPort: metrics
+    protocol: TCP
+  selector:
+    app: edge-tpu-benchmark
+
+---
+# Stable Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: edge-tpu-benchmark-stable
+  namespace: edge-tpu-staging
+  labels:
+    app: edge-tpu-benchmark
+    service-type: stable
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+    protocol: TCP
+  - name: metrics
+    port: 9090
+    targetPort: metrics
+    protocol: TCP
+  selector:
+    app: edge-tpu-benchmark
+
+---
+# Experiment for A/B Testing
+apiVersion: argoproj.io/v1alpha1
+kind: Experiment
+metadata:
+  name: edge-tpu-ab-test
+  namespace: edge-tpu-staging
+  labels:
+    app: edge-tpu-benchmark
+    experiment-type: ab-test
+spec:
+  duration: 1h
+  progressDeadlineSeconds: 600
+  templates:
+  - name: baseline
+    replicas: 2
+    template:
+      metadata:
+        labels:
+          app: edge-tpu-benchmark
+          variant: baseline
+      spec:
+        serviceAccountName: edge-tpu-staging-service-account
+        containers:
+        - name: edge-tpu-benchmark
+          image: terragonlabs/edge-tpu-v6-benchmark:baseline
+          ports:
+          - containerPort: 8080
+          env:
+          - name: VARIANT
+            value: "baseline"
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+  - name: candidate
+    replicas: 2
+    template:
+      metadata:
+        labels:
+          app: edge-tpu-benchmark
+          variant: candidate
+      spec:
+        serviceAccountName: edge-tpu-staging-service-account
+        containers:
+        - name: edge-tpu-benchmark
+          image: terragonlabs/edge-tpu-v6-benchmark:candidate
+          ports:
+          - containerPort: 8080
+          env:
+          - name: VARIANT
+            value: "candidate"
+          - name: EXPERIMENTAL_FEATURES
+            value: "true"
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+  analyses:
+  - name: ab-test-analysis
+    templateName: edge-tpu-ab-comparison
+    args:
+    - name: baseline-service
+      value: edge-tpu-ab-test-baseline
+    - name: candidate-service
+      value: edge-tpu-ab-test-candidate
+
+---
+# A/B Test Comparison Analysis Template
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: edge-tpu-ab-comparison
+  namespace: edge-tpu-staging
+spec:
+  args:
+  - name: baseline-service
+  - name: candidate-service
+  metrics:
+  - name: baseline-latency
+    interval: 2m
+    provider:
+      prometheus:
+        address: http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090
+        query: |
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_seconds_bucket{service="{{args.baseline-service}}"}[2m])) by (le)
+          ) * 1000
+  - name: candidate-latency
+    interval: 2m
+    provider:
+      prometheus:
+        address: http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090
+        query: |
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_seconds_bucket{service="{{args.candidate-service}}"}[2m])) by (le)
+          ) * 1000
+  - name: latency-improvement
+    interval: 2m
+    successCondition: result[0] >= -0.1
+    provider:
+      prometheus:
+        address: http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090
+        query: |
+          (
+            histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{service="{{args.candidate-service}}"}[2m])) by (le)) -
+            histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{service="{{args.baseline-service}}"}[2m])) by (le))
+          ) / histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{service="{{args.baseline-service}}"}[2m])) by (le))
+  - name: accuracy-comparison
+    interval: 3m
+    successCondition: result[0] >= -0.01
+    provider:
+      prometheus:
+        address: http://prometheus.edge-tpu-monitoring.svc.cluster.local:9090
+        query: |
+          (
+            avg(edge_tpu_model_accuracy{service="{{args.candidate-service}}"}) -
+            avg(edge_tpu_model_accuracy{service="{{args.baseline-service}}"})
+          ) / avg(edge_tpu_model_accuracy{service="{{args.baseline-service}}"})
