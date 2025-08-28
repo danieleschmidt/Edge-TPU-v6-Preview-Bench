@@ -1,21 +1,21 @@
 🛡️  SECURITY AUDIT REPORT
 ============================================================
 📁 Project: /root/repo
-📄 Files scanned: 118 / 258
-🚨 Issues found: 126
-⚡ Risk score: 463
+📄 Files scanned: 133 / 271
+🚨 Issues found: 141
+⚡ Risk score: 538
 
 📊 ISSUES BY SEVERITY
 ------------------------------
   🚨 CRITICAL: 9
-  ⚠️ HIGH: 49
+  ⚠️ HIGH: 64
   ⚡ MEDIUM: 60
   💡 LOW: 8
 
 📋 ISSUES BY CATEGORY
 ------------------------------
   • Weak Crypto: 60
-  • Path Traversal: 44
+  • Path Traversal: 59
   • Debug Code: 8
   • Code Injection: 7
   • Unsafe Deserialization: 5
